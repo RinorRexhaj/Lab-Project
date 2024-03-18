@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "7lKAFCZbwN234drHno/em5DdBWbJdiEP97IBOY0iFTU=",
+  "Source": "Lab-Project.Server",
+  "BasePath": "_content/Lab-Project.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\lab-project.client.esproj",
+      "Version": 2,
+      "Source": "lab-project.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
