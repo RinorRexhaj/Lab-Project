@@ -4,8 +4,8 @@ import './App.css';
 function App() {
 
     return (
-        <div>
-            <h1>Lab Project</h1>
+        <div className="font-satoshi">
+            <h1 className="text-4xl font-bold">Lab Project</h1>
         </div>
     );
 

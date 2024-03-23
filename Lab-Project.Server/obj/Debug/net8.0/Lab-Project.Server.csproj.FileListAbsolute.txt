@@ -33,3 +33,4 @@ C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.pdb
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.genruntimeconfig.cache
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\ref\Lab-Project.Server.dll
+C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.sourcelink.json
