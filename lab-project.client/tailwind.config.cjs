@@ -9,10 +9,10 @@ module.exports = {
       satoshi: ['Satoshi', 'sans-serif'],
     },
     screens: {
-      '2xsm': '375px',
-      xsm: '425px',
-      '3xl': '2000px',
-      ...defaultTheme.screens,
+      'lg': {'max': '1440px'},
+      'tb': {'max': '1024px'},
+      'md': {'max': '700px'},
+      'sm': {'max': '500px'},
     },
     extend: {
       colors: {

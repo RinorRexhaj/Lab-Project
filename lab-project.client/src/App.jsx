@@ -1,5 +1,4 @@
-import './App.css';
-import { BrowserRouter, Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from './Sidebar/Sidebar';
 import Dashboard from './Dashboard/Dashboard';
 import Products from './Products/Products';
@@ -12,14 +11,14 @@ const App = () => {
             <div className="w-full h-screen flex">
                 <Sidebar />
                 <Routes>
-                    <Route path="/" element={<Navigate to="/Dashboard" />}></Route>
-                    <Route path="/Dashboard" element={<Dashboard />}>
+                    <Route path="/" element={<Navigate to="/dashboard" />}></Route>
+                    <Route path="/dashboard" element={<Dashboard />}>
                     </Route>
-                    <Route path="/Products" element={<Products />}>
+                    <Route path="/products" element={<Products />}>
                     </Route>
-                    <Route path="/Clients" element={<Clients />}>
+                    <Route path="/clients" element={<Clients />}>
                     </Route>
-                    <Route path="/Orders" element={<Orders />}>
+                    <Route path="/orders" element={<Orders />}>
                     </Route>
                 </Routes>
             </div>
