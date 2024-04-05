@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faBarcode, faCartShopping, faUserGroup } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faBarcode, faCartShopping, faUserGroup, faTable } from "@fortawesome/free-solid-svg-icons"
 import { Link, useLocation } from "react-router-dom";
 
 const SidebarLink = ({destination}) => {
@@ -21,6 +21,9 @@ const SidebarLink = ({destination}) => {
             break
         case "Orders":
             icon = faCartShopping
+            break
+        case "SidebarTable":
+            icon = faTable
             break
     }
 

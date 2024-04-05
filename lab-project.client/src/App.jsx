@@ -4,6 +4,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Products from './Products/Products';
 import Clients from './Clients/Clients';
 import Orders from './Orders/Orders';
+import SidebarTable from "./SidebarTable/SidebarTable";
 
 const App = () => {
     return (
@@ -19,6 +20,8 @@ const App = () => {
                     <Route path="/clients" element={<Clients />}>
                     </Route>
                     <Route path="/orders" element={<Orders />}>
+                    </Route>
+                    <Route path="/sidebartable" element={<SidebarTable />}>
                     </Route>
                 </Routes>
             </div>

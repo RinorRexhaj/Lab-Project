@@ -34,3 +34,39 @@ C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.genruntimeconfig.cache
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\ref\Lab-Project.Server.dll
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.sourcelink.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\appsettings.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\spa.proxy.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.exe
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.deps.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.runtimeconfig.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.pdb
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SpaProxy.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.csproj.AssemblyReference.cache
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\spa.proxy.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.AssemblyInfoInputs.cache
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.AssemblyInfo.cs
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.csproj.CoreCompileInputs.cache
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.sourcelink.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets\msbuild.Lab-Project.Server.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets\msbuild.build.Lab-Project.Server.props
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Lab-Project.Server.props
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Lab-Project.Server.props
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\scopedcss\bundle\Lab-Project.Server.styles.css
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Proj.89157B02.Up2Date
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\refint\Lab-Project.Server.dll
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.pdb
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.genruntimeconfig.cache
+C:\Users\agajr\Desktop\Lenda Laboratorike 4\Projekti\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\ref\Lab-Project.Server.dll

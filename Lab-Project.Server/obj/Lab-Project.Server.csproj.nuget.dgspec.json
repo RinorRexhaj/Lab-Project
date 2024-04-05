@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj": {}
+    "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj": {
+    "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+        "projectUniqueName": "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
         "projectName": "Lab-Project.Server",
-        "projectPath": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\obj\\",
+        "projectPath": "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+        "packagesPath": "C:\\Users\\agajr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\Lab-Project.Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\agajr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

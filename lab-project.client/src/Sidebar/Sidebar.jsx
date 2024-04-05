@@ -14,6 +14,7 @@ const Sidebar = () => {
                 <SidebarLink destination={"Products"}/>
                 <SidebarLink destination={"Clients"}/>
                 <SidebarLink destination={"Orders"}/>
+                <SidebarLink destination={"SidebarTable"}/>
             </div>
         </div>
     )
