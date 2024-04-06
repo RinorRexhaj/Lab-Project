@@ -4,7 +4,7 @@ import React from "react";
 
 const Searchbar = ({ toggleSidebar }) => {
   return (
-      <nav className="w-full flex items-center justify-between mb-4 h-25 shadow-2 pl-7 pr-4">
+      <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-2 pl-7 pr-4">
         <FontAwesomeIcon icon={faBars} className="cursor-pointer hidden tb:block w-6 h-6 absolute" onClick={() => toggleSidebar()}/>
         <div className="w-full flex items-center gap-4.5 tb:relative tb:left-15 sm:hidden">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="w-6 h-6 text-slate-600"/>
