@@ -8,7 +8,7 @@ const Login = () => {
           <div className="w-[800px] h-[500px] tb:w-[600px] md:w-[500px] sm:w-[300px] flex items-center p-2 bg-white rounded-xl shadow-2xl">
             <div className="w-full h-full px-2 py-6 flex flex-col items-center justify-between tb:hidden">
               <h2 className="text-3xl font-semibold">Lab Project</h2>
-              <p className="w-2/3 text-center text-slate-700 font-medium">Sign In To Our Services E-Commerce App</p>
+              <p className="w-2/3 text-center text-slate-700 font-medium">Sign In To Our Services <br></br> E-Commerce App</p>
               <img src="src/assets/img/sign-in.jpg" alt="Sign In to City Services" className="w-4/5"/>
             </div>
             <div className="w-[1px] h-full bg-slate-400 tb:hidden"></div>

@@ -7,7 +7,6 @@ import Clients from "./Clients/Clients";
 import Orders from "./Orders/Orders";
 import Searchbar from "./Searchbar/Searchbar";
 import Login from "./Login/Login";
-import Register from "./Register/Register";
 
 const App = () => {
   const [session, setSession] = useState(true);
@@ -20,11 +19,10 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="w-full h-screen flex">
+      <div className="w-full h-screen flex relative">
         {!session && <Navigate to="/sign-in"/>}
         <Routes>
-          <Route path="/sign-in" element={session ? <Navigate to="/dashboard" /> : <Login />}></Route>
-          <Route path="/sign-up" element={session ? <Navigate to="/dashboard" /> : <Register />}></Route>
+          <Route path="/sign-in" element={session ? <Navigate to="/dashboard" /> : <Login />} />
         </Routes>
         {session && 
           <>
@@ -33,6 +31,7 @@ const App = () => {
               <Searchbar toggleSidebar={toggleSidebar} />
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/" element={<Navigate to="/dashboard" />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/clients" element={<Clients />} />
                 <Route path="/orders" element={<Orders />} />

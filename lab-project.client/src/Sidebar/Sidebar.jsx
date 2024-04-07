@@ -4,7 +4,7 @@ import { faLeftLong, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons
 
 const Sidebar = ({open, toggleSidebar}) => {
     return (
-        <div className={`w-80 h-full z-10 left-0 top-0 flex flex-col align-middle px-6 py-8 bg-black duration-300 ease-linear dark:bg-boxdark gap-20 tb:w-60 tb:absolute tb:-translate-x-${open ? '0': 'full'} md:w-50 sm:absolute sm:w-50 sm:gap-10`}>
+        <div className={`w-80 h-full z-10 left-0 top-0 flex flex-col align-middle px-6 py-8 bg-black duration-300 ease-linear dark:bg-boxdark gap-20 tb:w-60 tb:-left-${open ? '0' : '60'} tb:fixed  md:w-50 sm:fixed sm:w-50 sm:gap-10`}>
             <div className="flex gap-2 items-center justify-between text-slate-200">
                 <h1 className="text-3xl font-semibold">Lab Project</h1>
                 <FontAwesomeIcon icon={faLeftLong} className="cursor-pointer hidden tb:flex text-2xl" onClick={() => toggleSidebar()}/>

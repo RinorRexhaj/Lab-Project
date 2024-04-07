@@ -14,7 +14,7 @@ const Searchbar = ({ toggleSidebar }) => {
             className="outline-none p-3 w-7/12 border-b-2 border-slate-200"
           />
         </div>
-        <div className="flex gap-5 md:gap-3 sm:absolute sm:right-0">
+        <div className="flex gap-5 md:gap-3 sm:absolute sm:right-0 z-10">
             <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-slate-600 bg-slate-300  hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
             <FontAwesomeIcon icon={faMessage} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
             {/* posht eshte ikona e profilit, duhet me shti si foto e adminit qe eshte login ma von */}
