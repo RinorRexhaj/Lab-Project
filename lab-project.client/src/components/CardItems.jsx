@@ -4,9 +4,9 @@ import { faArrowUp, faArrowDown, faEye, faShoppingBag, faShoppingCart, faUsers }
 
 const CardItems = () => {
     return (
-        <div className="w-full flex tb:flex-wrap justify-between p-6 gap-4">
+        <div className="w-full flex tb:flex-wrap justify-between gap-4">
             {/* First Card */}
-            <div className="bg-white p-6 rounded-lg border-[1px] border-gray flex flex-col justify-between w-full h-40">
+            <div className="bg-white p-6 rounded-sm border-[1px] border-slate-200 shadow-1 flex flex-col justify-between w-full h-40">
                 <FontAwesomeIcon icon={faEye} className="w-6 h-6 text-gray-600 text-blue-500 rounded-full bg-gray p-2" />
                 <div className="flex items-end justify-between">
                     <div className="flex flex-col">
@@ -16,7 +16,7 @@ const CardItems = () => {
                     <p className="text-green-500 text-sm font-medium">0.43% <FontAwesomeIcon icon={faArrowUp}/></p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-lg border-[1px] border-gray flex flex-col justify-between w-full h-40">
+            <div className="bg-white p-6 rounded-sm border-[1px] border-slate-200 shadow-1 flex flex-col justify-between w-full h-40">
                 <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6 text-gray-600 text-blue-500 rounded-full bg-gray p-2" />
                 <div className="flex items-end justify-between">
                     <div className="flex flex-col">
@@ -26,7 +26,7 @@ const CardItems = () => {
                     <p className="text-green-500 text-sm font-medium">4.35% <FontAwesomeIcon icon={faArrowUp}/></p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-lg border-[1px] border-gray flex flex-col justify-between w-full h-40">
+            <div className="bg-white p-6 rounded-sm border-[1px] border-slate-200 shadow-1 flex flex-col justify-between w-full h-40">
                 <FontAwesomeIcon icon={faShoppingBag} className="w-6 h-6 text-gray-600 text-blue-500 rounded-full bg-gray p-2" />
                 <div className="flex items-end justify-between">
                     <div className="flex flex-col">
@@ -36,7 +36,7 @@ const CardItems = () => {
                     <p className="text-green-500 text-sm font-medium">2.59% <FontAwesomeIcon icon={faArrowUp}/></p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-lg border-[1px] border-gray flex flex-col justify-between w-full h-40">
+            <div className="bg-white p-6 rounded-sm border-[1px] border-slate-200 shadow-1 flex flex-col justify-between w-full h-40">
                 <FontAwesomeIcon icon={faUsers} className="w-6 h-6 text-gray-600 text-blue-500 rounded-full bg-gray p-2" />
                 <div className="flex items-end justify-between">
                     <div className="flex flex-col">

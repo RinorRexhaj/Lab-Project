@@ -1,10 +1,17 @@
-import { faBars, faMagnifyingGlass, faBell, faMessage, faUser, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faBars, faMagnifyingGlass, faBell, faMessage, faUser, faAngleDown, faAngleUp, faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Searchbar = ({ toggleSidebar }) => {
+  const [menu, setMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setMenu(!menu);
+  }
+
   return (
-      <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-2 pl-7 pr-4">
+      <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-4 pl-7 pr-4">
         <FontAwesomeIcon icon={faBars} className="cursor-pointer hidden tb:block w-6 h-6 absolute" onClick={() => toggleSidebar()}/>
         <div className="w-full flex items-center gap-4.5 tb:relative tb:left-15 sm:hidden">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="w-6 h-6 text-slate-600"/>
@@ -18,8 +25,23 @@ const Searchbar = ({ toggleSidebar }) => {
             <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-slate-600 bg-slate-300  hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
             <FontAwesomeIcon icon={faMessage} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
             {/* posht eshte ikona e profilit, duhet me shti si foto e adminit qe eshte login ma von */}
-            <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
-            <FontAwesomeIcon icon={faAngleDown} className="w-5 h-5 text-slate-600  hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
+            <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer" onClick={() => toggleMenu()}/>
+            <FontAwesomeIcon icon={menu ? faAngleUp : faAngleDown} className="w-5 h-5 text-slate-600  p-3 rounded-full cursor-pointer" onClick={() => toggleMenu()}/>
+        </div>
+        <div className={`w-60 md:w-50 flex flex-col items-start absolute bg-white top-[101px] right-10 shadow-2 p-4 gap-5 ${menu ? 'opacity-100 z-9' : 'opacity-0 -z-9'} duration-200 ease-linear`}>
+          <Link className="w-full flex items-center gap-4 text-slate-500 font-medium hover:text-blue-500 duration-150 ease-in">
+            <FontAwesomeIcon icon={faUser}/>
+            <p>My Profile</p>
+          </Link>
+          <Link to="/settings" className="w-full flex items-center gap-4 text-slate-500 font-medium hover:text-blue-500 duration-150 ease-in">
+            <FontAwesomeIcon icon={faGear}/>
+            <p>Account Settings</p>
+          </Link>
+          <span className="h-[1px] w-full bg-slate-300"></span>
+          <Link className="w-full flex items-center gap-4 text-slate-500 font-medium hover:text-blue-500 duration-150 ease-in">
+            <FontAwesomeIcon icon={faArrowRightToBracket} className="rotate-180"/>
+            <p>Log Out</p>
+          </Link>
         </div>
       </nav>
   );

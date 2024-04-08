@@ -1,6 +1,14 @@
-@Lab_Project.Server_HostAddress = http://localhost:5287
+@Lab_Project.Server_HostAddress = https://localhost:7262
 
-GET {{Lab_Project.Server_HostAddress}}/weatherforecast/
+GET {{Lab_Project.Server_HostAddress}}/product/5
 Accept: application/json
 
 ###
+PATCH {{Lab_Project.Server_HostAddress}}/product/5
+
+{
+  "id": 5,
+  "name": "iPhone 15 Pro",
+  "category": "Electronics",
+  "price": 1299.99
+}

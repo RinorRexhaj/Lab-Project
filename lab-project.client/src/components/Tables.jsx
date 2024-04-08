@@ -1,71 +1,85 @@
-import React from 'react';
+import { useState } from 'react';
+import Product from './Product';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
-function Tables() {
+const Tables = () => {
+  let products = [
+  {
+    img: 'src/components/images/product-01.png',
+    name: 'Apple watch Series 7',
+    category: 'Electronics',
+    price: '269'
+  },
+  {
+    img: 'src/components/images/product-03.png',
+    name: 'Dell Inspiron 15',
+    category: 'Electronics',
+    price: '643'
+  },
+  {
+    img: 'src/components/images/product-02.png',
+    name: 'Macbook Pro M1',
+    category: 'Electronics',
+    price: '546'
+  },
+  {
+    img: 'src/components/images/product-04.png',
+    name: 'HP Probook 450',
+    category: 'Electronics',
+    price: '499'
+  },
+  ];
+
+  const [sort, setSort] = useState("name-asc");
+
+  switch(sort) {
+    case "name-asc":
+      products = products.sort((a, b) => a.name.localeCompare(b.name))
+      break
+    case "name-desc":
+      products = products.sort((a, b) => b.name.localeCompare(a.name))
+      break
+    case "category-asc":
+      products = products.sort((a, b) => a.category.localeCompare(b.category))
+      break
+    case "category-desc":
+      products = products.sort((a, b) => b.category.localeCompare(a.category))
+      break
+    case "price-asc":
+      products = products.sort((a, b) => a.price - b.price)
+      break
+    case "price-desc":
+      products = products.sort((a, b) => b.price - a.price)
+      break
+  }
+
   return (
-    <div style={{ padding: '0 50px' }}> {/* Duhet me ndreq qe mu kon ngjyra ndryshe ne padding si ne demo */}
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', border: '1px solid #f1f5f9' }}> {/* ngjyra si e background  */}
-          <colgroup>
-            <col style={{ width: '5%' }} /> {/* Kjo i kontrollon images te produktet - mu zavendesu me databaze ne backend */}
-            <col style={{ width: '45%' }} />
-            <col style={{ width: '30%' }} />
-            <col style={{ width: '10%' }} />
-            <col style={{ width: '10%' }} />
-            <col style={{ width: '10%' }} />
-          </colgroup>
-          <tbody>
-            {/* Rreshti 1 */}
-            <tr style={{ borderBottom: '1px solid #f1f5f9', height: '80px' }}>
-              <td colSpan="5" style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '20px' }}>Top Products</td>
-            </tr>
-            {/* Rreshti 2 */}
-            <tr style={{ color: 'darkblue', borderBottom: '1px solid #f1f5f9', height: '60px'}}>
-              <td></td>
-              <td>Product Name</td>
-              <td>Category</td>
-              <td>Price</td>
-              <td>Sold</td>
-              <td>Profit</td>
-            </tr>
-            {/* Rreshti 3 */}
-            <tr style={{ borderBottom: '1px solid #f1f5f9', height: '90px' }}>
-              <td><img src="src/components/images/product-01.png" alt="Product1" /></td>
-              <td>Apple Watch Series 7</td>
-              <td>Electronics</td>
-              <td>$269</td>
-              <td>22</td>
-              <td style={{ color: 'green' }}>$45</td>
-            </tr>
-            {/* Rreshti 4 */}
-            <tr style={{ borderBottom: '1px solid #f1f5f9', height: '90px' }}>
-              <td><img src="src/components/images/product-02.png" alt="Product2"/></td>
-              <td>Macbook Pro M1</td>
-              <td>Electronics</td>
-              <td>$546</td>
-              <td>34</td>
-              <td style={{ color: 'green' }}>$125</td>
-            </tr>
-            {/* Rreshti 5 */}
-            <tr style={{ borderBottom: '1px solid #f1f5f9', height: '90px' }}>
-              <td><img src="src/components/images/product-03.png" alt="Product3"/></td>
-              <td>Dell Inspiron 15</td>
-              <td>Electronics</td>
-              <td>$443</td>
-              <td>64</td>
-              <td style={{ color: 'green' }}>$247</td>
-            </tr>
-            {/* Rreshti 6 */}
-            <tr style={{ borderBottom: '1px solid #f1f5f9', height: '90px' }}>
-              <td><img src="src/components/images/product-04.png" alt="Product4"/></td>
-              <td>HP Probook 450</td>
-              <td>Electronics</td>
-              <td>$499</td>
-              <td>72</td>
-              <td style={{ color: 'green' }}>$103</td>
-            </tr>
-          </tbody>
-        </table>
+    <div className="w-full shadow-2 bg-white flex flex-col">
+       <div className="w-full py-6 px-8">
+        <h1 className="text-xl font-semibold">Top Products</h1>
+       </div>
+       <span className="w-full h-[1px] bg-slate-200"></span>
+       <div className="w-9/12 py-6 px-8 sm:px-6 flex items-center justify-between gap-4s">
+        <p className={`w-1/4 md:w-3/5 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${sort.includes("name") ? "text-slate-900 font-semibold" : ""}`} onClick={() => {
+          let sortType = sort == "name-asc" ? "name-desc" : "name-asc"
+          setSort(sortType)
+          
+      }}>Product Name <FontAwesomeIcon icon={sort == 'name-asc' ? faAngleUp : faAngleDown} /></p>
+        <p className={`w-2/12 md:hidden text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${sort.includes("category") ? "text-slate-900 font-semibold" : ""}`} onClick={() => {
+          let sortType = sort == "category-asc" ? "category-desc" : "category-asc"
+          setSort(sortType)         
+        }
+        }>Category <FontAwesomeIcon icon={sort == 'category-asc' ? faAngleUp : faAngleDown} /></p>
+        <p className={`w-2/12 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${sort.includes("price") ? "text-slate-900 font-semibold" : ""}`} onClick={() => {
+          let sortType = sort == "price-asc" ? "price-desc" : "price-asc"
+          setSort(sortType)
+        }}>Price <FontAwesomeIcon icon={sort == 'price-asc' ? faAngleUp : faAngleDown} /></p>
       </div>
+       <span className="w-full h-[1px] bg-slate-200"></span>
+       {products.map(product => {
+        return <Product key={product.name} img={product.img} name={product.name} category={product.category} price={product.price} />
+       })}
     </div>
   );
 }
