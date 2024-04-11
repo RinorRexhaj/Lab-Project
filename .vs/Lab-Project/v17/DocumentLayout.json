@@ -3,35 +3,59 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\components\\tables.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\src\\components\\tables.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\fileupload\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\fileupload\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\fileupload\\ifileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\fileupload\\ifileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\lab-project.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\lab-project.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\source\\repos\\TestApp\\testapp.client\\src\\Views\\Products\\Products.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\components\\tables.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\src\\components\\tables.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\products\\products.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\src\\products\\products.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -77,7 +101,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,20 +109,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T15:44:43.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T09:02:05.237Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Data\\DataContext.cs",
@@ -110,20 +133,124 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Product.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Models\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "20240410080545_ProductIdChange.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Migrations\\20240410080545_ProductIdChange.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T13:34:55.745Z",
+              "WhenOpened": "2024-04-10T08:05:45.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FileUploadService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\FileUpload\\FileUploadService.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\FileUpload\\FileUploadService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\FileUpload\\FileUploadService.cs",
+              "RelativeToolTip": "Lab-Project.Server\\FileUpload\\FileUploadService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA8AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T12:34:40.893Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IFileUploadService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\FileUpload\\IFileUploadService.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\FileUpload\\IFileUploadService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\FileUpload\\IFileUploadService.cs",
+              "RelativeToolTip": "Lab-Project.Server\\FileUpload\\IFileUploadService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T12:33:24.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.jsx",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\App.jsx",
+              "RelativeDocumentMoniker": "lab-project.client\\src\\App.jsx",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\App.jsx",
+              "RelativeToolTip": "lab-project.client\\src\\App.jsx",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAiwE0AAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-03-18T17:45:07.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tables.jsx",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\components\\Tables.jsx",
+              "RelativeDocumentMoniker": "lab-project.client\\src\\components\\Tables.jsx",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\components\\Tables.jsx",
+              "RelativeToolTip": "lab-project.client\\src\\components\\Tables.jsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-04-08T16:03:46Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T09:28:26.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Lab-Project.Server.http",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.http",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Lab-Project.Server.http",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.http",
+              "RelativeToolTip": "Lab-Project.Server\\Lab-Project.Server.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-04-09T18:14:17.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20240410075037_RemoveIdentity2.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Migrations\\20240410075037_RemoveIdentity2.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T07:50:38.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20240410072230_ProductIdChange.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Migrations\\20240410072230_ProductIdChange.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T07:22:30.673Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "20240410074743_RemoveIdentity1.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Migrations\\20240410074743_RemoveIdentity1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T07:47:43.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "main.jsx",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\main.jsx",
               "RelativeDocumentMoniker": "lab-project.client\\src\\main.jsx",
@@ -135,19 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "App.jsx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\App.jsx",
-              "RelativeDocumentMoniker": "lab-project.client\\src\\App.jsx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\App.jsx",
-              "RelativeToolTip": "lab-project.client\\src\\App.jsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-03-18T17:45:07.834Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 19,
               "Title": "nuget.config",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\nuget.config",
               "RelativeDocumentMoniker": "lab-project.client\\nuget.config",
@@ -159,32 +274,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Program.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T17:43:38.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "Products.jsx",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\TestApp\\testapp.client\\src\\Views\\Products\\Products.jsx",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\source\\repos\\TestApp\\testapp.client\\src\\Views\\Products\\Products.jsx",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\TestApp\\testapp.client\\src\\Views\\Products\\Products.jsx",
               "RelativeToolTip": "..\\..\\..\\..\\source\\repos\\TestApp\\testapp.client\\src\\Views\\Products\\Products.jsx",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwAkAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2024-04-08T16:22:27.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "Products.jsx",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\Products\\Products.jsx",
               "RelativeDocumentMoniker": "lab-project.client\\src\\Products\\Products.jsx",
@@ -196,19 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Tables.jsx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\components\\Tables.jsx",
-              "RelativeDocumentMoniker": "lab-project.client\\src\\components\\Tables.jsx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\components\\Tables.jsx",
-              "RelativeToolTip": "lab-project.client\\src\\components\\Tables.jsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2024-04-08T16:03:46Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "index.css",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\src\\index.css",
               "RelativeDocumentMoniker": "lab-project.client\\src\\index.css",
@@ -220,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "tailwind.config.cjs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\tailwind.config.cjs",
               "RelativeDocumentMoniker": "lab-project.client\\tailwind.config.cjs",
@@ -232,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "postcss.config.cjs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\postcss.config.cjs",
               "RelativeDocumentMoniker": "lab-project.client\\postcss.config.cjs",
@@ -244,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 21,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\index.html",
               "RelativeDocumentMoniker": "lab-project.client\\index.html",
@@ -256,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": ".eslintrc.cjs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\.eslintrc.cjs",
               "RelativeDocumentMoniker": "lab-project.client\\.eslintrc.cjs",
@@ -268,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "package.json",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\package.json",
               "RelativeDocumentMoniker": "lab-project.client\\package.json",
@@ -280,13 +370,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "vite.config.js",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\vite.config.js",
               "RelativeDocumentMoniker": "lab-project.client\\vite.config.js",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\vite.config.js",
               "RelativeToolTip": "lab-project.client\\vite.config.js",
-              "ViewState": "AQIAABIAAAAAAAAAAIBpwCsAAAANAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAOBvwCsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-03-18T17:44:19.61Z"
             }

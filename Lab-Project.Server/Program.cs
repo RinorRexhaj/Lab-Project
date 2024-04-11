@@ -1,4 +1,5 @@
 using Lab_Project.Server.Data;
+using Lab_Project.Server.FileUpload;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//File Upload
+builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 
 //Allow Same Origin Fetching
 builder.Services.AddCors(options =>

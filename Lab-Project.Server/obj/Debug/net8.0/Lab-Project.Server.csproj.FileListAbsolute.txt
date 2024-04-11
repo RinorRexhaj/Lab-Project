@@ -1,12 +1,10 @@
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.csproj.AssemblyReference.cache
-C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\spa.proxy.json
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.AssemblyInfoInputs.cache
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.AssemblyInfo.cs
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\obj\Debug\net8.0\Lab-Project.Server.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\spa.proxy.json
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\appsettings.json
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.exe
@@ -14,7 +12,6 @@ C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.runtimeconfig.json
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.dll
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Lab-Project.Server.pdb
-C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SpaProxy.dll
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\Lab-Project.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll

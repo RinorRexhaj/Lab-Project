@@ -11,7 +11,7 @@ import CartButton from "./components/CartButton";
 import AccountSettings from "./Settings/AccountSettings";
 
 const App = () => {
-  const [session, setSession] = useState(true);
+  const [session, setSession] = useState(false);
   const [login, setLogin] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [cart, setCart] = useState([]);
@@ -60,7 +60,7 @@ const App = () => {
       <div className="w-full h-screen flex relative overflow-hidden">
         {!session && <Navigate to="/sign-in"/>}
         <Routes>
-          <Route path="/sign-in" element={<Login login={login} toggleLogin={toggleLogin} />} />
+          <Route path="/sign-in" element={<Login session={session} setSession={setSession} login={login} toggleLogin={toggleLogin} />} />
         </Routes>
         {session && 
           <>
