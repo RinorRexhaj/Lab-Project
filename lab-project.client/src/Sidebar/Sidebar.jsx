@@ -1,6 +1,6 @@
 import SidebarLink from "./SidebarLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faLeftLong, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faLeftLong, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({open, toggleSidebar}) => {
     return (
@@ -8,7 +8,7 @@ const Sidebar = ({open, toggleSidebar}) => {
             <div className="flex gap-2 items-center justify-between text-slate-200">
                 <h1 className="text-3xl font-semibold">Lab Project</h1>
                 <img src="src/assets/img/logo.png" alt="" className="w-9 h-9 md:hidden"/>
-                <FontAwesomeIcon icon={faLeftLong} className="cursor-pointer hidden tb:flex text-2xl" onClick={toggleSidebar}/>
+                <FontAwesomeIcon icon={faLeftLong} className="cursor-pointe z-99 hidden tb:flex text-2xl" onClick={toggleSidebar}/>
             </div>
             <div className="hidden w-full items-center gap-2 sm:flex">
                 <FontAwesomeIcon icon={faMagnifyingGlass} className="w-5 h-5 text-slate-600"/>

@@ -3,22 +3,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Searchbar = ({ toggleSidebar }) => {
+const Searchbar = ({ toggleSidebar, products, setProducts, productsFilter, setProductsFilter }) => {
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
     setMenu(!menu);
   }
 
+  const filterBySearch = (e) => {
+    let search = e.target.value.toLowerCase();
+    let filteredProducts = products.filter(product => product.name.toLowerCase().includes(search));
+    setProductsFilter(filteredProducts);
+  }
+
   return (
       <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-4 pl-7 pr-4">
-        <FontAwesomeIcon icon={faBars} className="cursor-pointer hidden tb:block w-6 h-6 absolute" onClick={toggleSidebar}/>
-        <div className="w-full flex items-center gap-4.5 tb:relative tb:left-15 sm:hidden">
+        <FontAwesomeIcon icon={faBars} className="cursor-pointer hidden tb:block w-6 h-6 absolute z-10" onClick={toggleSidebar}/>
+        <div className="w-full flex z-10 items-center gap-4.5 tb:relative tb:left-15 sm:hidden">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="w-6 h-6 text-slate-600"/>
           <input
             type="text"
             placeholder="Type to search..."
             className="outline-none p-3 w-7/12 border-b-2 border-slate-200"
+            onInput={filterBySearch}
           />
         </div>
         <div className="flex gap-5 md:gap-3 sm:absolute sm:right-0 z-10">

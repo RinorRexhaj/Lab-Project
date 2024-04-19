@@ -116,7 +116,8 @@ const AccountSettings = () => {
           </div>
         </div>
         <div className="border-dashed border-2 border-gray-300 rounded p-10 mx-8 text-center mb-4 bg-blue-50">
-          <input type="file" name="profile" id="profile" className="absolute opacity-0 cursor-pointer w-13 h-13 p-4 rounded-full"/>
+          <input type="file" name="profile" id="profile" accept="image/png, image/jpg, image/jpeg"
+          className="absolute opacity-0 cursor-pointer w-13 h-13 p-4 rounded-full"/>
           <FontAwesomeIcon
             icon={faUpload}
             className="w-5 h-5 cursor-pointer text-gray-500 mb-2 text-blue-500 bg-white rounded-full p-4"

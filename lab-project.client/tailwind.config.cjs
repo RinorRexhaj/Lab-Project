@@ -247,6 +247,7 @@ module.exports = {
         'spin-1.5': 'spin 1.5s linear infinite',
         'spin-2': 'spin 2s linear infinite',
         'spin-3': 'spin 3s linear infinite',
+        'flip': 'flip 1s linear'
       },
     },
   },

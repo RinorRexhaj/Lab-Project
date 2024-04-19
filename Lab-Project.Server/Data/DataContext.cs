@@ -9,4 +9,7 @@ public class DataContext : DbContext
 
     }
     public DbSet<Product> Products { get; set; } = null!;
+    public DbSet<Client> Clients { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
+    public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
 }

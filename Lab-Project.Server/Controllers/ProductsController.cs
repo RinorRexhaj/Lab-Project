@@ -8,27 +8,34 @@ namespace Lab_Project.Server.Controllers;
 
 [Route("/[controller]")]
 [ApiController]
-public class ProductController : Controller
+public class ProductsController : Controller
 {
     private readonly IFileUploadService uploadService;
     private readonly DataContext context;
 
-    public ProductController(DataContext context, IFileUploadService uploadService)
+    public ProductsController(DataContext context, IFileUploadService uploadService)
     {
         this.context = context;
         this.uploadService = uploadService;
     }
 
-    // GET: Products
     [HttpGet]
-    public async Task<ActionResult<Product>> GetProducts()
+    public async Task<ActionResult<Product>> GetAllProducts()
     {
         IEnumerable<Product> products = await context.Products.ToArrayAsync();
         return Ok(products);
     }
 
+    // GET: Products
+    [HttpGet("offset/{offset:int}")]
+    public async Task<ActionResult<Product>> GetProducts(int offset)
+    {
+        IEnumerable<Product> products = await context.Products.Skip(offset).Take(50).ToArrayAsync();
+        return Ok(products);
+    }
+
     //GET: Product By ID
-    [HttpGet("{id:int}")]
+    [HttpGet("id/{id:int}")]
     public async Task<ActionResult<Product>> GetProduct(int id)
     {
         if (id <= 0)
@@ -63,16 +70,10 @@ public class ProductController : Controller
 
     //POST: Product
     [HttpPost]
-    public async Task<ActionResult<Product>> PostProduct(int id, string name, string category, decimal price, IFormFile image)
+    public async Task<ActionResult<Product>> PostProduct(Product product)
     {
-        Product product = new()
-        {
-            Id = id,
-            Name = name,
-            Category = category,
-            Price = price,
-        };
-        if (id <= 0 || name == null || name.Length <= 0 || category == null || category.Length <= 0 || price < 0 || image == null || image.Length <= 0 || image.Length > 5120000)
+
+        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.Category == null || product.Category.Length <= 0 || product.Price < 0)
         {
             return BadRequest("Wrong Parameters");
         }
@@ -80,31 +81,32 @@ public class ProductController : Controller
         {
             await context.Products.AddAsync(product);
             await context.SaveChangesAsync();
-            await uploadService.UploadFile(image, "products", id);
             return Ok(product);
         }
     }
 
-    //UPDATE: Product
-    [HttpPatch("{id:int}")]
-    public async Task<ActionResult<Product>> UpdateProduct(int id, string name, string category, decimal price, IFormFile image)
+    //POST: Image for Product
+    [HttpPost("image/{id:int}")]
+    public async Task<ActionResult<IFormFile>> PostProductImage(int id, IFormFile image)
     {
-        if (id <= 0 || name == null || name.Length <= 0 || category == null || category.Length <= 0 || price < 0 || image == null || image.Length <= 0 || image.Length > 5120000)
+        if(image == null || image.Length <= 0 || image.Length > 5120000) { return BadRequest("Wrong Parameters"); }
+        else
+        {
+            return Ok(await uploadService.UploadFile(image, "products", id));
+        }
+    }
+
+    //UPDATE: Product
+    [HttpPatch]
+    public async Task<ActionResult<Product>> UpdateProduct(Product product)
+    {
+        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.Category == null || product.Category.Length <= 0 || product.Price < 0)
         {
             return BadRequest("Wrong Parameters");
         }
-        else if (ProductExists(id))
-        {
-            Product product = await context.Products.FindAsync(id);
-            if (product != null)
-            {
-                product.Name = name;
-                product.Category = category;
-                product.Price = price;
-                context.Products.Update(product);
-                await uploadService.UploadFile(image, "products", id);
-                await context.SaveChangesAsync(true);
-            }
+        else if (ProductExists(product.Id)) { 
+            context.Products.Update(product);
+            await context.SaveChangesAsync(true);
             return Ok(product);
         }
         else
