@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Searchbar = ({ toggleSidebar, products, setProducts, productsFilter, setProductsFilter }) => {
+const Searchbar = ({ toggleSidebar, data, setDataFilter }) => {
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -12,26 +12,25 @@ const Searchbar = ({ toggleSidebar, products, setProducts, productsFilter, setPr
 
   const filterBySearch = (e) => {
     let search = e.target.value.toLowerCase();
-    let filteredProducts = products.filter(product => product.name.toLowerCase().includes(search));
-    setProductsFilter(filteredProducts);
+    let filteredProducts = data.filter(product => product.name.toLowerCase().includes(search));
+    setDataFilter(filteredProducts);
   }
 
   return (
-      <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-4 pl-7 pr-4">
+      <nav className="w-full flex items-center justify-between mb-4 min-h-25 shadow-4 pl-7 pr-4 bg-white">
         <FontAwesomeIcon icon={faBars} className="cursor-pointer hidden tb:block w-6 h-6 absolute z-10" onClick={toggleSidebar}/>
         <div className="w-full flex z-10 items-center gap-4.5 tb:relative tb:left-15 sm:hidden">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="w-6 h-6 text-slate-600"/>
           <input
             type="text"
             placeholder="Type to search..."
-            className="outline-none p-3 w-7/12 border-b-2 border-slate-200"
+            className="outline-none p-3 w-7/12 border-b-2 border-slate-200 opacity-100"
             onInput={filterBySearch}
           />
         </div>
         <div className="flex gap-5 md:gap-3 sm:absolute sm:right-0 z-10">
             <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-slate-600 bg-slate-300  hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
             <FontAwesomeIcon icon={faMessage} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"/>
-            {/* posht eshte ikona e profilit, duhet me shti si foto e adminit qe eshte login ma von */}
             <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer" onClick={toggleMenu}/>
             <FontAwesomeIcon icon={menu ? faAngleUp : faAngleDown} className="w-5 h-5 text-slate-600  p-3 rounded-full cursor-pointer" onClick={toggleMenu}/>
         </div>

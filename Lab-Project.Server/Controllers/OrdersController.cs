@@ -7,11 +7,11 @@ namespace Lab_Project.Server.Controllers;
 
 [Route("/[controller]")]
 [ApiController]
-public class OrderController : Controller
+public class OrdersController : Controller
 {
     private readonly DataContext context;
 
-    public OrderController(DataContext context)
+    public OrdersController(DataContext context)
     {
         this.context = context;
     }

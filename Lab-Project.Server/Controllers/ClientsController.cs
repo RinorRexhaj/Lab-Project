@@ -2,25 +2,32 @@
 using Microsoft.EntityFrameworkCore;
 using Lab_Project.Server.Data;
 using Lab_Project.Server.Models;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lab_Project.Server.Controllers;
 
 [Route("/[controller]")]
 [ApiController]
-public class ClientController : ControllerBase
+public class ClientsController : ControllerBase
 {
-    private readonly DataContext _context;
+    private readonly DataContext context;
+    private readonly IConfiguration configuration;
 
-    public ClientController(DataContext context)
+    public ClientsController(DataContext context, IConfiguration configuration)
     {
-        _context = context;
+        this.context = context;
+        this.configuration = configuration;
     }
 
     // GET: api/Client
     [HttpGet]
     public async Task<ActionResult<List<Client>>> GetClients()
     {
-        var clients = await _context.Clients.ToListAsync();
+        var clients = await context.Clients.ToListAsync();
         return Ok(clients);
     }
 
@@ -28,7 +35,7 @@ public class ClientController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Client>> GetClient(int id)
     {
-        var client = await _context.Clients.FindAsync(id);
+        var client = await context.Clients.FindAsync(id);
         if (client is null)
             return BadRequest("client not found.");
 
@@ -36,53 +43,120 @@ public class ClientController : ControllerBase
     }
 
     // POST: api/Client
-    [HttpPost]
-    public async Task<ActionResult<List<Client>>> AddClient(Client client)
+    [HttpPost("register")]
+    public async Task<ActionResult<Client>> PostClient(Client client)
     {
-        _context.Clients.Add(client);
-        await _context.SaveChangesAsync();
-
-        return Ok(await _context.Clients.ToListAsync());
+        if (client.FullName == null || client.FullName.Length == 0 || client.Email == null || client.Email.Length == 0 || client.Password == null || client.Password.Length < 8)
+        {
+            return BadRequest("Wrong Parameters");
+        }
+        else if (ClientExists(client.Email))
+        {
+            return BadRequest("Client Exists");
+        }
+        if (client.Role == null || client.Role.Length == 0) client.Role = "User";
+        await context.Clients.AddAsync(client);
+        await context.SaveChangesAsync();
+        return Ok(client);
     }
 
-    // PUT: api/Client/5
-    [HttpPut("{id}")]
-    public async Task<IActionResult<List<Client>>> UpdateClient(Client client)
+    //Client Login Class
+    public class ClientDTO
     {
-        var dbClient = await _context.Client.FindAsync(client.Id);
+        public required string Email { get; set; } = null!;
+        public required string Password { get; set; } = null!;
+    }
+    [HttpPost("login")]
+    public ActionResult LoginClient(ClientDTO client)
+    {
+        if (client.Email == null || client.Email.Length == 0 || client.Password == null || client.Password.Length < 8)
+        {
+            return BadRequest("Wrong Parameters");
+        }
+        else
+        {
+            var clientAccount = context.Clients.FirstOrDefault(c => c.Email == client.Email);
+            if (clientAccount != null && clientAccount.Email == client.Email)
+            {
+                if (clientAccount.Password == client.Password)
+                {
+                    string token = CreateToken(clientAccount);
+                    return Ok(token);
+                }
+                else return BadRequest("Wrong Password");
+            }
+            else return NotFound("Account doesn't exist");
+        }
+    }
+
+    //Create JWT
+    private string CreateToken(Client client)
+    {
+        List<Claim> claims =
+        [
+            new(ClaimTypes.Name, client.FullName),
+            new(ClaimTypes.Email, client.Email),
+            new(ClaimTypes.Role, client.Role),
+        ];
+
+        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+                configuration.GetSection("JWT:Token").Value!));
+        var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+        var token = new JwtSecurityToken(configuration["JWT:ValidIssuer"],
+                                configuration["JWT:ValidAudience"],
+                               claims: claims,
+                               expires: DateTime.UtcNow.AddMinutes(30),
+                               signingCredentials: cred
+);
+        var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+        return jwt;
+    }
+
+    //PUT: api/
+    [HttpPut]
+    public async Task<ActionResult<Client>> UpdateClient(Client client)
+    {
+        var dbClient = await context.Clients.FindAsync(client.Id);
         if (dbClient is null)
             return BadRequest("client not found");
 
-        dbClient.Name = client.Name;
-        dbClient.FirstName = client.FirstName;
-        dbClient.LastName = client.LastName;
-        dbClient.UserName = client.UserName;
-        dbClient.Pasword = client.Pasword;
-        dbClient.Address = client.Address;
+        dbClient.FullName = client.FullName;
+        dbClient.Email = client.Email;
+        dbClient.Password = client.Password;
 
-        await _context.SaveChangeAsync();
+        await context.SaveChangesAsync();
 
-        return Ok(await _context.ToListAsync());
+        return Ok(await context.Clients.ToListAsync());
     }
 
     // DELETE: api/Client/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult<List<Client>>> DeleteClient(int id)
+    public async Task<ActionResult<Client>> DeleteClient(int id)
     {
-        var client = await _context.Clients.FindAsync(id);
-        if (Client == null)
+        var client = await context.Clients.FindAsync(id);
+        if (client == null)
         {
             return NotFound("client not found");
         }
 
-        _context.Clients.Remove(client);
-        await _context.SaveChangesAsync();
+        context.Clients.Remove(client);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
 
     private bool ClientExists(int id)
     {
-        return _context.Clients.Any(e => e.Id == id);
+        return context.Clients.Any(e => e.Id == id);
+    }
+
+    private bool ClientExists(string email)
+    {
+        return context.Clients.Any(e => e.Email == email);
+    }
+
+    private bool ClientExists(string email, string password)
+    {
+        return context.Clients.Any(c => c.Email == email && c.Password == password);
     }
 }

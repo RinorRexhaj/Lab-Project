@@ -2,31 +2,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faPenToSquare, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Modal = ({action, modalVisible, closeModal, postData, setPostData, editData, setEditData, deleteId}) => {
+const Modal = ({action, modalVisible, closeModal, elements, setElements, postData, setPostData, editData, setEditData, deleteId}) => {
   const [productImage, setProductImage] = useState(new FormData);
   const [idError, setIdError] = useState("");
   const [priceError, setPriceError] = useState("");
   const [actionDone, setActionDone] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
     const postProduct = async () => {
-      const { productData } = await axios.post(`https://localhost:7262/Product`, {
+      const { data } = await axios.post(`https://localhost:7262/Products`, {
         id: postData.id,
         name: postData.name,
         category: postData.category,
         price: postData.price,
       });
+      setElements([...elements, data]);
     }
 
     const editProduct = async () => {
-      console.log(editData);
-      const { product } = await axios.patch(`https://localhost:7262/Product`, editData);
+      const { data } = await axios.patch(`https://localhost:7262/Products`, editData);
+      setElements([...elements.filter(el => el.id !== data.id), {...data, }]);
+      // setElements([...data, editedElement]);
     }
     
     const deleteProduct = async () => {
-      const { product } = await axios.delete(`https://localhost:7262/Product/${deleteId}`);
+      const { data } = await axios.delete(`https://localhost:7262/Products/${deleteId}`);
     }
 
     const handleErrors = (e) => {
@@ -53,7 +56,7 @@ const Modal = ({action, modalVisible, closeModal, postData, setPostData, editDat
     const handleFileUpload = async () => {
       if(productImage === null || productImage === undefined || productImage.size === undefined || productImage.size <= 0 || productImage.size > 5120000) return false;
       else {
-        await axios.post(`https://localhost:7262/Product/image/${action === "POST" ? postData.id : editData.id}`, {image: productImage}, {
+        await axios.post(`https://localhost:7262/Products/image/${action === "POST" ? postData.id : editData.id}`, {image: productImage}, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
@@ -77,12 +80,14 @@ const Modal = ({action, modalVisible, closeModal, postData, setPostData, editDat
         }
         else if(action === "EDIT") {
           await handleFileUpload();
+
           await editProduct();
         }
         setTimeout(() => setActionDone(true), 300);
         setTimeout(() => {
           closeModal();
-          navigate(0);
+          setActionDone(false);
+          // navigate(0);
         }, 1000);
     }
 
@@ -208,7 +213,6 @@ const Modal = ({action, modalVisible, closeModal, postData, setPostData, editDat
                   type="file"
                   accept="image/png, image/jpg, image/jpeg"
                   className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
-                  defaultValue={editData.image}
                   onChange={e => {
                     setProductImage(e.target.files[0]);
                   }}

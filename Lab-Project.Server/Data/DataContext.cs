@@ -12,4 +12,6 @@ public class DataContext : DbContext
     public DbSet<Client> Clients { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+    public DbSet<Car> Cars { get; set; } = null!;
+    public DbSet<Rent> Rents { get; set; } = null!;
 }

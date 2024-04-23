@@ -22,6 +22,30 @@ namespace Lab_Project.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Lab_Project.Server.Models.Car", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cars");
+                });
+
             modelBuilder.Entity("Lab_Project.Server.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -32,6 +56,10 @@ namespace Lab_Project.Server.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -45,9 +73,16 @@ namespace Lab_Project.Server.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Clients", (string)null);
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
@@ -71,7 +106,7 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasIndex("ClientID");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.OrderDetail", b =>
@@ -97,7 +132,7 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Product", b =>
@@ -121,7 +156,36 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>
+                {
+                    b.Property<int>("RentalID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalID"));
+
+                    b.Property<int>("CarID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClientID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("RentalID");
+
+                    b.HasIndex("CarID");
+
+                    b.HasIndex("ClientID");
+
+                    b.ToTable("Rents");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
@@ -152,6 +216,25 @@ namespace Lab_Project.Server.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>
+                {
+                    b.HasOne("Lab_Project.Server.Models.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Lab_Project.Server.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>

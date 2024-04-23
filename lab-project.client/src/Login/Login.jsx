@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faKey, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faEye, faEyeSlash, faKey, faLock, faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
-const Login = ({session, setSession, login, toggleLogin}) => {
+const Login = ({ setSession }) => {
+  const [login, setLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
     password: "",
+    retype: ""
   });
-
   const [showPassword, setShowPassword] = useState(true);
+  
+  const toggleLogin = () => {
+    setLogin(!login);
+    setEmailError("");
+    setPasswordError("");
+  }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -59,18 +69,62 @@ const Login = ({session, setSession, login, toggleLogin}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData.email.length);
-    if((emailError === "" && passwordError === "") && (formData.email.length != 0 && formData.password.length != 0)) {
-      setTimeout(() =>  {
-        setSession(true);
-        navigate("/");
-      }, 1000);
-      console.log(formData);
+    console.log(formData);
+    if(login) {
+      if(formData.email.length == 0 || formData.password.length == 0) {
+        setPasswordError("Empty Inputs!");
+      }
+      else if((emailError === "" && passwordError === "") && (formData.email.length != 0 && formData.password.length != 0)) {
+        const response = signIn().then(resp => {
+          if(resp.status === 200) {
+            setSession(true);
+            navigate("/");        
+          }
+        });
+      }
     }
-    else if(formData.email.length == 0 || formData.password.length == 0 || formData.name.length == 0 || formData.retype.length == 0) {
-      if(login) setPasswordError("Empty Inputs!");
-      else setRetypeError("Empty Inputs!");
+    else {
+      if(formData.email.length <= 0 || formData.password.length <= 0 || formData.fullName.length == 0 || formData.retype.length == 0) {
+        setRetypeError("Empty Inputs!");
+      }
+      else if((nameError === "" && emailError === "" && passwordError === "") && (formData.fullName.length != 0 && formData.email.length != 0 && formData.password.length != 0)) {
+        const response = signUp().then(resp => {
+          if(resp.status === 200) {
+            setSession(true);
+            navigate("/");        
+          }
+        });
+      }
     }
+  }
+
+  const signUp = async () => {
+    setLoading(true);
+    const response = await axios.post("https://localhost:7262/Clients", {
+      fullName: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+      role: ""
+     })
+     .catch(error => setEmailError(error.response.data));
+     setLoading(false);
+     return response;
+  }
+
+  const signIn = async () => {
+    setLoading(true);
+    const response = await axios.post("https://localhost:7262/Clients/login", {
+      email: formData.email,
+      password: formData.password,
+    })
+    .catch(error => {
+      if(error.response.status === 404) 
+        setEmailError(error.response.data);
+      else if(error.response.status === 400) 
+        setPasswordError(error.response.data);
+    });
+    setLoading(false);
+    return response;
   }
 
     return (
@@ -108,23 +162,27 @@ const Login = ({session, setSession, login, toggleLogin}) => {
                 <div className="w-full flex flex-col relative gap-1">
                   <p className="font-medium">Password</p>
                   <div className="w-full flex justify-between items-center px-4 py-3 border-slate-300 rounded-lg border-[1px]">
-                    <input type="password" name="password" placeholder="Enter your password..." required className="w-full outline-none"
-                    onChange={handleErrors}/>
-                    <FontAwesomeIcon icon={faLock} className="w-5 h-5 text-slate-400"/>
+                    <input type={showPassword ? "password" : "text"} name="password" placeholder="Enter your password..." required className="w-full outline-none"
+                    onChange={handleErrors} />
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="w-5 h-5 text-slate-400 cursor-pointer" onClick={togglePasswordVisibility}/>
                   </div>
                   <div className="h-0 absolute bottom-0 text-red-500 font-medium text-md">{passwordError}</div>
                 </div>
                 {!login && <div className="w-full flex flex-col relative gap-1">
                   <p className="font-medium">Re-type Password</p>
                   <div className="w-full flex justify-between items-center px-4 py-3 border-slate-300 rounded-lg border-[1px]">
-                    <input type="password" name="retype" placeholder="Re-Enter your password..." required className="w-full outline-none"
+                    <input type={showPassword ? "password" : "text"} name="retype" placeholder="Re-Enter your password..." required className="w-full outline-none"
                     onChange={handleErrors}/>
                     <FontAwesomeIcon icon={faKey} className="w-5 h-5 text-slate-400"/>
                   </div>
                   <div className="h-0 absolute bottom-0 text-red-500 font-medium text-md">{retypeError}</div>
                 </div>}
                 <button type="submit" className="w-full h-12 bg-blue-600 rounded-lg text-slate-100 font-medium hover:text-blue-600 hover:bg-slate-100 duration-150 ease-in" onClick={handleSubmit}>
-                  Sign {login ? 'In' : 'Up'}
+                  {
+                    loading ? 
+                    <FontAwesomeIcon className="text-xl" icon={faSpinner} spinPulse/> :
+                    `Sign ${login ? 'In' : 'Up'}`
+                  }
                 </button>
               </form>
               <p className={`text-center font-medium ${login ? ' text-slate-700' : 'relative bottom-8 text-slate-200'}`}>{login ? `Don't have an account?` : `Already have an account?`} <span className="text-blue-600 cursor-pointer" onClick={() => toggleLogin()}>Sign {login ? 'Up' : 'In'}</span></p>

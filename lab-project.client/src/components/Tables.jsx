@@ -5,7 +5,7 @@ import Loader from './Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Tables = ({products, productsFilter, loading}) => {
+const Tables = ({type, data, setData, dataFilter, loading}) => {
   const [sort, setSort] = useState("id");
   const [modalVisible, setModalVisible] = useState(false);
   const [modalAction, setModalAction] = useState("POST");
@@ -61,7 +61,7 @@ const Tables = ({products, productsFilter, loading}) => {
     };
   }, [modalVisible]);
 
-  let prd = productsFilter.length === 0 ? products : productsFilter;
+  let prd = dataFilter.length === 0 ? data : dataFilter;
   switch(sort) {
     case "id": 
       prd = prd.sort((a, b) => a.id - b.id);
@@ -89,7 +89,7 @@ const Tables = ({products, productsFilter, loading}) => {
   return (
     <div className="w-full min-h-125 shadow-2 bg-white flex flex-col">
        <div className="w-full flex items-center justify-between bg-white py-4 px-8 sm:px-4">
-        <h1 className="text-xl font-semibold">Top Products</h1>
+        <h1 className="text-xl font-semibold">Top {type}</h1>
         <button className="w-35 md:w-25 h-10 flex items-center justify-center gap-2 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white" onClick={() => {
           openModal();
           setEditData({
@@ -100,14 +100,14 @@ const Tables = ({products, productsFilter, loading}) => {
             image: ""
           });
           setModalAction("POST");
-        }}><FontAwesomeIcon icon={faPlus}/> Add <p className="md:hidden">Product</p></button>
+        }}><FontAwesomeIcon icon={faPlus}/> Add <p className="md:hidden">{type.substring(0, type.length-1)}</p></button>
        </div>
        <span className="w-full h-[1px] bg-slate-200"></span>
        <div className="w-full py-6 px-8 sm:px-4 flex items-center justify-between bg-white gap-4">
         <p className={`w-1/3 md:w-3/5 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${sort.includes("name") ? "text-slate-900 font-semibold" : ""}`} onClick={() => {
           let sortType = sort == "name-asc" ? "name-desc" : "name-asc"
           setSort(sortType)     
-        }}>Product Name <FontAwesomeIcon icon={sort == 'name-asc' ? faAngleUp : faAngleDown} /></p>
+        }}>{type.substring(0, type.length-1)} Name <FontAwesomeIcon icon={sort == 'name-asc' ? faAngleUp : faAngleDown} /></p>
         <p className={`w-1/4 md:hidden text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${sort.includes("category") ? "text-slate-900 font-semibold" : ""}`} onClick={() => {
           let sortType = sort == "category-asc" ? "category-desc" : "category-asc"
           setSort(sortType)         
@@ -120,12 +120,12 @@ const Tables = ({products, productsFilter, loading}) => {
         <p className={`w-1/4 text-slate-500 md:hidden font-medium select-none`}>Actions</p>
       </div>
        <span className="w-full h-[1px] bg-slate-200"></span>
-        {loading ?      
-        <Loader />
-        : prd.map(product => {
-        return <Product key={product.id} id={product.id} image={product.image} name={product.name} category={product.category} price={product.price} openModal={openModal} setModalAction={setModalAction} setEditData={setEditData} setDeleteId={setDeleteId} />
+      {loading ?      
+      <Loader />
+      : prd.map(product => {
+      return <Product key={product.id} id={product.id} image={product.image} name={product.name} category={product.category} price={product.price} openModal={openModal} setModalAction={setModalAction} setEditData={setEditData} setDeleteId={setDeleteId} />
        })}
-       <Modal action={modalAction} closeModal={closeModal} modalVisible={modalVisible} postData={postData} setPostData={setPostData} editData={editData} setEditData={setEditData} deleteId={deleteId}/>
+       <Modal action={modalAction} closeModal={closeModal} modalVisible={modalVisible} elements={data} setElements={setData} postData={postData} setPostData={setPostData} editData={editData} setEditData={setEditData} deleteId={deleteId}/>
     </div>
   );
 }

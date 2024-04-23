@@ -19,18 +19,11 @@ public class ProductsController : Controller
         this.uploadService = uploadService;
     }
 
+    //GET: Products
     [HttpGet]
-    public async Task<ActionResult<Product>> GetAllProducts()
+    public async Task<ActionResult<Product>> GetProducts()
     {
         IEnumerable<Product> products = await context.Products.ToArrayAsync();
-        return Ok(products);
-    }
-
-    // GET: Products
-    [HttpGet("offset/{offset:int}")]
-    public async Task<ActionResult<Product>> GetProducts(int offset)
-    {
-        IEnumerable<Product> products = await context.Products.Skip(offset).Take(50).ToArrayAsync();
         return Ok(products);
     }
 
@@ -55,17 +48,17 @@ public class ProductsController : Controller
 
     //GET: Image For Product
     [HttpGet("image/{id:int}")]
-    public async Task<ActionResult> GetProductImage(int id)
+    public Task<ActionResult> GetProductImage(int id)
     {
         if (id <= 0)
         {
-            return BadRequest("Wrong Parameters");
+            return Task.FromResult<ActionResult>(BadRequest("Wrong Parameters"));
         }
         else if (!ProductExists(id))
         {
-            return NotFound("Product doesn't exist");
+            return Task.FromResult<ActionResult>(NotFound("Product doesn't exist"));
         }
-        return PhysicalFile("C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\uploads\\products\\" + id + ".png", "image/png");
+        return Task.FromResult<ActionResult>(PhysicalFile("C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\uploads\\products\\" + id + ".png", "image/png"));
     }
 
     //POST: Product
@@ -86,7 +79,7 @@ public class ProductsController : Controller
     }
 
     //POST: Image for Product
-    [HttpPost("image/{id:int}")]
+    [HttpPost("image/{id}")]
     public async Task<ActionResult<IFormFile>> PostProductImage(int id, IFormFile image)
     {
         if(image == null || image.Length <= 0 || image.Length > 5120000) { return BadRequest("Wrong Parameters"); }
