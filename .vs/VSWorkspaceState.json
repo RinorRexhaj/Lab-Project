@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
+<<<<<<< Updated upstream
     "\\lab-project.client"
   ],
+=======
+    "",
+    "\\lab-project.client",
+    "\\lab-project.client\\src",
+    "\\lab-project.client\\src\\components",
+    "\\Lab-Project.Server\\Properties"
+  ],
+  "SelectedNode": "\\package.json",
+>>>>>>> Stashed changes
   "PreviewInSolutionExplorer": false
 }

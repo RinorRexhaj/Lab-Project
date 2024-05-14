@@ -47,7 +47,7 @@ public class ClientController : ControllerBase
 
     // PUT: api/Client/5
     [HttpPut("{id}")]
-    public async Task<IActionResult<List<Client>>> UpdateClient(Client client)
+    public async Task<ActionResult<List<Client>>> UpdateClient(Client client)
     {
         var dbClient = await _context.Client.FindAsync(client.Id);
         if (dbClient is null)
@@ -67,7 +67,7 @@ public class ClientController : ControllerBase
 
     // DELETE: api/Client/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult<List<Client>>> DeleteClient(int id)
+    public async Task<ActionResult<List<Client>>> DeleteClient(int id)
     {
         var client = await _context.Clients.FindAsync(id);
         if (Client == null)
