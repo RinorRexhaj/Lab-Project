@@ -7,7 +7,7 @@ import Clients from "./Clients/Clients";
 import Orders from "./Orders/Orders";
 import Searchbar from "./Searchbar/Searchbar";
 import Login from "./Login/Login";
-import CartButton from "./components/CartButton";
+/*import CartButton from "./components/CartButton";*/
 import AccountSettings from "./Settings/AccountSettings";
 
 const App = () => {
