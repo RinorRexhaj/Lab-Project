@@ -8270,11 +8270,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
       "projectName": "Lab-Project.Server",
-      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Lab-Project\\Lab-Project.Server\\obj\\",
+      "outputPath": "C:\\Users\\User\\Source\\Repos\\Lab-Project\\Lab-Project.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

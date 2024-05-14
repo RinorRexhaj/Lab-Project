@@ -49,18 +49,17 @@ public class ClientController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult<List<Client>>> UpdateClient(Client client)
     {
-        var dbClient = await _context.Client.FindAsync(client.Id);
+        var dbClient = await _context.Clients.FindAsync(client.Id);
         if (dbClient is null)
             return BadRequest("client not found");
 
-        dbClient.Name = client.Name;
-        dbClient.FirstName = client.FirstName;
-        dbClient.LastName = client.LastName;
-        dbClient.UserName = client.UserName;
-        dbClient.Pasword = client.Pasword;
-        dbClient.Address = client.Address;
 
-        await _context.SaveChangeAsync();
+        dbClient.FullName = client.FullName;
+        dbClient.Password = client.Password;
+        dbClient.Address = client.Address;
+        dbClient.Phone = client.Phone;
+
+        await _context.SaveChangesAsync();
 
         return Ok(await _context.ToListAsync());
     }
@@ -70,7 +69,7 @@ public class ClientController : ControllerBase
     public async Task<ActionResult<List<Client>>> DeleteClient(int id)
     {
         var client = await _context.Clients.FindAsync(id);
-        if (Client == null)
+        if (client == null)
         {
             return NotFound("client not found");
         }

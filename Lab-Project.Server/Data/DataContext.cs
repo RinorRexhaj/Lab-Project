@@ -1,5 +1,6 @@
 ﻿using Lab_Project.Server.Models;
 using Microsoft.EntityFrameworkCore;
+
 namespace Lab_Project.Server.Data;
 
 public class DataContext : DbContext
@@ -12,4 +13,9 @@ public class DataContext : DbContext
     public DbSet<Client> Clients { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+
+    internal async Task<object?> ToListAsync()
+    {
+        throw new NotImplementedException();
+    }
 }

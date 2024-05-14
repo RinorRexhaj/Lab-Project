@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bwWP6+WqtTIMlxw5WcuJyfYi5fr5Uy8wuCkyrVjP34GiFWmzJLdtcW+Ik2a+deq7sqssgN4aH5qFZ8S/jpHEoQ==",
+  "dgSpecHash": "k9NNgBq0fOyTQBukKvFYN4k5eX3KOXilOioIEn05HjajPNEC0XMUfyb5azuXMQQKBnV48WedKwjRsg0zFATSEQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\OneDrive\\Desktop\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
