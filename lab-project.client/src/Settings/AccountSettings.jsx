@@ -1,8 +1,14 @@
 import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faPhone, faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faPhone,
+  faUpload,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
-const AccountSettings = () => {
+const AccountSettings = ({ user }) => {
   return (
     <form className="container flex justify-between items-start gap-8 md:flex-col">
       {/* Personal Information */}
@@ -20,14 +26,18 @@ const AccountSettings = () => {
               Full Name
             </label>
             <div className="flex items-center gap-4 sm:gap-2 rounded w-full p-4 text-gray-700 leading-tight bg-blue-50 border  border-slate-200">
-            <FontAwesomeIcon icon={faUser} className="w-5 h-5 text-slate-400"/>
-            <input
-              className="w-full bg-inherit focus:outline-none focus:shadow-outline "
-              id="fullName"
-              type="text"
-              placeholder="Full Name"
-            />
-          </div>
+              <FontAwesomeIcon
+                icon={faUser}
+                className="w-5 h-5 text-slate-400"
+              />
+              <input
+                className="w-full bg-inherit focus:outline-none focus:shadow-outline "
+                id="fullName"
+                type="text"
+                placeholder="Full Name"
+                value={user.fullName}
+              />
+            </div>
           </div>
           <div className="w-full">
             <label
@@ -37,14 +47,18 @@ const AccountSettings = () => {
               Phone Number
             </label>
             <div className="flex items-center gap-4 sm:gap-2 rounded w-full p-4 text-gray-700 leading-tight bg-blue-50 border  border-slate-200">
-              <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-slate-400"/>
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="w-5 h-5 text-slate-400"
+              />
               <input
                 className="w-full bg-inherit focus:outline-none focus:shadow-outline "
                 id="phone"
                 type="text"
                 placeholder="Phone"
+                value={user.phone}
               />
-          </div>
+            </div>
           </div>
         </div>
         <div className="py-4 px-6">
@@ -55,12 +69,16 @@ const AccountSettings = () => {
             Email Address
           </label>
           <div className="flex items-center gap-4 sm:gap-2 rounded w-full p-4 text-gray-700 leading-tight bg-blue-50 border  border-slate-200">
-            <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-slate-400"/>
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              className="w-5 h-5 text-slate-400"
+            />
             <input
               className="w-full bg-inherit focus:outline-none focus:shadow-outline "
               id="email"
               type="email"
               placeholder="Email Address"
+              value={user.email}
             />
           </div>
         </div>
@@ -72,18 +90,23 @@ const AccountSettings = () => {
             Password
           </label>
           <div className="flex items-center gap-4 sm:gap-2 rounded w-full p-4 text-gray-700 leading-tight bg-blue-50 border  border-slate-200">
-            <FontAwesomeIcon icon={faLock} className="w-5 h-5 text-slate-400"/>
+            <FontAwesomeIcon icon={faLock} className="w-5 h-5 text-slate-400" />
             <input
               className="w-full bg-inherit focus:outline-none focus:shadow-outline "
               id="password"
               type="text"
               placeholder="Password"
+              value={user.password}
             />
           </div>
         </div>
         <div className="flex justify-end gap-4 sm:gap-2 py-4 px-6">
-          <button className="w-30 p-3 rounded-md font-medium outline outline-1 outline-blue-500 text-blue-500 hover:text-blue-700 hover:outline-blue-700 duration-150 ease-linear">Cancel</button>
-          <button className="w-30 p-3 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white">Save</button>
+          <button className="w-30 p-3 rounded-md font-medium outline outline-1 outline-blue-500 text-blue-500 hover:text-blue-700 hover:outline-blue-700 duration-150 ease-linear">
+            Cancel
+          </button>
+          <button className="w-30 p-3 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white">
+            Save
+          </button>
         </div>
       </div>
 
@@ -116,8 +139,13 @@ const AccountSettings = () => {
           </div>
         </div>
         <div className="border-dashed border-2 border-gray-300 rounded p-10 mx-8 text-center mb-4 bg-blue-50">
-          <input type="file" name="profile" id="profile" accept="image/png, image/jpg, image/jpeg"
-          className="absolute opacity-0 cursor-pointer w-13 h-13 p-4 rounded-full"/>
+          <input
+            type="file"
+            name="profile"
+            id="profile"
+            accept="image/png, image/jpg, image/jpeg"
+            className="absolute opacity-0 cursor-pointer w-13 h-13 p-4 rounded-full"
+          />
           <FontAwesomeIcon
             icon={faUpload}
             className="w-5 h-5 cursor-pointer text-gray-500 mb-2 text-blue-500 bg-white rounded-full p-4"
@@ -130,8 +158,12 @@ const AccountSettings = () => {
           <span className="text-sm">max (5 MB)</span>
         </div>
         <div className="flex justify-end p-4 gap-4">
-          <button className="w-30 p-3 rounded-md  font-medium outline outline-1 outline-blue-500 text-blue-500 hover:text-blue-700 hover:outline-blue-700 duration-150 ease-linear">Cancel</button>
-          <button className="w-30 p-3 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white">Save</button>
+          <button className="w-30 p-3 rounded-md  font-medium outline outline-1 outline-blue-500 text-blue-500 hover:text-blue-700 hover:outline-blue-700 duration-150 ease-linear">
+            Cancel
+          </button>
+          <button className="w-30 p-3 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white">
+            Save
+          </button>
         </div>
       </div>
     </form>

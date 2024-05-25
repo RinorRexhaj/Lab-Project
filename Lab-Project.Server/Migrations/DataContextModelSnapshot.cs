@@ -30,20 +30,32 @@ namespace Lab_Project.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Model")
+                    b.Property<string>("ModelName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(6,2)");
+                        .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ModelName");
+
                     b.ToTable("Cars");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.Category", b =>
+                {
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CategoryName");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Client", b =>
@@ -85,6 +97,42 @@ namespace Lab_Project.Server.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("Lab_Project.Server.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MessageText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Sent")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.Model", b =>
+                {
+                    b.Property<string>("ModelName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ModelName");
+
+                    b.ToTable("Models");
+                });
+
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
                 {
                     b.Property<int>("OrderID")
@@ -104,8 +152,6 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("ClientID");
-
                     b.ToTable("Orders");
                 });
 
@@ -117,7 +163,7 @@ namespace Lab_Project.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("OrderID1")
+                    b.Property<int?>("OrderID1")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductID")
@@ -130,8 +176,6 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasIndex("OrderID1");
 
-                    b.HasIndex("ProductID");
-
                     b.ToTable("OrderDetails");
                 });
 
@@ -143,7 +187,7 @@ namespace Lab_Project.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -157,6 +201,25 @@ namespace Lab_Project.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("ClientId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"));
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Token")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ClientId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>
@@ -188,34 +251,22 @@ namespace Lab_Project.Server.Migrations
                     b.ToTable("Rents");
                 });
 
-            modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
+            modelBuilder.Entity("Lab_Project.Server.Models.Car", b =>
                 {
-                    b.HasOne("Lab_Project.Server.Models.Client", "Client")
+                    b.HasOne("Lab_Project.Server.Models.Model", "Model")
                         .WithMany()
-                        .HasForeignKey("ClientID")
+                        .HasForeignKey("ModelName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Client");
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.OrderDetail", b =>
                 {
-                    b.HasOne("Lab_Project.Server.Models.Order", "Order")
+                    b.HasOne("Lab_Project.Server.Models.Order", null)
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrderID1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lab_Project.Server.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
+                        .HasForeignKey("OrderID1");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>

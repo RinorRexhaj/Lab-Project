@@ -15,8 +15,8 @@ public class Order
 
     [ForeignKey("Client")]
     public int ClientID { get; set; }
-    public Client Client { get; set; }
+    //public Client Client { get; set; }
 
     // Navigation property per OrderDetail
-    public DbSet<OrderDetail> OrderDetails { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
 }

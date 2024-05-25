@@ -14,4 +14,8 @@ public class DataContext : DbContext
     public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
     public DbSet<Car> Cars { get; set; } = null!;
     public DbSet<Rent> Rents { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<Message> Messages { get; set; } = null!;
+    public DbSet<Model> Models {  get; set; } = null!;
 }

@@ -1,25 +1,55 @@
 import { useEffect, useState } from "react";
-import Tables from "../components/Tables"
+import Tables from "../components/Tables";
 import axios from "axios";
-  
-const Products = ({products, setProducts, productsFilter }) => {
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        getProducts();
-    }, []);
+const Products = ({
+  token,
+  setToken,
+  user,
+  products,
+  setProducts,
+  productsFilter,
+  setProductsFilter,
+  emptyResults,
+  setEmptyResults,
+  setCategory,
+  search,
+}) => {
+  const [loading, setLoading] = useState(true);
 
-    const getProducts = async () => {
-        const { data } = await axios.get(`https://localhost:7262/Products/`);
-        setProducts(data);
-        setLoading(false);
-    }
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    return (
-        <div className="w-full flex flex-col justify-center items-center">
-            <Tables type={"Products"} data={products} setData={setProducts} dataFilter={productsFilter} loading={loading}/>
-        </div>
-    ) 
-}
+  const getProducts = async () => {
+    const { data } = await axios.get(`https://localhost:7262/Products/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setProducts(data);
+    setLoading(false);
+  };
 
-export default Products
+  return (
+    <div className="w-full flex flex-col justify-center items-center">
+      <Tables
+        type={"Products"}
+        token={token}
+        setToken={setToken}
+        user={user}
+        data={products}
+        setData={setProducts}
+        dataFilter={productsFilter}
+        setDataFilter={setProductsFilter}
+        loading={loading}
+        emptyResults={emptyResults}
+        setEmptyResults={setEmptyResults}
+        setCategory={setCategory}
+        search={search}
+      />
+    </div>
+  );
+};
+
+export default Products;

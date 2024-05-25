@@ -2,7 +2,7 @@
 using Lab_Project.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Lab_Project.Server.Models;
-using Lab_Project.Server.FileUpload;
+using Lab_Project.Server.Services.FileUpload;
 
 namespace Lab_Project.Server.Controllers;
 
@@ -57,7 +57,7 @@ public class CarsController : Controller
         {
             return NotFound("Car doesn't exist");
         }
-        return PhysicalFile("C:\\Users\\Orges Sejdiu\\Desktop\\New folder\\Lab\\Lab-Project.Server\\uploads\\products\\" + id + ".png", "image/png");
+        return PhysicalFile("C:\\Users\\DataProgNet\\Desktop\\Lab-Project\\Lab-Project.Server\\uploads\\cars\\" + id + ".png", "image/png");
     }
 
     //POST: Car
@@ -65,7 +65,7 @@ public class CarsController : Controller
     public async Task<ActionResult<Car>> PostCar(Car car)
     {
 
-        if (car.Id <= 0 || car.Name == null || car.Name.Length <= 0 || car.Model == null || car.Model.Length <= 0 || car.Price < 0)
+        if (car.Id <= 0 || car.Name == null || car.Name.Length <= 0 || car.ModelName == null || car.ModelName.Length <= 0 || car.Price < 0)
         {
             return BadRequest("Wrong Parameters");
         }
@@ -92,7 +92,7 @@ public class CarsController : Controller
     [HttpPatch]
     public async Task<ActionResult<Car>> UpdateCar(Car car)
     {
-        if (car.Id <= 0 || car.Name == null || car.Name.Length <= 0 || car.Model == null || car.Model.Length <= 0 || car.Price < 0)
+        if (car.Id <= 0 || car.Name == null || car.Name.Length <= 0 || car.ModelName == null || car.ModelName.Length <= 0 || car.Price < 0)
         {
             return BadRequest("Wrong Parameters");
         }

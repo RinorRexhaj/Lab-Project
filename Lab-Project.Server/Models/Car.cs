@@ -8,7 +8,10 @@ public class Car
     [Key]
     public int Id { get; set; }
     public string Name { get; set; } = null!;
-    public string Model { get; set; } = null!;
-    [Column(TypeName = "decimal(6,2)")]
+    public string ModelName { get; set; } = null!;
+
+    [Column(TypeName = "decimal(5,2)")]
     public decimal Price { get; set; }
+    [ForeignKey("ModelName")]
+    public Model Model { get; set; } = null!;
 }

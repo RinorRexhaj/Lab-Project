@@ -2,7 +2,10 @@
 using Lab_Project.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Lab_Project.Server.Models;
-using Lab_Project.Server.FileUpload;
+using Microsoft.AspNetCore.Authorization;
+using System.Reflection;
+using Lab_Project.Server.Services.FileUpload;
+using Lab_Project.Server.Services.Token;
 
 namespace Lab_Project.Server.Controllers;
 
@@ -11,19 +14,36 @@ namespace Lab_Project.Server.Controllers;
 public class ProductsController : Controller
 {
     private readonly IFileUploadService uploadService;
+    private readonly ITokenService tokenService;
     private readonly DataContext context;
 
-    public ProductsController(DataContext context, IFileUploadService uploadService)
+    public ProductsController(DataContext context, IFileUploadService uploadService, ITokenService tokenService)
     {
         this.context = context;
         this.uploadService = uploadService;
+        this.tokenService = tokenService;
     }
 
     //GET: Products
-    [HttpGet]
+    [HttpGet, Authorize(Policy = "User")]
     public async Task<ActionResult<Product>> GetProducts()
     {
+        string token = HttpContext.Request.Headers.Authorization[0][7..];
+        if (tokenService.DecodeTokenId(token) <= 0) return Unauthorized("Unauthorized");
         IEnumerable<Product> products = await context.Products.ToArrayAsync();
+        return Ok(products);
+    }
+
+    [HttpGet("count"), Authorize(Policy = "Admin")]
+    public ActionResult GetProductCount()
+    {
+        return Ok(context.Products.Count());
+    }
+
+    [HttpGet("top"), Authorize(Policy = "User")]
+    public async Task<ActionResult<Product>> GetTopProducts()
+    {
+        IEnumerable<Product> products = await context.Products.OrderByDescending(p => p.Price).Take(3).ToArrayAsync();
         return Ok(products);
     }
 
@@ -66,9 +86,13 @@ public class ProductsController : Controller
     public async Task<ActionResult<Product>> PostProduct(Product product)
     {
 
-        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.Category == null || product.Category.Length <= 0 || product.Price < 0)
+        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.CategoryName == null || product.CategoryName.Length <= 0 || product.Price < 0)
         {
             return BadRequest("Wrong Parameters");
+        }
+        else if(ProductExists(product.Id))
+        {
+            return BadRequest("Product exists");
         }
         else
         {
@@ -90,14 +114,15 @@ public class ProductsController : Controller
     }
 
     //UPDATE: Product
-    [HttpPatch]
+    [HttpPatch, Authorize(Policy = "Admin")]
     public async Task<ActionResult<Product>> UpdateProduct(Product product)
     {
-        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.Category == null || product.Category.Length <= 0 || product.Price < 0)
+        if (product.Id <= 0 || product.Name == null || product.Name.Length <= 0 || product.CategoryName == null || product.CategoryName.Length <= 0 || product.Price < 0)
         {
             return BadRequest("Wrong Parameters");
         }
-        else if (ProductExists(product.Id)) { 
+        else if (ProductExists(product.Id))
+        {
             context.Products.Update(product);
             await context.SaveChangesAsync(true);
             return Ok(product);
@@ -109,28 +134,33 @@ public class ProductsController : Controller
     }
 
     //DELETE: Product
-    [HttpDelete("{id:int}")]
+    [HttpDelete("{id:int}"), Authorize(Policy = "Admin")]
     public async Task<ActionResult<Product>> DeleteProduct(int id)
     {
         if (id <= 0)
         {
             return BadRequest("Wrong Parameters");
         }
-        else if (ProductExists(id))
-        {
-            Product product = await context.Products.FindAsync(id);
-            if (product != null)
-            {
-                context.Products.Remove(product);
-                await context.SaveChangesAsync();
-                return Ok("Deleted " + id);
-            }
-            else return BadRequest("Product is null");
-        }
-        else
+        else if(!ProductExists(id))
         {
             return NotFound("Product doesn't exist");
         }
+        else 
+        {
+            Product product = await context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return BadRequest("Product is null");
+            }
+            else
+            {
+                context.Products.Remove(product);
+                await context.SaveChangesAsync();
+                uploadService.DeleteFile("products", id);
+                return Ok("Deleted " + id);
+            }
+        }
+        
     }
 
     private bool ProductExists(int id)

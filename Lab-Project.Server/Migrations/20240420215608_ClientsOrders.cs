@@ -9,7 +9,7 @@ namespace Lab_Project.Server.Migrations
     public partial class ClientsOrders : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder migrationBuilder)   
         {
             migrationBuilder.CreateTable(
                 name: "Clients",

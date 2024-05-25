@@ -22,8 +22,7 @@ public class OrdersController : Controller
     {
         var orders = await context.Orders
             .Include(o => o.OrderDetails)
-                .ThenInclude(od => od.Product)
-            .Include(o => o.Client)
+            .Include(o => o.ClientID)
             .ToListAsync();
         return Ok(orders);
     }
@@ -34,8 +33,8 @@ public class OrdersController : Controller
     {
         var order = await context.Orders
             .Include(o => o.OrderDetails)
-                .ThenInclude(od => od.Product)
-            .Include(o => o.Client)
+                .ThenInclude(od => od.ProductID)
+            .Include(o => o.ClientID)
             .FirstOrDefaultAsync(o => o.OrderID == id);
 
         if (order == null)
@@ -46,12 +45,15 @@ public class OrdersController : Controller
 
     // POST: Create a new order
     [HttpPost]
-    public async Task<ActionResult<Order>> CreateOrder([FromBody] Order order)
+    public async Task<ActionResult<Order>> CreateOrder(Order order)
     {
         if (order == null)
             return BadRequest("Invalid order data");
-
-        context.Orders.Add(order);
+        await context.Orders.AddAsync(order);
+        for(int i = 0; i<order.OrderDetails.Count(); i++)
+        {
+            await context.OrderDetails.AddAsync(order.OrderDetails.ElementAt(i));
+        }
         await context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetOrder), new { id = order.OrderID }, order);
     }
