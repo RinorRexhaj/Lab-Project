@@ -4,7 +4,7 @@ import axios from "axios";
 const Clients = () => {
     const [clients, setClients] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [newClientData, setNewClientData] = useState({ id: "", fullName: "", email: "" });
+    const [newClientData, setNewClientData] = useState({ id: "", fullName: "", email: "", roleName: "" });
     const [editingClientId, setEditingClientId] = useState(null);
     const [editing, setEditing] = useState(false);
 
@@ -41,25 +41,25 @@ const Clients = () => {
 
     const cancelEdit = () => {
         setEditingClientId(null);
-        setNewClientData({ id: "", fullName: "", email: "" });
+        setNewClientData({ id: "", fullName: "", email: "", roleName: "" });
         setEditing(false);
     };
 
     const saveClient = async () => {
         try {
             if (editingClientId) {
-                await axios.put(`https://localhost:7262/Clients/${newClientData.id}`, newClientData);
+                await axios.patch(`https://localhost:7262/Clients/${newClientData.id}`, newClientData);
                 const updatedClients = clients.map(client =>
                     client.id === newClientData.id ? newClientData : client
                 );
                 setClients(updatedClients);
                 setEditingClientId(null);
-                setNewClientData({ id: "", fullName: "", email: "" });
+                setNewClientData({ id: "", fullName: "", email: "", roleName: "" });
                 setEditing(false);
             } else {
                 const response = await axios.post("https://localhost:7262/Clients", newClientData);
                 setClients([...clients, response.data]);
-                setNewClientData({ id: "", fullName: "", email: "" });
+                setNewClientData({ id: "", fullName: "", email: "", roleName: "" });
             }
         } catch (error) {
             console.error("Error saving client:", error);
@@ -67,8 +67,13 @@ const Clients = () => {
     };
 
     const handleInputChange = (e) => {
+        console.log(e.target.value);
         const { name, value } = e.target;
         setNewClientData({ ...newClientData, [name]: value });
+        setClients(clients.map(c => {
+            if(c.id == newClientData.id) return {...newClientData};
+            else return c;
+        }))
     };
 
     return (        
@@ -110,16 +115,29 @@ const Clients = () => {
             placeholder="Email"
             className="border border-gray-400 p-2 mr-2"
         />
+
+         <input
+            type="password"
+            name="password"
+            value={newClientData.password}
+            onChange={handleInputChange}
+            placeholder="Password"
+            className="border border-gray-400 p-2 mr-2"
+         />
+
         <select
             name="role"
-            value={newClientData.role}
-            onChange={handleInputChange}
+            value={newClientData.roleName}
+            onChange={e => {
+                console.log(e.target.value);
+                handleInputChange(e)
+            }}
             className="border border-gray-400 p-2 mr-2"
         >
             <option value="">Zgjidh Rolin</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-            <option value="guest">Guest</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+            <option value="Guest">Guest</option>
         </select>
         <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -152,10 +170,10 @@ const Clients = () => {
                     <tbody>
                         {clients.map((client) => (
                             <tr key={client.id}>
-                                <td className="border px-20 py-2">{client.id}</td>
-                                <td className="border px-20 py-2">{client.fullName}</td>
-                                <td className="border px-20 py-2">{client.email}</td>
-                                <td className="border px-15 py-2">{client.role}</td> {/* Shto këtë rresht për të shfaqur rolin */}
+                                <td className="border px-5 py-2">{client.id}</td>
+                                <td className="border px-15 py-2">{client.fullName}</td>
+                                <td className="border px-15 py-2">{client.email}</td>
+                                <td className="border px-15 py-2">{client.roleName}</td> {/* Shto këtë rresht për të shfaqur rolin */}          
                                 <td className="border px-20 py-2">
                                     <button
                                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
