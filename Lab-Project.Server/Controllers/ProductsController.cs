@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Reflection;
 using Lab_Project.Server.Services.FileUpload;
 using Lab_Project.Server.Services.Token;
+using Lab_Project.Server.DTOs;
 
 namespace Lab_Project.Server.Controllers;
 
@@ -39,12 +40,22 @@ public class ProductsController : Controller
     {
         return Ok(context.Products.Count());
     }
-
-    [HttpGet("top"), Authorize(Policy = "User")]
+    
+     [HttpGet("top"), Authorize(Policy = "User")]
     public async Task<ActionResult<Product>> GetTopProducts()
     {
-        IEnumerable<Product> products = await context.Products.OrderByDescending(p => p.Price).Take(3).ToArrayAsync();
-        return Ok(products);
+        var productsDb = await context.Products.OrderByDescending(p => p.Id).ToArrayAsync();
+        var products = new TopProductDTO[productsDb.Length];
+        var orderDetails = context.OrderDetails.OrderByDescending(o => o.ProductID).GroupBy(o => o.ProductID).Select(o => o.Sum(p => p.Quantity));
+        for(int i = 0; i<productsDb.Length; i++)
+        {
+            products[i] = new TopProductDTO{
+                Product = productsDb[i],
+                Count = orderDetails.ElementAt(i),
+            };
+        }
+        var newProducts = products.OrderByDescending(p => p.Count).Take(5);
+        return Ok(newProducts);
     }
 
     //GET: Product By ID
@@ -82,7 +93,7 @@ public class ProductsController : Controller
     }
 
     //POST: Product
-    [HttpPost]
+    [HttpPost, Authorize(Policy = "User")]
     public async Task<ActionResult<Product>> PostProduct(Product product)
     {
 
@@ -103,7 +114,7 @@ public class ProductsController : Controller
     }
 
     //POST: Image for Product
-    [HttpPost("image/{id}")]
+    [HttpPost("image/{id}"), Authorize(Policy = "User")]
     public async Task<ActionResult<IFormFile>> PostProductImage(int id, IFormFile image)
     {
         if(image == null || image.Length <= 0 || image.Length > 5120000) { return BadRequest("Wrong Parameters"); }

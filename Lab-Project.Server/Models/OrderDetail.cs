@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lab_Project.Server.Models;
 
+[PrimaryKey(nameof(OrderID), nameof(ProductID))]
 public class OrderDetail
 {
-    [Key]
+    //[Key]
     public int OrderID { get; set; }
 
     public int ProductID { get; set; }

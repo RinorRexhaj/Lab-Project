@@ -10,6 +10,7 @@ public class Message
     public int SenderId { get; set; }
     public int ReceiverId { get; set; }
     public DateTime Sent {  get; set; }
+    public DateTime Seen { get; set; }
     //[ForeignKey("SenderId")]
     //public Client Sender { get; set; } = null!;
     //[ForeignKey("ReceiverId")]

@@ -16,6 +16,9 @@ public class DataContext : DbContext
     public DbSet<Rent> Rents { get; set; } = null!;
     public DbSet<Category> Categories { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
-    public DbSet<Message> Messages { get; set; } = null!;
+    public DbSet<Message> Messages { get; set; }
     public DbSet<Model> Models {  get; set; } = null!;
+    public DbSet<Role> Roles { get; set; } = null!;
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<NotificationAdmins> NotificationAdmins { get; set; } = null!;
 }

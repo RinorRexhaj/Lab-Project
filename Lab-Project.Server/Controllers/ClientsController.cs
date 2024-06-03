@@ -4,6 +4,8 @@ using Lab_Project.Server.Data;
 using Lab_Project.Server.Models;
 using Lab_Project.Server.Services.Token;
 using Microsoft.AspNetCore.Authorization;
+using Lab_Project.Server.Hubs;
+using Lab_Project.Server.Services.FileUpload;
 
 namespace Lab_Project.Server.Controllers;
 
@@ -13,21 +15,26 @@ public class ClientsController : ControllerBase
 {
     private readonly DataContext context;
     private readonly ITokenService tokenService;
+    private readonly IFileUploadService uploadService;
 
-    public ClientsController(DataContext context, ITokenService tokenService)
+    public ClientsController(DataContext context, ITokenService tokenService, IFileUploadService uploadService)
     {
         this.context = context;
         this.tokenService = tokenService;
+        this.uploadService = uploadService;
     }
 
     // GET: api/Client
-    [HttpGet, Authorize(Policy = "Admin")]
+    [HttpGet, Authorize(Policy = "User")]
     public async Task<ActionResult<List<Client>>> GetClients()
     {
-        string role = tokenService.DecodeTokenRole(HttpContext.Request.Headers.Authorization[0][7..]);
-        if (role == null || role.Length <= 0 || role != "Admin") return Unauthorized("Unauthorized");
         var clients = await context.Clients.ToListAsync();
         return Ok(clients);
+    }
+
+    [HttpGet("active"), Authorize(Policy = "Admin")]
+    public ActionResult GetActiveClients() { 
+        return Ok(Connections.Users.Count);
     }
 
     // GET: api/Client/5
@@ -51,6 +58,20 @@ public class ClientsController : ControllerBase
         return Ok(new { client?.Id, client?.FullName, client?.Email, client?.Role });
     }
 
+    [HttpGet("image/{id:int}")]
+    public Task<ActionResult> GetClientImage(int id)
+    {
+        if (id <= 0)
+        {
+            return Task.FromResult<ActionResult>(BadRequest("Wrong Parameters"));
+        }
+        else if (!ClientExists(id))
+        {
+            return Task.FromResult<ActionResult>(NotFound("Client doesn't exist"));
+        }
+        return Task.FromResult<ActionResult>(PhysicalFile("C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\uploads\\clients\\" + id + ".png", "image/png"));
+    }
+
     [HttpGet("count"), Authorize(Policy = "Admin")]
     public ActionResult GetClientCount()
     {
@@ -64,26 +85,50 @@ public class ClientsController : ControllerBase
         return Ok(clients);
     }
 
-    //PUT: api/
-    [HttpPut]
-    public async Task<ActionResult<Client>> UpdateClient(Client client)
+    [HttpPost]
+    public async Task<ActionResult<List<Client>>> AddClient(Client client)
     {
-        var dbClient = await context.Clients.FindAsync(client.Id);
-        if (dbClient is null)
-            return BadRequest("client not found");
-
-        dbClient.FullName = client.FullName;
-        dbClient.Email = client.Email;
-        dbClient.Password = client.Password;
-
+        await context.Clients.AddAsync(client);
         await context.SaveChangesAsync();
 
         return Ok(await context.Clients.ToListAsync());
     }
 
+    //POST: Image for Product
+    [HttpPost("image/{id}"), Authorize(Policy = "User")]
+    public async Task<ActionResult<IFormFile>> PostClientImage(int id, IFormFile image)
+    {
+        string token = HttpContext.Request.Headers.Authorization[0][7..];
+        int userId = tokenService.DecodeTokenId(token);
+        if (userId != id) return Unauthorized("Unauthorized");
+        if (image == null || image.Length <= 0 || image.Length > 5120000) { return BadRequest("Wrong Parameters"); }
+        else
+        {
+            return Ok(await uploadService.UploadFile(image, "clients", id));
+        }
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<List<Client>>> UpdateClient(Client client)
+    {
+        var dbClient = await context.Clients.FindAsync(client.Id);
+        if (dbClient is null)
+            return BadRequest("client not found");
+
+
+        dbClient.FullName = client.FullName;
+        dbClient.Password = client.Password;
+        dbClient.Address = client.Address;
+        dbClient.Phone = client.Phone;
+
+        await context.SaveChangesAsync();
+
+        return Ok(dbClient);
+    }
+
     // DELETE: api/Client/5
     [HttpDelete("{id}")]
-    public async Task<ActionResult<Client>> DeleteClient(int id)
+    public async Task<ActionResult<List<Client>>> DeleteClient(int id)
     {
         var client = await context.Clients.FindAsync(id);
         if (client == null)
@@ -96,7 +141,6 @@ public class ClientsController : ControllerBase
 
         return NoContent();
     }
-
     private bool ClientExists(int id)
     {
         return context.Clients.Any(e => e.Id == id);

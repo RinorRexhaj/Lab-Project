@@ -19,4 +19,6 @@ public class Client
     public string? Phone { get; set; }
     [DefaultValue("User")]
     public string Role { get; set; } = null!;
+    //[ForeignKey("Role")]
+    //public Role RoleName { get; set; } = null!;
 }

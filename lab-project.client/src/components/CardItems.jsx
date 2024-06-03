@@ -10,15 +10,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const CardItems = ({ token }) => {
+const CardItems = ({ token, total }) => {
   const [users, setUsers] = useState(0);
   const [products, setProducts] = useState(0);
   const [views, setViews] = useState(0);
-  const [profit, setProfit] = useState(0);
+  let euro = new Intl.NumberFormat("en-DE", {
+    style: "currency",
+    currency: "EUR",
+  });
 
   useEffect(() => {
     const viewsResponse = axios
-      .get("https://localhost:7262/Sessions/views", {
+      .get("https://localhost:7262/Clients/active", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +60,7 @@ const CardItems = ({ token }) => {
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
             <h4 className="text-lg font-semibold">{views}</h4>
-            <p className="text-slate-500 font-medium">Total Views</p>
+            <p className="text-slate-500 font-medium">Active Users</p>
           </div>
           <p className="text-green-500 text-sm font-medium">
             0.43% <FontAwesomeIcon icon={faArrowUp} />
@@ -71,7 +74,7 @@ const CardItems = ({ token }) => {
         />
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
-            <h4 className="text-lg font-semibold">$45.2K</h4>
+            <h4 className="text-lg font-semibold">{euro.format(total)}</h4>
             <p className="text-slate-500 font-medium">Total Profit</p>
           </div>
           <p className="text-green-500 text-sm font-medium">

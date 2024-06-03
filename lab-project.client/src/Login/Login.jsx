@@ -6,7 +6,6 @@ import {
   faEye,
   faEyeSlash,
   faKey,
-  faLock,
   faSpinner,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +13,7 @@ import axios from "axios";
 
 const Login = ({ setSession, setUser, setToken }) => {
   const [login, setLogin] = useState(true);
+  const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -88,7 +88,9 @@ const Login = ({ setSession, setUser, setToken }) => {
               email: resp.data.email,
               role: resp.data.role,
             });
-            sessionStorage.setItem("RefreshToken", resp.data.refreshToken);
+            if (remember)
+              localStorage.setItem("RefreshToken", resp.data.refreshToken);
+            else sessionStorage.setItem("RefreshToken", resp.data.refreshToken);
             if (
               resp.data.token !== null ||
               resp.data.token !== undefined ||
@@ -299,10 +301,23 @@ const Login = ({ setSession, setUser, setToken }) => {
                 `Sign ${login ? "In" : "Up"}`
               )}
             </button>
+            {login && (
+              <div className="w-full flex gap-2 items-center">
+                <input
+                  type="checkbox"
+                  name="remember"
+                  checked={remember}
+                  onChange={(e) => {
+                    setRemember(e.target.checked);
+                  }}
+                />
+                <p>Remember Me?</p>
+              </div>
+            )}
           </form>
           <p
-            className={`text-center font-medium ${
-              login ? " text-slate-700" : "relative bottom-8 text-slate-200"
+            className={`text-center font-medium relative ${
+              login ? " text-slate-700 -top-6" : "bottom-8 text-slate-200"
             }`}
           >
             {login ? `Don't have an account?` : `Already have an account?`}{" "}

@@ -128,9 +128,6 @@ namespace Lab_Project.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int?>("OrderID1")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
@@ -138,8 +135,6 @@ namespace Lab_Project.Server.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
-
-                    b.HasIndex("OrderID1");
 
                     b.ToTable("OrderDetails");
                 });
@@ -214,13 +209,6 @@ namespace Lab_Project.Server.Migrations
                     b.HasIndex("ClientID");
 
                     b.ToTable("Rents");
-                });
-
-            modelBuilder.Entity("Lab_Project.Server.Models.OrderDetail", b =>
-                {
-                    b.HasOne("Lab_Project.Server.Models.Order", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderID1");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>

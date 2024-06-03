@@ -112,6 +112,9 @@ namespace Lab_Project.Server.Migrations
                     b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Seen")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("SenderId")
                         .HasColumnType("int");
 
@@ -131,6 +134,51 @@ namespace Lab_Project.Server.Migrations
                     b.HasKey("ModelName");
 
                     b.ToTable("Models");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.NotificationAdmins", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AdminId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NotificationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
+
+                    b.HasIndex("NotificationId");
+
+                    b.ToTable("NotificationAdmins");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
@@ -163,9 +211,6 @@ namespace Lab_Project.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int?>("OrderID1")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
@@ -173,8 +218,6 @@ namespace Lab_Project.Server.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
-
-                    b.HasIndex("OrderID1");
 
                     b.ToTable("OrderDetails");
                 });
@@ -251,6 +294,16 @@ namespace Lab_Project.Server.Migrations
                     b.ToTable("Rents");
                 });
 
+            modelBuilder.Entity("Lab_Project.Server.Models.Role", b =>
+                {
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RoleName");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Lab_Project.Server.Models.Car", b =>
                 {
                     b.HasOne("Lab_Project.Server.Models.Model", "Model")
@@ -262,11 +315,34 @@ namespace Lab_Project.Server.Migrations
                     b.Navigation("Model");
                 });
 
-            modelBuilder.Entity("Lab_Project.Server.Models.OrderDetail", b =>
+            modelBuilder.Entity("Lab_Project.Server.Models.Notification", b =>
                 {
-                    b.HasOne("Lab_Project.Server.Models.Order", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderID1");
+                    b.HasOne("Lab_Project.Server.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("Lab_Project.Server.Models.NotificationAdmins", b =>
+                {
+                    b.HasOne("Lab_Project.Server.Models.Client", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Lab_Project.Server.Models.Notification", "Notification")
+                        .WithMany()
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Admin");
+
+                    b.Navigation("Notification");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>
@@ -286,11 +362,6 @@ namespace Lab_Project.Server.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>
-                {
-                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

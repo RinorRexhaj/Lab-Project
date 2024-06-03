@@ -5,8 +5,8 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 const Sidebar = ({ open, toggleSidebar, role }) => {
   return (
     <div
-      className={`w-80 h-full left-0 top-0 flex flex-col z-99 align-middle px-6 py-8 bg-black duration-300 ease-linear gap-20 tb:w-60 tb:-left-${
-        open ? "0" : "60"
+      className={`w-80 h-full left-0 top-0 flex flex-col z-99 align-middle px-6 py-8 bg-black duration-300 ease-linear gap-20 tb:w-60 ${
+        open ? "tb:left-0" : "tb:-left-60"
       } tb:fixed  md:w-50 sm:fixed sm:w-50 sm:gap-10`}
     >
       <div className="flex gap-2 items-center justify-between text-slate-200">
@@ -26,6 +26,7 @@ const Sidebar = ({ open, toggleSidebar, role }) => {
         <p className="text-slate-400    font-medium">MENU</p>
         <SidebarLink destination={"Dashboard"} />
         <SidebarLink destination={"Products"} />
+        {role === "Admin" && <SidebarLink destination={"Categories"} />}
         {role === "Admin" && <SidebarLink destination={"Clients"} />}
         <SidebarLink destination={"Orders"} />
         <SidebarLink destination={"Cars"} />

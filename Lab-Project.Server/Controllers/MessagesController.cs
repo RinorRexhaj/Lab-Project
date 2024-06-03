@@ -1,6 +1,8 @@
 ﻿using Lab_Project.Server.Data;
+using Lab_Project.Server.Hubs;
 using Lab_Project.Server.Models;
 using Lab_Project.Server.Services.Token;
+using Lab_Project.Server.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,13 +50,6 @@ public class MessagesController : ControllerBase
         return Ok(message);
     }
 
-    class ClientMessage
-    {
-        public int Id {get; set;}
-        public string FullName { get; set; }
-        public Message MaxMessage { get; set; }
-    }
-
     [HttpGet("users/{id}"), Authorize(Policy = "User")]
     public async Task<ActionResult> GetUsersMessaged(int id)
     {
@@ -63,9 +58,9 @@ public class MessagesController : ControllerBase
         int userId = tokenService.DecodeTokenId(token);
         if (id != userId) return Unauthorized("Unauthorized");
         var messagesSent = await context.Messages.Where(m => m.SenderId == id).Select(m => m.ReceiverId).ToArrayAsync();
-        var clientsSent = await context.Clients.Where(c => messagesSent.Contains(c.Id)).Select(c => new { c.Id, c.FullName, MaxMessage = 0}).ToArrayAsync();
+        var clientsSent = await context.Clients.Where(c => messagesSent.Contains(c.Id)).Select(c => new { c.Id, c.FullName, LastMessage = 0}).ToArrayAsync();
         var messagesReceived = await context.Messages.Where(m => m.ReceiverId == id).Select(m => m.SenderId).ToArrayAsync();
-        var clientsReceived = await context.Clients.Where(c => messagesReceived.Contains(c.Id)).Select(c => new { c.Id, c.FullName, MaxMessage = 0}).ToArrayAsync();
+        var clientsReceived = await context.Clients.Where(c => messagesReceived.Contains(c.Id)).Select(c => new { c.Id, c.FullName, LastMessage = 0}).ToArrayAsync();
         var clientsOld = clientsSent.Union(clientsReceived);
         var clientsNew = new ClientMessage[clientsOld.Count()];
         for(int i = 0; i < clientsOld.Count(); i++)
@@ -73,11 +68,16 @@ public class MessagesController : ControllerBase
             var client = clientsOld.ElementAt(i);
             var maxId = context.Messages.Where(m => (m.SenderId == client.Id && m.ReceiverId == id) || (m.SenderId == id && m.ReceiverId == client.Id)).Max(x => x.Id);
             var maxMessage = await context.Messages.FirstAsync(m => m.Id == maxId);
-            clientsNew[i] = new ClientMessage{ Id = client.Id, FullName = client.FullName, MaxMessage = maxMessage };
+            int unSeenMessages = context.Messages.Where(m => m.SenderId == client.Id && m.ReceiverId == id && m.Seen.ToString() == "0001-01-01 00:00:00.0000000").Count();
+            clientsNew[i] = new ClientMessage{ Id = client.Id, FullName = client.FullName, LastMessage = maxMessage, UnSeenMessages = unSeenMessages };
         }
-        var clients = clientsNew.OrderByDescending(c => c.MaxMessage.Id);
+        var clients = clientsNew.OrderByDescending(c => c.LastMessage.Id);
+        foreach (var client in clients)
+        {
+            if (Connections.Users.TryGetValue(client.Id, out string? val)) client.Active = true;
+            else client.Active = false;
+        }
         return Ok(clients);
-
     }
 
     [HttpPost, Authorize(Policy = "User")]
@@ -100,6 +100,27 @@ public class MessagesController : ControllerBase
         context.Messages.Update(message);
         await context.SaveChangesAsync();
         return Ok(message);
+    }
+
+    [HttpPatch("lastseen"), Authorize(Policy = "User")]
+    public async Task<ActionResult<Message>> UpdateMessageToSeen(Message message)
+    {
+        if (message == null || message.Id <= 0) return NoContent();
+        context.Update(message);
+        await context.SaveChangesAsync();
+        return Ok(message);
+    }
+
+    [HttpPatch("seen"), Authorize(Policy = "User")]
+    public async Task<ActionResult<Message>> UpdateMessagesToSeen(Message[] messages, DateTime seen)
+    {
+        if (messages == null || messages.Length == 0) return NoContent();
+        foreach (Message message in messages)
+        {
+            context.Update(message);
+        }
+        await context.SaveChangesAsync();
+        return Ok(messages);
     }
 
     [HttpDelete("{id}"), Authorize(Policy = "User")]

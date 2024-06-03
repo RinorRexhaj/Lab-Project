@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Lab_Project.Server.Data;
 using Lab_Project.Server.Models;
 using Lab_Project.Server.Services.Token;
+using Lab_Project.Server.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using static Lab_Project.Server.Services.Token.TokenService;
-using static Lab_Project.Server.Controllers.SessionsController;
 
 namespace Lab_Project.Server.Controllers;
 
@@ -42,17 +42,9 @@ public class AuthController : ControllerBase
         RefreshToken refresh = tokenService.CreateRefreshToken(clientAccount);
         await context.RefreshTokens.AddAsync(refresh);
         await context.SaveChangesAsync();
-        SessionsController.Sessions.Add(new SessionsController.Session { Id = client.Id, RefreshToken = refresh });
-        SessionsController.views++;
         return Ok(new { client.Id, client.FullName, client?.Email, client.Role, token, refreshToken = refresh.Token.ToString() });
     }
 
-    //Client Login Class
-    public class ClientDTO
-    {
-        public required string Email { get; set; } = null!;
-        public required string Password { get; set; } = null!;
-    }
     [HttpPost("login")]
     public async Task<ActionResult> LoginClient(ClientDTO client)
     {
@@ -79,11 +71,8 @@ public class AuthController : ControllerBase
                         var newRefresh = tokenService.CreateRefreshToken(clientAccount);
                         refresh.Token = newRefresh.Token;
                         refresh.Expires = newRefresh.Expires;
-                        //context.RefreshTokens.Update(refresh);
                     }
                     await context.SaveChangesAsync();
-                    SessionsController.Sessions.Add(new SessionsController.Session { Id = clientAccount.Id, RefreshToken = refresh });
-                    SessionsController.views++;
                     return Ok(new { clientAccount.Id, clientAccount.FullName, clientAccount.Email, clientAccount.Role, token, refreshToken = refresh.Token.ToString() });
                 }
                 else return BadRequest("Wrong Password");
@@ -99,8 +88,6 @@ public class AuthController : ControllerBase
         string token = HttpContext.Request.Headers.Authorization[0][7..];
         int tokenId = tokenService.DecodeTokenId(token);
         if (tokenId != id || tokenId <= 0) return BadRequest("Token Invalid");
-        Session session = SessionsController.FindSession(id);
-        SessionsController.Sessions.Remove(session);
         return Ok("Log Out Successful");
     }
 
@@ -114,18 +101,13 @@ public class AuthController : ControllerBase
         if (client == null) return BadRequest("Invalid Client");
         if (!ValidToken(refreshToken.Expires))
         {
-            //return Ok("Invalid Token");
             var newRefresh = tokenService.CreateRefreshToken(client);
             refreshToken.Token = newRefresh.Token;
             refreshToken.Expires = newRefresh.Expires;
         }
         await context.SaveChangesAsync();
         string newToken = tokenService.CreateToken(client);
-        Session session = SessionsController.FindSession(client.Id, refresh);
-        if (session != null) Sessions.Remove(session);
-        Sessions.Add(new Session { Id = client.Id, RefreshToken = refreshToken });
         return Ok(new { refresh = refreshToken.Token, newToken, client.Id, client.FullName, client.Email, client.Role });
-        //return Ok(refresh);
     }
 
     private bool ClientExists(string email)

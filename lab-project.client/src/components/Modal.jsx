@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const Modal = ({
   action,
@@ -34,7 +35,6 @@ const Modal = ({
   const [priceError, setPriceError] = useState("");
   const [actionDone, setActionDone] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     if (action !== "LOG-OUT") {
@@ -105,6 +105,17 @@ const Modal = ({
 
   const signOut = async () => {
     sessionStorage.clear();
+    localStorage.clear();
+    const connection = new HubConnectionBuilder()
+      .withUrl("https://localhost:7262/chat", { withCredentials: false })
+      .build();
+    await connection
+      .start()
+      .then(() => {
+        console.log(user.id);
+        connection.invoke("Disconnect", user.id);
+      })
+      .catch((err) => console.log(err));
     const response = await axios
       .delete(`https://localhost:7262/Auth/logout/${user.id}`, {
         headers: {

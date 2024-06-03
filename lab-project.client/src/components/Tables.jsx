@@ -12,6 +12,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import CategoryModal from "../Categories/CategoryModal";
 
 const Tables = ({
   type,
@@ -134,6 +135,12 @@ const Tables = ({
     case "name-desc":
       prd = prd.sort((a, b) => b.name.localeCompare(a.name));
       break;
+    case "categoryName-asc":
+      prd = prd.sort((a, b) => a.categoryName.localeCompare(b.categoryName));
+      break;
+    case "categoryName-desc":
+      prd = prd.sort((a, b) => b.categoryName.localeCompare(a.categoryName));
+      break;
     case "price-asc":
       prd = prd.sort((a, b) => a.price - b.price);
       break;
@@ -141,6 +148,7 @@ const Tables = ({
       prd = prd.sort((a, b) => b.price - a.price);
       break;
   }
+  console.log(prd);
 
   return (
     <div className="w-full relative min-h-125 shadow-2 bg-white flex flex-col">
@@ -161,67 +169,87 @@ const Tables = ({
           }}
         >
           <FontAwesomeIcon icon={faPlus} /> Add{" "}
-          <p className="md:hidden">{type.substring(0, type.length - 1)}</p>
+          <p className="md:hidden">
+            {type !== "Categories"
+              ? type.substring(0, type.length - 1)
+              : "Category"}
+          </p>
         </button>
       </div>
       <span className="w-full h-[1px] bg-slate-200"></span>
       <div className="w-full py-6 px-8 sm:px-4 flex items-center justify-between bg-white gap-4">
         <p
           className={`w-1/3 md:w-3/5 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${
-            sort.includes("name") ? "text-slate-900 font-semibold" : ""
+            sort.includes("name") || sort.includes("categoryName")
+              ? "text-slate-900 font-semibold"
+              : ""
           }`}
           onClick={() => {
-            let sortType = sort == "name-asc" ? "name-desc" : "name-asc";
+            let sortType =
+              type !== "Categories"
+                ? sort == "name-asc"
+                  ? "name-desc"
+                  : "name-asc"
+                : sort == "categoryName-asc"
+                ? "categoryName-desc"
+                : "categoryName-asc";
             setSort(sortType);
           }}
         >
-          {type.substring(0, type.length - 1)} Name{" "}
+          {type !== "Categories"
+            ? type.substring(0, type.length - 1)
+            : "Category"}{" "}
+          Name{" "}
           <FontAwesomeIcon
             icon={sort !== "name-asc" ? faArrowDownZA : faArrowDownAZ}
             className="relative w-5 h-5 left-5"
           />
         </p>
-        <div className="w-1/4 relative flex items-center">
-          <select
-            className="w-35 relative md:hidden text-slate-500 font-medium select-none hover:text-slate-700 duration-150 ease-linear cursor-pointer focus:outline-1"
-            id="category"
-            onChange={(e) => {
-              filterByCategory(e.target.value);
+        {type !== "Categories" && (
+          <div className="w-1/4 relative flex items-center">
+            <select
+              className="w-35 relative md:hidden text-slate-500 font-medium select-none hover:text-slate-700 duration-150 ease-linear cursor-pointer focus:outline-1"
+              id="category"
+              onChange={(e) => {
+                filterByCategory(e.target.value);
+              }}
+              required
+            >
+              <option>All Categories</option>
+              {categories.map((category) => {
+                return (
+                  <option
+                    key={category.categoryName}
+                    value={category.categoryName}
+                  >
+                    {category.categoryName}
+                  </option>
+                );
+              })}
+            </select>
+            <FontAwesomeIcon
+              icon={faFilter}
+              className="absolute left-31 -z-10 md:hidden text-slate-500"
+            />
+          </div>
+        )}
+        {type !== "Categories" && (
+          <p
+            className={`w-1/6 relative text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${
+              sort.includes("price") ? "text-slate-900 font-semibold" : ""
+            }`}
+            onClick={() => {
+              let sortType = sort == "price-asc" ? "price-desc" : "price-asc";
+              setSort(sortType);
             }}
-            required
           >
-            <option>All Categories</option>
-            {categories.map((category) => {
-              return (
-                <option
-                  key={category.categoryName}
-                  value={category.categoryName}
-                >
-                  {category.categoryName}
-                </option>
-              );
-            })}
-          </select>
-          <FontAwesomeIcon
-            icon={faFilter}
-            className="absolute left-31 -z-10 md:hidden text-slate-500"
-          />
-        </div>
-        <p
-          className={`w-1/6 relative text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${
-            sort.includes("price") ? "text-slate-900 font-semibold" : ""
-          }`}
-          onClick={() => {
-            let sortType = sort == "price-asc" ? "price-desc" : "price-asc";
-            setSort(sortType);
-          }}
-        >
-          Price{" "}
-          <FontAwesomeIcon
-            icon={sort == "price-asc" ? faArrowDown19 : faArrowDown91}
-            className="relative w-5 h-5 left-5"
-          />
-        </p>
+            Price{" "}
+            <FontAwesomeIcon
+              icon={sort == "price-asc" ? faArrowDown19 : faArrowDown91}
+              className="relative w-5 h-5 left-5"
+            />
+          </p>
+        )}
         {user.role === "Admin" && (
           <p
             className={`w-1/4 text-slate-500 md:hidden font-medium select-none`}
@@ -241,12 +269,12 @@ const Tables = ({
         prd.map((product) => {
           return (
             <Element
-              type={"Products"}
-              key={product.id}
+              type={type}
+              key={type !== "Categories" ? product.id : product.categoryName}
               role={user.role}
               id={product.id}
               image={product.image}
-              name={product.name}
+              name={type !== "Categories" ? product.name : product.categoryName}
               category={product.categoryName}
               price={product.price}
               openModal={openModal}
@@ -257,21 +285,38 @@ const Tables = ({
           );
         })
       )}
-      <Modal
-        action={modalAction}
-        token={token}
-        setToken={setToken}
-        user={user}
-        closeModal={closeModal}
-        modalVisible={modalVisible}
-        elements={data}
-        setElements={setData}
-        postData={postData}
-        setPostData={setPostData}
-        editData={editData}
-        setEditData={setEditData}
-        deleteId={deleteId}
-      />
+      {type !== "Categories" ? (
+        <Modal
+          action={modalAction}
+          token={token}
+          setToken={setToken}
+          user={user}
+          closeModal={closeModal}
+          modalVisible={modalVisible}
+          elements={data}
+          setElements={setData}
+          postData={postData}
+          setPostData={setPostData}
+          editData={editData}
+          setEditData={setEditData}
+          deleteId={deleteId}
+        />
+      ) : (
+        <CategoryModal
+          action={modalAction}
+          token={token}
+          user={user}
+          closeModal={closeModal}
+          modalVisible={modalVisible}
+          elements={data}
+          setElements={setData}
+          postData={postData}
+          setPostData={setPostData}
+          editData={editData}
+          setEditData={setEditData}
+          deleteId={deleteId}
+        />
+      )}
     </div>
   );
 };

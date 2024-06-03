@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 import Sidebar from "./Sidebar/Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Products from "./Products/Products";
@@ -11,6 +12,7 @@ import Cars from "./CarRental/Cars";
 import CarRentalList from "./CarRentalFront/CarRentalList";
 import AccountSettings from "./Settings/AccountSettings";
 import axios from "axios";
+import Categories from "./Categories/Categories";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -32,7 +34,12 @@ const App = () => {
   //Refresh Token
   useEffect(() => {
     const mount = async () => {
-      let refreshToken = sessionStorage.getItem("RefreshToken");
+      let refreshToken;
+      if (localStorage.length > 0)
+        refreshToken = localStorage.getItem("RefreshToken");
+      else if (sessionStorage.length > 0)
+        refreshToken = sessionStorage.getItem("RefreshToken");
+
       if (
         refreshToken !== null &&
         refreshToken !== undefined &&
@@ -42,10 +49,32 @@ const App = () => {
         const interval = setInterval(async () => {
           await refreshData(refreshToken, interval);
         }, 600000);
+      } else {
+        localStorage.clear();
+        sessionStorage.clear();
+        if (window.location.pathname !== "/sign-in")
+          window.location.href = "/sign-in";
       }
     };
     mount();
   }, [session]);
+
+  // window.addEventListener("beforeunload", async (e) => {
+  //   // e.returnValue = "";
+  //   if (session) {
+  //     const connection = new HubConnectionBuilder()
+  //       .withUrl("https://localhost:7262/chat", { withCredentials: false })
+  //       .build();
+  //     await connection
+  //       .start()
+  //       .then(() => {
+  //         console.log(user.id);
+  //         connection.invoke("Disconnect", user.id);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  //   e.preventDefault();
+  // });
 
   const refreshData = async (refreshToken, interval) => {
     const response = await axios
@@ -113,7 +142,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="w-full h-screen flex relative overflow-hidden">
-        {sessionStorage.length === 0 && <Navigate to="/sign-in" />}
+        {(sessionStorage.length === 0 ||
+          sessionStorage.getItem("RefreshToken") === "" ||
+          sessionStorage.getItem("RefreshToken") === null) &&
+          (localStorage.length === 0 ||
+            localStorage.getItem("RefreshToken") === "" ||
+            localStorage.getItem("RefreshToken") === null) && (
+            <Navigate to="/sign-in" />
+          )}
         <Routes>
           <Route
             path="/sign-in"
@@ -175,7 +211,31 @@ const App = () => {
                       />
                     }
                   />
-                  <Route path="/clients" element={<Clients />} />
+                  {user.role === "Admin" && (
+                    <Route
+                      path="/categories"
+                      element={
+                        <Categories
+                          token={token}
+                          setToken={setToken}
+                          user={user}
+                          categories={data}
+                          setCategories={setData}
+                          categoriesFilter={dataFilter}
+                          setCategoriesFilter={setDataFilter}
+                          emptyResults={emptyResults}
+                          setEmptyResults={setEmptyResults}
+                          search={search}
+                        />
+                      }
+                    />
+                  )}
+                  {user.role === "Admin" && (
+                    <Route
+                      path="/clients"
+                      element={<Clients token={token} />}
+                    />
+                  )}
                   <Route path="/orders" element={<Orders />} />
                   <Route
                     path="/settings"

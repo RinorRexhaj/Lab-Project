@@ -17,20 +17,28 @@ const Element = ({
   return (
     <div className="relative w-full py-6 px-8  sm:px-4 flex md:flex-wrap items-center justify-between gap-4">
       <div className="w-1/3 md:w-3/5 text-black font-medium text-sm flex items-center gap-5 sm:gap-2">
-        <ProductImage
-          src={`https://localhost:7262/${type}/image/` + id}
-          alt={name}
-        />
+        {type !== "Categories" && (
+          <ProductImage
+            src={`https://localhost:7262/${type}/image/` + id}
+            alt={name}
+          />
+        )}
         <p className="text-balance">{name}</p>
       </div>
-      <div className="w-1/4 md:hidden text-black  text-sm font-medium">
-        {category}
-      </div>
-      <div className="w-1/6 text-black text-sm font-medium">
-        <p className="font-bold">
-          {type === "Products" ? `Price: $${price}` : `Visits: ${name.length}`}
-        </p>
-      </div>
+      {type !== "Categories" && (
+        <>
+          <div className="w-1/4 md:hidden text-black  text-sm font-medium">
+            {category}
+          </div>
+          <div className="w-1/6 text-black text-sm font-medium">
+            <p className="font-bold">
+              {type === "Products"
+                ? `Price: $${price}`
+                : `Visits: ${name.length}`}
+            </p>
+          </div>
+        </>
+      )}
       {role === "Admin" && (
         <div className="w-1/4 flex items-center gap-4  md:gap-2">
           <button
@@ -42,7 +50,7 @@ const Element = ({
                 name: name,
                 categoryName: category,
                 price: price,
-                image: "https://localhost:7262/Element/image/" + id,
+                image: `https://localhost:7262/${type}/image/` + id,
               });
               setModalAction("EDIT");
             }}
@@ -52,7 +60,8 @@ const Element = ({
           <button
             className="h-10 p-2 flex items-center gap-2 rounded-md font-medium  sm:text-sm bg-red-500 hover:bg-red-600 duration-150 ease-linear text-white"
             onClick={() => {
-              setDeleteId(id);
+              if (type !== "Categories") setDeleteId(id);
+              else setEditData({ categoryName: category });
               openModal();
               setModalAction("DELETE");
             }}

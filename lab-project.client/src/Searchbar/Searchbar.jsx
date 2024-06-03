@@ -10,10 +10,14 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
+import Notification from "../components/Notification";
 import Chat from "./Chat";
+import axios from "axios";
 
 const Searchbar = ({
   setSession,
@@ -31,6 +35,9 @@ const Searchbar = ({
 }) => {
   const [menu, setMenu] = useState(false);
   const [chat, setChat] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [profile, setProfile] = useState(false);
+  const [messageCount, setMessageCount] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
 
   const toggleMenu = () => {
@@ -68,6 +75,18 @@ const Searchbar = ({
     setEmptyResults(filteredProducts.length === 0);
     setDataFilter(filteredProducts);
   };
+
+  useEffect(() => {
+    const response = axios
+      .get(`https://localhost:7262/Clients/image/${user.id}`)
+      .then((resp) => {
+        if (resp.status === 200) setProfile(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (chat) setNotifications([]);
+  }, [chat]);
 
   //Modal Handling
   useEffect(() => {
@@ -121,19 +140,34 @@ const Searchbar = ({
           icon={faBell}
           className="w-5 h-5 text-slate-600 bg-slate-300  hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
         />
-        <FontAwesomeIcon
-          icon={faMessage}
-          className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
-          onClick={() => toggleChat()}
-        />
-        <FontAwesomeIcon
-          icon={faUser}
-          className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
-          onClick={toggleMenu}
-        />
+        <div className="relative">
+          <FontAwesomeIcon
+            icon={faMessage}
+            className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
+            onClick={() => toggleChat()}
+          />
+          {messageCount > 0 && (
+            <div className="w-5 h-5 bg-red-500 rounded-full text-white text-sm font-medium flex items-center justify-center absolute -top-1 -right-[5px]">
+              {messageCount}
+            </div>
+          )}
+        </div>
+        <div className="w-11 h-11" onClick={toggleMenu}>
+          {!profile ? (
+            <FontAwesomeIcon
+              icon={faUser}
+              className="w-5 h-5 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
+            />
+          ) : (
+            <img
+              src={`https://localhost:7262/Clients/image/${user.id}`}
+              className="w-11 h-11 rounded-full cursor-pointer border-blue-500 border-[2px]"
+            />
+          )}
+        </div>
         <FontAwesomeIcon
           icon={menu ? faAngleUp : faAngleDown}
-          className="w-5 h-5 text-slate-600  p-3 rounded-full cursor-pointer sm:hidden"
+          className="w-5 h-5 text-slate-600 p-3 rounded-full cursor-pointer sm:hidden"
           onClick={toggleMenu}
         />
       </div>
@@ -179,7 +213,24 @@ const Searchbar = ({
           closeModal={closeModal}
         />
       )}
-      <Chat token={token} chat={chat} setChat={setChat} userId={user.id} />
+      <Chat
+        token={token}
+        chat={chat}
+        setChat={setChat}
+        userId={user.id}
+        messageCount={messageCount}
+        setMessageCount={setMessageCount}
+        notifications={notifications}
+        setNotifications={setNotifications}
+      />
+      {!chat && (
+        <ToastContainer
+          className="absolute w-80 top-[101px] right-14.5"
+          onClick={() => setChat(true)}
+          newestOnTop
+          progressStyle={{ background: "#3b82f6" }}
+        />
+      )}
     </nav>
   );
 };

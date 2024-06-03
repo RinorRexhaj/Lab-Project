@@ -117,8 +117,11 @@ const AccountSettings = ({ user }) => {
         </h2>
         <hr className="w-full text-slate-300 " />
         <div className="flex items-center gap-4 mb-4 p-4">
-          <div className="rounded-full border-2 min-w-24 h-24 bg-gray-200 flex items-center justify-center overflow-hidden">
-            <img src="/src/components/images/user-03.png" alt="Profile" />
+          <div className="rounded-full border-2 w-24 h-24 bg-gray-200 flex items-center justify-center overflow-hidden">
+            <img
+              src={`https://localhost:7262/Clients/image/${user.id}`}
+              alt="Profile"
+            />
           </div>
           <div>
             <p className="text-slate-600 font-bold">Edit your Photo</p>

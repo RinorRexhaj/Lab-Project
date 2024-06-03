@@ -18,5 +18,5 @@ public class Order
     //public Client Client { get; set; }
 
     // Navigation property per OrderDetail
-    public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+    //public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
 }
