@@ -1,22 +1,31 @@
-import React from "react";
+// Lab-Project\lab-project.client\src\components\Invoice.jsx
+import React, { useState } from "react";
 import Product from "./Element";
 
-const Invoice = () => {
+const Invoice = ({ shippingMethods }) => {
+  const [selectedShippingMethod, setSelectedShippingMethod] = useState(
+    shippingMethods[0]?.name || ""
+  );
+
+  const handleShippingMethodChange = (e) => {
+    setSelectedShippingMethod(e.target.value);
+  };
+
   return (
     <div className="w-full relative shadow-2 bg-white flex flex-col p-6 gap-10">
       <h2 className="text-3xl font-medium">Order #13456</h2>
       <div className="w-full flex items-center justify-between">
         <div className="flex gap-25 flex-wrap lg:gap-15">
           <div className="flex flex-col gap-4">
-            <h1 className="text-2xl font-medium">Roger Culhane</h1>
+            <h1 className="text-2xl font-medium">Rinor Agaj</h1>
             <div className="flex flex-col gap-2">
               <p className="text-md font-normal text-slate-400">
                 <span className="text-slate-500 font-medium">Email:</span>{" "}
-                contact@example.com
+                ra68760@ubt-uni.net
               </p>
               <p className="text-md font-normal text-slate-400">
                 <span className="text-slate-500 font-medium">Address:</span>{" "}
-                2972 Westheimer
+                Enver Zymberi, 60000 Gjilan
               </p>
               <p className="text-md font-normal text-slate-400">
                 <span className="text-slate-500 font-medium">Phone:</span>{" "}
@@ -26,9 +35,17 @@ const Invoice = () => {
           </div>
           <div className="flex flex-col gap-3">
             <h1 className="text-2xl font-medium">Shipping Method</h1>
-            <p className="text-lg font-medium text-slate-400">
-              FedEx <br /> 3 business days
-            </p>
+            <select
+              value={selectedShippingMethod}
+              onChange={handleShippingMethodChange}
+              className="text-lg font-medium text-slate-400 p-2 border rounded"
+            >
+              {shippingMethods.map((method, index) => (
+                <option key={index} value={method.name}>
+                  {method.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="flex flex-col gap-3">
             <h1 className="text-2xl font-medium">Payment Method</h1>

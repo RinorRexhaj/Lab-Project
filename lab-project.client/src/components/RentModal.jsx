@@ -1,30 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCalendar,
-  faCalendarCheck,
   faCalendarDay,
-  faCircleCheck,
-  faLocation,
-  faLocationArrow,
-  faLocationCrosshairs,
   faLocationDot,
-  faPenToSquare,
   faPencil,
-  faPencilAlt,
-  faPlus,
-  faTooth,
-  faTrash,
+  faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import CarReservations from "../CarReservations/CarReservations";
 
-const RentModal = ({ car, modalVisible }) => {
+const RentModal = ({ car, modalVisible, user }) => {
+  const navigate = useNavigate();
+
   const today = new Date();
   const defaultDeliveryDate = new Date(today);
   defaultDeliveryDate.setDate(today.getDate() + 1);
@@ -44,20 +37,22 @@ const RentModal = ({ car, modalVisible }) => {
   const [returnAddress, setReturnAddress] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleDeliveryDateChange = (date) => {
-    setDeliveryDate(date);
-    setShowDeliveryCalendar(false);
-    const newReturnDate = new Date(date);
-    newReturnDate.setDate(date.getDate() + 1);
-    setReturnDate((prevReturnDate) =>
-      prevReturnDate <= date ? newReturnDate : prevReturnDate
-    );
-  };
+  const [reservations, setReservations] = useState([]);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
 
-  const handleReturnDateChange = (date) => {
-    setReturnDate(date);
-    setShowReturnCalendar(false);
-  };
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const response = await axios.get("https://localhost:7262/Rents");
+        setReservations(response.data);
+      } catch (error) {
+        console.error("Error fetching reservations:", error);
+      }
+    };
+
+    fetchReservations();
+  }, []);
+
   const timeOptions = [
     "10:00 - 11:00",
     "11:00 - 12:00",
@@ -80,6 +75,47 @@ const RentModal = ({ car, modalVisible }) => {
     const timeDiff = returnDate.getTime() - deliveryDate.getTime();
     const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
     return car.price * dayDiff;
+  };
+
+  const handleDeliveryDateChange = (date) => {
+    setDeliveryDate(date);
+    setShowDeliveryCalendar(false);
+    const newReturnDate = new Date(date);
+    newReturnDate.setDate(date.getDate() + 1);
+    setReturnDate((prevReturnDate) =>
+      prevReturnDate <= date ? newReturnDate : prevReturnDate
+    );
+  };
+
+  const handleReturnDateChange = (date) => {
+    setReturnDate(date);
+    setShowReturnCalendar(false);
+  };
+
+  const handleBooking = async (e) => {
+    e.preventDefault();
+
+    const reservationData = {
+      startDate: deliveryDate,
+      days: Math.ceil(
+        (returnDate.getTime() - deliveryDate.getTime()) / (1000 * 3600 * 24)
+      ),
+      carID: car.id,
+      clientID: user.id,
+      clientName: user.fullName,
+    };
+
+    const resp = await axios
+      .post("https://localhost:7262/Rents", reservationData)
+      .then((resp) => {
+        setBookingSuccess(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+      navigate("/Car Reservations");
+    }, 500);
   };
 
   const LocationMarker = ({ setAddress }) => {
@@ -120,7 +156,11 @@ const RentModal = ({ car, modalVisible }) => {
       } transition-opacity duration-200 ease-in`}
     >
       <div className="bg-white p-8 rounded-md z-50 w-125 md:w-80 h-[550px] mt-20 overflow-y-auto">
-        <form action="" className="flex flex-col gap-5">
+        <form
+          action=""
+          onSubmit={handleBooking}
+          className="flex flex-col gap-5"
+        >
           <div className="flex items-center justify-between">
             <h2 className=" text-lg font-bold text-slate-600">{car.name}</h2>
             <div className="flex flex-col items-center">
@@ -157,6 +197,7 @@ const RentModal = ({ car, modalVisible }) => {
                         onChange={handleDeliveryDateChange}
                         inline
                         minDate={defaultDeliveryDate}
+                        //filterDate={(date) => date >= deliveryDate } //&& !isDateBooked(date)
                       />
                     </div>
                     <div className="ml-8 border border-slate-400 rounded-md">
@@ -251,7 +292,7 @@ const RentModal = ({ car, modalVisible }) => {
                         onChange={handleReturnDateChange}
                         inline
                         minDate={defaultDeliveryDate}
-                        filterDate={(date) => date >= deliveryDate}
+                        filterDate={(date) => date >= deliveryDate} //&& !isDateBooked(date)
                       />
                     </div>
                     <div className="ml-8 border border-slate-400 rounded-md">

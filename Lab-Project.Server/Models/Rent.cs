@@ -19,6 +19,8 @@ public class Rent
 
     [ForeignKey("Client")]
     public int ClientID { get; set; }
-    public Car Car { get; set; }
-    public Client Client { get; set; }
+    public string ClientName { get; set; } = null!;
+    //public string ClientEmail { get; set; } = null!;
+    //public Car Car { get; set; }
+    //public Client Client { get; set; }
 }

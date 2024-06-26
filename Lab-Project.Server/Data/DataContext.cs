@@ -21,4 +21,6 @@ public class DataContext : DbContext
     public DbSet<Role> Roles { get; set; } = null!;
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<NotificationAdmins> NotificationAdmins { get; set; } = null!;
+    public DbSet<ShippingMethod> ShippingMethods { get; set; }
+    public DbSet<Restaurant> Restaurants { get; set; }
 }

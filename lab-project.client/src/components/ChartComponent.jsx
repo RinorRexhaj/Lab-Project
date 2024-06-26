@@ -123,7 +123,6 @@ const ChartComponent = ({ data, type, title, barName }) => {
               dataKey="total"
             >
               {data.map((entry, index) => {
-                console.log(monthColors[index]);
                 return (
                   <Cell key={`cell-${index}`} fill={monthColors[index + 1]} />
                 );

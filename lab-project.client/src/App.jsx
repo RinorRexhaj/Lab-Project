@@ -14,10 +14,16 @@ import Orders from "./Orders/Orders";
 import Searchbar from "./Searchbar/Searchbar";
 import Login from "./Login/Login";
 import Cars from "./CarRental/Cars";
+import CarDashboard from "./CarReservations/CarDashboard";
 import CarRentalList from "./CarRentalFront/CarRentalList";
+import CarReservations from "./CarReservations/CarReservations";
+import Models from "./Models/Models";
+import ShippingMethod from "./ShippingMethod/ShippingMethod";
+import Restaurant from "./Restaurant/Restaurant";
+import ManageRestaurants from "./ManageRestaurants/ManageRestaurants";
 import AccountSettings from "./Settings/AccountSettings";
-import axios from "axios";
 import Categories from "./Categories/Categories";
+import axios from "axios";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -273,6 +279,9 @@ const App = () => {
                   />
                 )}
                 <Route path="/orders" element={<Orders />} />
+                {user.role === "Admin" && (
+                  <Route path="/shipping method" element={<ShippingMethod />} />
+                )}
                 <Route
                   path="/settings"
                   element={
@@ -285,21 +294,80 @@ const App = () => {
                     />
                   }
                 />
+                {user.role === "Admin" && (
+                  <Route
+                    path="/Cars"
+                    element={
+                      <Cars
+                        token={token}
+                        setToken={setToken}
+                        user={user}
+                        cars={data}
+                        setCars={setData}
+                        carsFilter={dataFilter}
+                        setCarsFilter={setDataFilter}
+                      />
+                    }
+                  />
+                )}
+                {user.role === "Admin" && (
+                  <Route
+                    path="/Car Dashboard"
+                    element={
+                      <CarDashboard
+                        token={token}
+                        setToken={setToken}
+                        user={user}
+                        cars={data}
+                        setCars={setData}
+                        carsFilter={dataFilter}
+                        setCarsFilter={setDataFilter}
+                      />
+                    }
+                  />
+                )}
+                {(user.role === "User" || user.role === "Staff") && (
+                  <Route
+                    path="/Rents"
+                    element={
+                      <CarRentalList
+                        cars={data}
+                        setCars={setData}
+                        user={user}
+                      />
+                    }
+                  />
+                )}
                 <Route
-                  path="/Cars"
-                  element={
-                    <Cars
-                      cars={data}
-                      setCars={setData}
-                      carsFilter={dataFilter}
-                      setCarsFilter={setDataFilter}
-                    />
-                  }
+                  path="/Car Reservations"
+                  element={<CarReservations user={user} />}
                 />
-                <Route
-                  path="/Rents"
-                  element={<CarRentalList cars={data} setCars={setData} />}
-                />
+                {user.role === "Admin" && (
+                  <Route
+                    path="/Models"
+                    element={
+                      <Models
+                        token={token}
+                        setToken={setToken}
+                        user={user}
+                        Models={data}
+                        setModels={setData}
+                        ModelsFilter={dataFilter}
+                        setModelsFilter={setDataFilter}
+                        emptyResults={emptyResults}
+                        setEmptyResults={setEmptyResults}
+                        search={search}
+                      />
+                    }
+                  />
+                )}
+                <Route path="/restaurant" element={<Restaurant />} />
+                {user.role === "Admin" && (
+                  <Route
+                    path="/Manage Restaurants"
+                    element={<ManageRestaurants />}
+                  />
+                )}
               </Routes>
             </div>
           </div>

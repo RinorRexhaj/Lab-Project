@@ -9,7 +9,16 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const CarTables = ({ type, data, setData, dataFilter, loading }) => {
+const CarTables = ({
+  token,
+  setToken,
+  user,
+  type,
+  data,
+  setData,
+  dataFilter,
+  loading,
+}) => {
   const [sort, setSort] = useState("id");
   const [modalVisible, setModalVisible] = useState(false);
   const [modalAction, setModalAction] = useState("POST");
@@ -18,6 +27,8 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
     name: "",
     modelName: "",
     price: "",
+    mileage: "",
+    engine: "",
     image: "",
   });
   const [editData, setEditData] = useState({
@@ -25,6 +36,8 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
     name: "",
     modelName: "",
     price: "",
+    mileage: "",
+    engine: "",
     image: "",
   });
   const [deleteId, setDeleteId] = useState("");
@@ -88,6 +101,18 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
     case "price-desc":
       car = car.sort((a, b) => b.price - a.price);
       break;
+    case "mileage-asc":
+      car = car.sort((a, b) => a.mileage - b.mileage);
+      break;
+    case "mileage-desc":
+      car = car.sort((a, b) => b.mileage - a.mileage);
+      break;
+    case "engine-asc":
+      car = car.sort((a, b) => a.engine - b.engine);
+      break;
+    case "engine-desc":
+      car = car.sort((a, b) => b.engine - a.engine);
+      break;
   }
 
   return (
@@ -103,6 +128,8 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
               name: "",
               modelName: "",
               price: "",
+              mileage: "",
+              engine: "",
               image: "",
             });
             setModalAction("POST");
@@ -156,9 +183,42 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
             icon={sort == "price-asc" ? faAngleUp : faAngleDown}
           />
         </p>
-        <p className={`w-1/4 text-slate-500 md:hidden font-medium select-none`}>
-          Actions
+        <p
+          className={`w-1/6 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${
+            sort.includes("mileage") ? "text-slate-900 font-semibold" : ""
+          }`}
+          onClick={() => {
+            let sortType =
+              sort == "mileage-asc" ? "mileage-desc" : "mileage-asc";
+            setSort(sortType);
+          }}
+        >
+          Mileage{" "}
+          <FontAwesomeIcon
+            icon={sort == "mileage-asc" ? faAngleUp : faAngleDown}
+          />
         </p>
+        <p
+          className={`w-1/6 text-slate-500 font-medium cursor-pointer select-none hover:text-slate-700 duration-150 ease-linear ${
+            sort.includes("engine") ? "text-slate-900 font-semibold" : ""
+          }`}
+          onClick={() => {
+            let sortType = sort == "engine-asc" ? "engine-desc" : "engine-asc";
+            setSort(sortType);
+          }}
+        >
+          Engine{" "}
+          <FontAwesomeIcon
+            icon={sort == "engine-asc" ? faAngleUp : faAngleDown}
+          />
+        </p>
+        {user.role === "Admin" && (
+          <p
+            className={`w-1/4 text-slate-500 md:hidden font-medium select-none`}
+          >
+            Actions
+          </p>
+        )}
       </div>
       <span className="w-full h-[1px] bg-slate-200"></span>
       {loading ? (
@@ -169,10 +229,13 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
             <Car
               key={c.id}
               id={c.id}
+              user={user}
               image={c.image}
               name={c.name}
               modelName={c.modelName}
               price={c.price}
+              mileage={c.mileage}
+              engine={c.engine}
               openModal={openModal}
               setModalAction={setModalAction}
               setEditData={setEditData}
@@ -182,6 +245,7 @@ const CarTables = ({ type, data, setData, dataFilter, loading }) => {
         })
       )}
       <CarModal
+        token={token}
         action={modalAction}
         closeModal={closeModal}
         modalVisible={modalVisible}

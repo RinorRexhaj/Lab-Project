@@ -152,6 +152,7 @@ public class CarsController : Controller
         await context.SaveChangesAsync();
         return Ok(rent);
     }
+
     private bool CarExists(int id)
     {
         return context.Cars.Any(e => e.Id == id);

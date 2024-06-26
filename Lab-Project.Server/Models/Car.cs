@@ -12,6 +12,10 @@ public class Car
 
     [Column(TypeName = "decimal(5,2)")]
     public decimal Price { get; set; }
-    [ForeignKey("ModelName")]
-    public Model Model { get; set; } = null!;
+
+    public decimal Mileage { get; set; }
+    public decimal Engine { get; set; }
+
+    //[ForeignKey("ModelName")]
+    //public Model Model { get; set; } = null!;
 }

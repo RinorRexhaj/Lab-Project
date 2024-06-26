@@ -18,7 +18,7 @@ const Element = ({
   return (
     <div className="relative w-full py-6 px-8  sm:px-4 flex md:flex-wrap items-center justify-between gap-4">
       <div className="w-1/3 md:w-3/5 text-black font-medium text-sm flex items-center gap-5 sm:gap-2">
-        {type !== "Categories" && (
+        {(type !== "Categories" || type !== "Models") && (
           <ProductImage
             src={`https://localhost:7262/${type}/image/` + id}
             alt={name}
@@ -27,7 +27,7 @@ const Element = ({
         )}
         <p className="text-balance">{name}</p>
       </div>
-      {type !== "Categories" && (
+      {(type !== "Categories" || type !== "Models") && (
         <>
           <div
             className={`${
@@ -50,19 +50,19 @@ const Element = ({
             onClick={() => {
               openModal();
               setEditData(
-                type === "Products"
+                type === "Clients"
                   ? {
                       id: id,
                       name: name,
                       categoryName: category,
-                      price: price,
+                      email: email,
                       image: `https://localhost:7262/${type}/image/` + id,
                     }
                   : {
                       id: id,
                       name: name,
                       categoryName: category,
-                      email: email,
+                      price: price,
                       image: `https://localhost:7262/${type}/image/` + id,
                     }
               );
@@ -74,8 +74,10 @@ const Element = ({
           <button
             className="h-10 p-2 flex items-center gap-2 rounded-md font-medium  sm:text-sm bg-red-500 hover:bg-red-600 duration-150 ease-linear text-white"
             onClick={() => {
-              if (type !== "Categories") setDeleteId(id);
-              else setEditData({ categoryName: name });
+              if (type !== "Categories" || type !== "Models") setDeleteId(id);
+              else if (type === "Categories")
+                setEditData({ categoryName: name });
+              else if (type === "Models") setEditData({ name: name });
               openModal();
               setModalAction("DELETE");
             }}

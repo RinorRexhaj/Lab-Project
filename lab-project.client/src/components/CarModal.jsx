@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CarModal = ({
+  token,
   action,
   modalVisible,
   closeModal,
@@ -24,6 +25,8 @@ const CarModal = ({
   const [carImage, setCarImage] = useState(new FormData());
   const [idError, setIdError] = useState("");
   const [priceError, setPriceError] = useState("");
+  const [mileageError, setMileageError] = useState("");
+  const [engineError, setEngineError] = useState("");
   const [actionDone, setActionDone] = useState(false);
   const [models, setModels] = useState([]);
   const navigate = useNavigate();
@@ -34,6 +37,8 @@ const CarModal = ({
       name: postData.name,
       modelName: postData.modelName,
       price: postData.price,
+      mileage: postData.mileage,
+      engine: postData.engine,
     });
     setElements([...elements, data]);
   };
@@ -50,7 +55,12 @@ const CarModal = ({
   };
 
   const getModels = async () => {
-    const { data } = await axios.get("https://localhost:7262/Models");
+    const { data } = await axios.get("https://localhost:7262/Models", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(data);
     setModels(data);
   };
 
@@ -68,6 +78,16 @@ const CarModal = ({
         setPriceError("Invalid Price format!");
       else if (value.length === 0) setIdError("Price can't be empty!");
       else setPriceError("");
+    } else if (id === "mileage") {
+      if (!/^\d+\.?\d{1,2}$/.test(value))
+        setMileageError("Invalid Mileage format!");
+      else if (value.length === 0) setIdError("Mileage can't be empty!");
+      else setMileageError("");
+    } else if (id === "engine") {
+      if (!/^\d+\.?\d{1,2}$/.test(value))
+        setEngineError("Invalid Engine format!");
+      else if (value.length === 0) setIdError("Engine can't be empty!");
+      else setEngineError("");
     }
   };
 
@@ -124,11 +144,11 @@ const CarModal = ({
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center ${
+      className={`fixed inset-0 flex items-center justify-center top-18 ${
         modalVisible ? "opacity-100 z-50" : "opacity-0 -z-99"
       } transition-opacity duration-200 ease-in`}
     >
-      <div className="bg-white p-8 rounded-md z-50 w-100 md:w-80">
+      <div className="bg-white p-8 rounded-md z-50 w-115 md:w-80">
         <div className="relative items-center gap-6">
           <h2 className="relative text-3xl md:text-2xl mb-8 font-bold text-slate-800">
             {!actionDone
@@ -153,6 +173,8 @@ const CarModal = ({
                 name: "",
                 model: "",
                 price: "",
+                mileage: "",
+                engine: "",
                 image: "",
               });
               closeModal();
@@ -274,6 +296,58 @@ const CarModal = ({
                   />
                   <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
                     {priceError}
+                  </div>
+                </div>
+                <div className="relative flex items-center justify-between">
+                  <label
+                    htmlFor="mileage"
+                    className="text-lg font-bold text-slate-600"
+                  >
+                    Mileage
+                  </label>
+                  <input
+                    type="text"
+                    className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
+                    id="mileage"
+                    placeholder="Car Mileage..."
+                    defaultValue={editData.mileage}
+                    onChange={(e) => {
+                      handleErrors(e);
+                      if (action === "POST")
+                        setPostData({ ...postData, mileage: e.target.value });
+                      else if (action === "EDIT")
+                        setEditData({ ...editData, mileage: e.target.value });
+                    }}
+                    required
+                  />
+                  <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
+                    {mileageError}
+                  </div>
+                </div>
+                <div className="relative flex items-center justify-between">
+                  <label
+                    htmlFor="engine"
+                    className="text-lg font-bold text-slate-600"
+                  >
+                    Engine
+                  </label>
+                  <input
+                    type="text"
+                    className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
+                    id="engine"
+                    placeholder="Car Engine..."
+                    defaultValue={editData.engine}
+                    onChange={(e) => {
+                      handleErrors(e);
+                      if (action === "POST")
+                        setPostData({ ...postData, engine: e.target.value });
+                      else if (action === "EDIT")
+                        setEditData({ ...editData, engine: e.target.value });
+                    }}
+                    required
+                  />
+                  <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
+                    {engineError}
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
