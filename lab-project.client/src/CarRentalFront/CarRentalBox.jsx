@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import RentModal from "../components/RentModal";
 
-const CarRentalBox = ({ car }) => {
+const CarRentalBox = ({ car,user }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -61,7 +61,7 @@ const CarRentalBox = ({ car }) => {
         <p className="bg-slate-300 p-1 rounded-xl">5 seats</p>
         <p className="bg-slate-300 p-1 rounded-xl">2.0 L</p>
       </div>
-      <RentModal car={car} modalVisible={modalVisible} />
+      <RentModal car={car} modalVisible={modalVisible} user={user} />
     </div>
   );
 };

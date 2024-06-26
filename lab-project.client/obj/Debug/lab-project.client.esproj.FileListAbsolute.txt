@@ -1,1 +1,2 @@
 C:\Users\PC\Desktop\Detyra\Lab1\Lab-Project\lab-project.client\obj\Debug\lab-project.client.esproj.CoreCompileInputs.cache
+C:\Users\DataProgNet\Desktop\Lab-Project\lab-project.client\obj\Debug\lab-project.client.esproj.CoreCompileInputs.cache

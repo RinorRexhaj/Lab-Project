@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import CarRentalBox from "./CarRentalBox";
 import axios from "axios";
 
-const CarRentalList = ({ cars, setCars }) => {
+const CarRentalList = ({ cars, setCars,user }) => {
   const [loading, setLoading] = useState(true);
-
+  // console.log(user);
   useEffect(() => {
     getCars();
   }, []);
@@ -17,7 +17,7 @@ const CarRentalList = ({ cars, setCars }) => {
   return (
     <div className="min-h-50 flex flex-wrap gap-8 justify-center items-center">
       {cars.map((car) => (
-        <CarRentalBox car={car} />
+        <CarRentalBox car={car} user={user}/>
       ))}
     </div>
   );

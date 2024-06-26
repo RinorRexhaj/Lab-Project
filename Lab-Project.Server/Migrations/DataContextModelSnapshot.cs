@@ -32,7 +32,7 @@ namespace Lab_Project.Server.Migrations
 
                     b.Property<string>("ModelName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -42,8 +42,6 @@ namespace Lab_Project.Server.Migrations
                         .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ModelName");
 
                     b.ToTable("Cars");
                 });
@@ -233,8 +231,16 @@ namespace Lab_Project.Server.Migrations
                     b.Property<int>("CarID")
                         .HasColumnType("int");
 
+                    b.Property<string>("ClientEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Days")
                         .HasColumnType("int");
@@ -244,22 +250,7 @@ namespace Lab_Project.Server.Migrations
 
                     b.HasKey("RentalID");
 
-                    b.HasIndex("CarID");
-
-                    b.HasIndex("ClientID");
-
                     b.ToTable("Rents");
-                });
-
-            modelBuilder.Entity("Lab_Project.Server.Models.Car", b =>
-                {
-                    b.HasOne("Lab_Project.Server.Models.Model", "Model")
-                        .WithMany()
-                        .HasForeignKey("ModelName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.OrderDetail", b =>
@@ -267,25 +258,6 @@ namespace Lab_Project.Server.Migrations
                     b.HasOne("Lab_Project.Server.Models.Order", null)
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderID1");
-                });
-
-            modelBuilder.Entity("Lab_Project.Server.Models.Rent", b =>
-                {
-                    b.HasOne("Lab_Project.Server.Models.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lab_Project.Server.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-
-                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("Lab_Project.Server.Models.Order", b =>

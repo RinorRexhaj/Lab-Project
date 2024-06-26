@@ -8907,19 +8907,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\DataProgNet\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+      "projectUniqueName": "C:\\Users\\DataProgNet\\Desktop\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
       "projectName": "Lab-Project.Server",
-      "projectPath": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\obj\\",
+      "projectPath": "C:\\Users\\DataProgNet\\Desktop\\Lab-Project\\Lab-Project.Server\\Lab-Project.Server.csproj",
+      "packagesPath": "C:\\Users\\DataProgNet\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DataProgNet\\Desktop\\Lab-Project\\Lab-Project.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DataProgNet\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9012,7 +9012,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

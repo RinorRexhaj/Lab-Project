@@ -9,6 +9,10 @@ import {
   faAngleDown,
   faAngleUp,
   faCarSide,
+  faCalendarDay,
+  faCarAlt,
+  faDashboard,
+  faDatabase,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -38,10 +42,19 @@ const SidebarLink = ({ destination }) => {
       icon = faList;
       break;
     case "Cars":
-      icon = faCar;
+      icon = faDatabase;
       break;
     case "Rents":
       icon = faCarSide;
+      break;
+      case "Car Reservations":
+      icon = faCalendarDay;
+      break;
+      case "Models":
+      icon = faCarAlt;
+      break;
+      case "Car Dashboard":
+      icon = faCar;
       break;
   }
 

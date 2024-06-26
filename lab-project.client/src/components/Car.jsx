@@ -5,8 +5,11 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 const Car = ({
   id,
   name,
+  user,
   modelName,
   price,
+  mileage,
+  engine,
   openModal,
   setModalAction,
   setEditData,
@@ -22,7 +25,9 @@ const Car = ({
         {modelName}
       </div>
       <div className="w-1/6 text-black text-sm font-medium">${price}</div>
-      <div className="w-1/4 flex items-center gap-4  md:gap-2">
+      <div className="w-1/6 text-black text-sm font-medium">{mileage} km</div>
+      <div className="w-1/6 text-black text-sm font-medium">{engine.toFixed(1)} L</div>
+      {user.role==="Admin" && <div className="w-1/4 flex items-center gap-4  md:gap-2">
         <button
           className="h-10 p-2 flex items-center gap-2 rounded-md font-medium sm:text-sm bg-blue-500 hover:bg-blue-600 duration-150 ease-linear text-white"
           onClick={() => {
@@ -32,6 +37,8 @@ const Car = ({
               name: name,
               modelName: modelName,
               price: price,
+              mileage: mileage,
+              engine: engine,
               image: "https://localhost:7262/Car/image/" + id,
             });
             setModalAction("EDIT");
@@ -50,6 +57,7 @@ const Car = ({
           <FontAwesomeIcon icon={faTrash} /> DELETE
         </button>
       </div>
+}
       <span className="w-11/12 absolute bottom-0 h-[1px] bg-slate-200"></span>
     </div>
   );

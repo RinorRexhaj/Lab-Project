@@ -1,16 +1,22 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar/Sidebar";
+
 import Dashboard from "./Dashboard/Dashboard";
 import Products from "./Products/Products";
 import Clients from "./Clients/Clients";
+
 import Orders from "./Orders/Orders";
 import Searchbar from "./Searchbar/Searchbar";
 import Login from "./Login/Login";
 import Cars from "./CarRental/Cars";
+import CarDashboard from "./CarReservations/CarDashboard"
 import CarRentalList from "./CarRentalFront/CarRentalList";
+import CarReservations from "./CarReservations/CarReservations";
+import Models from "./Models/Models";
 import AccountSettings from "./Settings/AccountSettings";
 import axios from "axios";
+
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -21,9 +27,11 @@ const App = () => {
     email: "",
     role: "",
   });
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [data, setData] = useState([]);
+
   const [dataFilter, setDataFilter] = useState([]);
   const [emptyResults, setEmptyResults] = useState(false);
   const [category, setCategory] = useState("All Categories");
@@ -113,6 +121,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="w-full h-screen flex relative overflow-hidden">
+
         {sessionStorage.length === 0 && <Navigate to="/sign-in" />}
         <Routes>
           <Route
@@ -133,7 +142,9 @@ const App = () => {
               toggleSidebar={toggleSidebar}
               role={user.role}
             />
+
             <div className="w-full flex flex-col items-center gap-15">
+
               <Searchbar
                 setSession={setSession}
                 token={token}
@@ -151,6 +162,7 @@ const App = () => {
               />
               <div className="w-full h-full overflow-y-auto z-0 -mt-[74px] p-10 sm:px-6 bg-slate-100">
                 <Routes>
+
                   <Route path="*" element={<Navigate to="/dashboard" />} />
                   <Route path="/" element={<Navigate to="/dashboard" />} />
                   <Route
@@ -187,21 +199,63 @@ const App = () => {
                       />
                     }
                   />
-                  <Route
+                 {user.role === "Admin" && <Route
                     path="/Cars"
                     element={
                       <Cars
+                      token={token}
+                        setToken={setToken}
+                        user={user}
                         cars={data}
                         setCars={setData}
                         carsFilter={dataFilter}
                         setCarsFilter={setDataFilter}
                       />
                     }
+                  
                   />
-                  <Route
+                  } 
+                  {user.role === "Admin" && <Route
+                    path="/Car Dashboard"
+                    element={
+                      <CarDashboard
+                      token={token}
+                        setToken={setToken}
+                        user={user}
+                        cars={data}
+                        setCars={setData}
+                        carsFilter={dataFilter}
+                        setCarsFilter={setDataFilter}
+                      />
+                    }
+                  
+                  />
+                  } 
+                  {user.role === "User" && <Route
                     path="/Rents"
-                    element={<CarRentalList cars={data} setCars={setData} />}
+                    element={<CarRentalList cars={data} setCars={setData} user={user}/>}
                   />
+                }
+                 <Route
+                    path="/Car Reservations"
+                    element={<CarReservations user={user} />}
+                  />
+                  
+                  {user.role === "Admin" && <Route
+                    path="/Models"
+                    element={<Models  token={token}
+                    setToken={setToken}
+                    user={user}
+                    Models={data}
+                    setModels={setData}
+                    ModelsFilter={dataFilter}
+                    setModelsFilter={setDataFilter}
+                    emptyResults={emptyResults}
+                    setEmptyResults={setEmptyResults}
+                    search={search}
+                    />}
+                  />
+                  }
                 </Routes>
               </div>
             </div>

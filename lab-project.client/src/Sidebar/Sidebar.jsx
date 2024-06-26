@@ -4,6 +4,7 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ open, toggleSidebar, role }) => {
   return (
+
     <div
       className={`w-80 h-full left-0 top-0 flex flex-col z-99 align-middle px-6 py-8 bg-black duration-300 ease-linear gap-20 tb:w-60 tb:-left-${
         open ? "0" : "60"
@@ -28,9 +29,13 @@ const Sidebar = ({ open, toggleSidebar, role }) => {
         <SidebarLink destination={"Products"} />
         {role === "Admin" && <SidebarLink destination={"Clients"} />}
         <SidebarLink destination={"Orders"} />
-        <SidebarLink destination={"Cars"} />
-        <SidebarLink destination={"Rents"} />
+        {role==="Admin" && <SidebarLink destination={"Cars"} />}
+        {role==="Admin" && <SidebarLink destination={"Car Dashboard"} />}
+        {role === "User" &&<SidebarLink destination={"Rents"} />}
+        <SidebarLink destination={"Car Reservations"} />
+        {role==="Admin" && <SidebarLink destination={"Models"} />}
       </div>
+      
     </div>
   );
 };
