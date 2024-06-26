@@ -15,9 +15,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 const CategoryModal = ({
   action,
   token,
+  setToken,
+  user,
+  setUser,
+  setSession,
   modalVisible,
+  elements,
+  setElements,
+  elementsFilter,
+  setElementsFilter,
   closeModal,
+  postData,
+  setPostData,
   editData,
+  setEditData,
+  deleteId,
 }) => {
   const [actionDone, setActionDone] = useState(false);
   const [category, setCategory] = useState("");
@@ -31,7 +43,7 @@ const CategoryModal = ({
       return false;
     }
     let status;
-    const repsonse = await axios
+    const { data } = await axios
       .post(
         `https://localhost:7262/Categories`,
         {

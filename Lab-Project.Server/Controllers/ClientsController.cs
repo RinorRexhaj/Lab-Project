@@ -6,10 +6,12 @@ using Lab_Project.Server.Services.Token;
 using Microsoft.AspNetCore.Authorization;
 using Lab_Project.Server.Hubs;
 using Lab_Project.Server.Services.FileUpload;
+using Lab_Project.Server.DTOs;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Lab_Project.Server.Controllers;
 
-[Route("/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class ClientsController : ControllerBase
 {
@@ -59,17 +61,16 @@ public class ClientsController : ControllerBase
     }
 
     [HttpGet("image/{id:int}")]
-    public Task<ActionResult> GetClientImage(int id)
+    public ActionResult GetClientImage(int id)
     {
+        string path = "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\uploads\\clients\\" + id + ".png";
         if (id <= 0)
-        {
-            return Task.FromResult<ActionResult>(BadRequest("Wrong Parameters"));
-        }
+            return BadRequest("Wrong Parameters");
         else if (!ClientExists(id))
-        {
-            return Task.FromResult<ActionResult>(NotFound("Client doesn't exist"));
-        }
-        return Task.FromResult<ActionResult>(PhysicalFile("C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\uploads\\clients\\" + id + ".png", "image/png"));
+            return NotFound("Client doesn't exist");
+        if(!System.IO.File.Exists(path)) return NotFound("Client doesn't have a profile");
+        var image = PhysicalFile(path, "image/png");
+        return image;
     }
 
     [HttpGet("count"), Authorize(Policy = "Admin")]
@@ -101,27 +102,33 @@ public class ClientsController : ControllerBase
         string token = HttpContext.Request.Headers.Authorization[0][7..];
         int userId = tokenService.DecodeTokenId(token);
         if (userId != id) return Unauthorized("Unauthorized");
-        if (image == null || image.Length <= 0 || image.Length > 5120000) { return BadRequest("Wrong Parameters"); }
-        else
-        {
-            return Ok(await uploadService.UploadFile(image, "clients", id));
-        }
+        if (image == null || image.Length <= 0 || image.Length > 5120000) return BadRequest("Wrong Parameters");
+        return Ok(await uploadService.UploadFile(image, "clients", id));
     }
 
-    [HttpPatch("{id}")]
-    public async Task<ActionResult<List<Client>>> UpdateClient(Client client)
+    [HttpDelete("image/{id}"), Authorize(Policy = "User")]
+    public async Task<ActionResult<IFormFile>> DeleteClientImage(int id)
     {
-        var dbClient = await context.Clients.FindAsync(client.Id);
+        string token = HttpContext.Request.Headers.Authorization[0][7..];
+        int userId = tokenService.DecodeTokenId(token);
+        if (userId != id) return Unauthorized("Unauthorized");
+        uploadService.DeleteFile("clients", id);
+        return Ok(id);
+    }
+
+    [HttpPatch]
+    public async Task<ActionResult<Client>> UpdateClient([FromBody]ClientChangeDTO client)
+    {
+        var dbClient = context.Clients.FirstOrDefault(c => c.Id == client.Id);
         if (dbClient is null)
             return BadRequest("client not found");
 
-
         dbClient.FullName = client.FullName;
-        dbClient.Password = client.Password;
         dbClient.Address = client.Address;
         dbClient.Phone = client.Phone;
+        dbClient.Role = client.Role;
 
-        await context.SaveChangesAsync();
+        context.SaveChanges();
 
         return Ok(dbClient);
     }

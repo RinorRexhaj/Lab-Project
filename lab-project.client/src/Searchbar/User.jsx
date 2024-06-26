@@ -19,21 +19,25 @@ const User = ({
   typing,
   timeAgo,
   connection,
+  group,
+  setGroup,
 }) => {
-  // const [profile, setProfile] = useState(false);
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://localhost:7262/Clients/image/${user.id}`)
-  //     .then((resp) => {
-  //       if (resp.status === 200) setProfile(true);
-  //     })
-  //     .catch((err) => err);
-  // });
+  const [profile, setProfile] = useState(false);
+  useEffect(() => {
+    axios
+      .get(`https://localhost:7262/Clients/image/${user.id}`)
+      .then((resp) => {
+        if (resp.status === 200) setProfile(true);
+      })
+      .catch((err) => err);
+  }, []);
+
   return (
     <div
       className="relative w-full min-h-15 flex py-2 mt-1 hover:bg-slate-100 duration-150 ease-linear cursor-pointer"
       onClick={() => {
-        setOpenChat(user);
+        setOpenChat({ ...user, profile: profile });
+        // setGroup(undefined);
         connection.invoke("SendSeen", userId, user.id);
         setMessage({ ...message, receiverId: user.id });
         setFilteredMessages(filterMessages(user));
@@ -61,24 +65,23 @@ const User = ({
       }}
       key={user.id}
     >
-      {/* {profile ? (
+      {profile ? (
         <img
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full object-cover"
           src={`https://localhost:7262/Clients/image/${user.id}`}
         />
-      ) : ( */}
-      <FontAwesomeIcon
-        icon={faUser}
-        className="w-4 h-4 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
-      />
-      {/* )} */}
+      ) : (
+        <FontAwesomeIcon
+          icon={faUser}
+          className="w-4 h-4 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-3 rounded-full cursor-pointer"
+        />
+      )}
       {active && (
         <div className="absolute bottom-3 left-7 h-3.5 w-3.5 rounded-full bg-green-400"></div>
       )}
       <div className="w-full relative flex flex-col items-start left-3">
         <p
           className={`${
-            !searching &&
             user.lastMessage !== undefined &&
             user.lastMessage.receiverId !== undefined &&
             userId === user.lastMessage.receiverId &&
@@ -91,8 +94,7 @@ const User = ({
         <div className="w-full flex items-center justify-between">
           <p
             className={`relative flex text-sm ${
-              (!searching &&
-                user.lastMessage !== undefined &&
+              (user.lastMessage !== undefined &&
                 user.lastMessage.receiverId !== undefined &&
                 (user.lastMessage.seen === "0001-01-01T00:00:00" ||
                   user.lastMessage.seen === undefined) &&
@@ -115,7 +117,7 @@ const User = ({
                   : user.lastMessage.messageText.substring(0, 20) + "..."
                 : ""
               : !typing.includes(user.id) &&
-                !searching &&
+                user.unSeenMessages !== undefined &&
                 user.unSeenMessages + " new messages"}
           </p>
           <p className="relative text-sm text-slate-500 right-10">

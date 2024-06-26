@@ -19,7 +19,7 @@ public class OrdersController : Controller
     }
 
     // GET: Orders
-    [HttpGet]
+    [HttpGet, Authorize(Policy = "Admin")]
     public async Task<ActionResult<OrderDTO>> GetOrders()
     {
         var ordersDb = await context.Orders.ToArrayAsync();
@@ -44,30 +44,52 @@ public class OrdersController : Controller
         return Ok(new { newOrders, total});
     }
 
-    [HttpGet("categories"), Authorize(Policy = "Admin")]
-    public async Task<ActionResult<double>> GetTotalCategories()
+    [HttpGet("{id}"), Authorize(Policy = "User")]
+    public async Task<ActionResult<OrderDTO>> GetUsersOrders(int id)
     {
+        var ordersDb = await context.Orders.Where(o => o.ClientID == id).ToArrayAsync();
         var products = await context.Products.ToArrayAsync();
-        var categories = await context.Categories.ToArrayAsync();
-        var orderDetails = await context.OrderDetails.ToArrayAsync();
-        var orders = new CategoryTotalDTO[categories.Length];
-        for (int i = 0; i < categories.Length; i++)
+        var orders = new OrderDTO[ordersDb.Length];
+        List<int> productsPurchased = [];
+        for (int i = 0; i < ordersDb.Length; i++)
         {
-            orders[i] = new CategoryTotalDTO
+            orders[i] = new OrderDTO
             {
-                Category = categories[i],
+                Order = ordersDb[i],
+                OrderDetails = await context.OrderDetails.Where(o => o.OrderID == ordersDb[i].OrderID).ToArrayAsync(),
             };
             var sum = 0.0;
-            for (int j = 0; j < orderDetails.Length; j++)
+            for (int j = 0; j < orders[i].OrderDetails.Length; j++)
             {
-                var pr = context.Products.FirstOrDefault(p => p.Id == orderDetails[i].ProductID && p.CategoryName == categories[i].CategoryName);
+                var pr = context.Products.FirstOrDefault(p => p.Id == orders[i].OrderDetails[j].ProductID);
                 if(pr != null)
-                    sum += (double)pr.Price * orderDetails[i].Quantity;
+                {
+                sum += (double)pr.Price * orders[i].OrderDetails[j].Quantity;
+                if (!productsPurchased.Contains(pr.Id))
+                    productsPurchased.Add(pr.Id);
+                }
             }
             orders[i].Total = sum;
         }
-        var newOrders = orders.OrderBy(c => c.Category.CategoryName);
-        return Ok(newOrders);
+        var newOrders = orders.GroupBy(o => o.Order.SetDate.ToString("MMMM"));
+        var total = orders.Sum(o => o.Total);
+        var newProducts = new Product[productsPurchased.Count];
+        for(int i = 0; i<productsPurchased.Count; i++)
+        {
+            var pr = context.Products.FirstOrDefault(p => p.Id == productsPurchased.ElementAt(i));
+            newProducts[i] = pr;
+        }
+        //var totalPrCount = orders.Sum(o => o.ProductCount);
+        return Ok(new { newOrders, total, newProducts });
+    }
+
+    [HttpGet("categories"), Authorize(Policy = "Admin")]
+    public async Task<ActionResult<double>> GetTotalCategories()
+    {
+        var prOdTotal = context.Products.Join(context.OrderDetails, product => product.Id, od => od.ProductID, (product, od) => new { Product = product.Id, CategoryName = product.CategoryName, Total = product.Price * od.Quantity });
+        var prTotal = prOdTotal.GroupBy(p => new { p.Product, p.CategoryName }).Select(p => new { CategoryName = p.Key.CategoryName, Total = p.Sum(p => p.Total) });
+        var categoriesTotal = prTotal.GroupBy(p => p.CategoryName).Select(c => new {CategoryName = c.Key, Total = c.Sum(c => c.Total)});
+        return Ok(categoriesTotal);
     }
 
     // GET: Order by ID

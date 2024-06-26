@@ -39,13 +39,22 @@ const Tables = ({
     price: "",
     image: "",
   });
-  const [editData, setEditData] = useState({
-    id: "",
-    name: "",
-    category: "",
-    price: "",
-    image: "",
-  });
+  const [editData, setEditData] = useState(
+    type === "Products"
+      ? {
+          id: "",
+          name: "",
+          category: "",
+          price: "",
+          image: "",
+        }
+      : {
+          fullName: "",
+          role: "",
+          email: "",
+          image: "",
+        }
+  );
   const [deleteId, setDeleteId] = useState("");
   const [categories, setCategories] = useState([]);
 
@@ -59,16 +68,29 @@ const Tables = ({
 
   const filterByCategory = (category) => {
     setCategory(category);
-    if (category !== "All Categories") {
+    if (
+      (type === "Products" && category !== "All Categories") ||
+      (type === "Clients" && category !== "All Roles")
+    ) {
       let filtered;
       if (search === "") {
-        filtered = data.filter((data) => data.categoryName === category);
+        if (type === "Products")
+          filtered = data.filter((data) => data.categoryName === category);
+        else filtered = data.filter((data) => data.role === category);
       } else {
-        filtered = data.filter(
-          (data) =>
-            data.categoryName === category &&
-            data.name.toLowerCase().includes(search)
-        );
+        if (type === "Products")
+          filtered = data.filter(
+            (data) =>
+              data.categoryName === category &&
+              data.name.toLowerCase().includes(search)
+          );
+        else {
+          filtered = data.filter(
+            (data) =>
+              data.role === category &&
+              data.fullName.toLowerCase().includes(search)
+          );
+        }
       }
       setEmptyResults(filtered.length === 0);
       setDataFilter(filtered);
@@ -77,22 +99,37 @@ const Tables = ({
       if (search === "") {
         setDataFilter(data);
       } else {
-        let filtered = data.filter((d) =>
-          d.name.toLowerCase().includes(search)
-        );
-        setDataFilter(filtered);
+        if (type === "Products") {
+          let filtered = data.filter((d) =>
+            d.name.toLowerCase().includes(search)
+          );
+          setDataFilter(filtered);
+        } else {
+          let filtered = data.filter((d) =>
+            d.fullName.toLowerCase().includes(search)
+          );
+          setDataFilter(filtered);
+        }
       }
     }
   };
 
   useEffect(() => {
-    const response = axios
-      .get("https://localhost:7262/Categories", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((resp) => setCategories(resp.data));
+    if (type === "Products") {
+      axios
+        .get("https://localhost:7262/Categories", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((resp) => setCategories(resp.data));
+    } else {
+      setCategories([
+        { categoryName: "Admin" },
+        { categoryName: "User" },
+        { categoryName: "Staff" },
+      ]);
+    }
   }, []);
 
   //Modal Handling
@@ -130,10 +167,14 @@ const Tables = ({
       prd = prd.sort((a, b) => a.id - b.id);
       break;
     case "name-asc":
-      prd = prd.sort((a, b) => a.name.localeCompare(b.name));
+      if (type === "Products")
+        prd = prd.sort((a, b) => a.name.localeCompare(b.name));
+      else prd = prd.sort((a, b) => a.fullName.localeCompare(b.fullName));
       break;
     case "name-desc":
-      prd = prd.sort((a, b) => b.name.localeCompare(a.name));
+      if (type === "Products")
+        prd = prd.sort((a, b) => b.name.localeCompare(a.name));
+      else prd = prd.sort((a, b) => b.fullName.localeCompare(a.fullName));
       break;
     case "categoryName-asc":
       prd = prd.sort((a, b) => a.categoryName.localeCompare(b.categoryName));
@@ -142,39 +183,42 @@ const Tables = ({
       prd = prd.sort((a, b) => b.categoryName.localeCompare(a.categoryName));
       break;
     case "price-asc":
-      prd = prd.sort((a, b) => a.price - b.price);
+      if (type === "Products") prd = prd.sort((a, b) => a.price - b.price);
+      else prd = prd.sort((a, b) => a.email.localeCompare(b.email));
       break;
     case "price-desc":
-      prd = prd.sort((a, b) => b.price - a.price);
+      if (type === "Products") prd = prd.sort((a, b) => b.price - a.price);
+      else prd = prd.sort((a, b) => b.email.localeCompare(a.email));
       break;
   }
-  console.log(prd);
 
   return (
     <div className="w-full relative min-h-125 shadow-2 bg-white flex flex-col">
       <div className="w-full flex items-center justify-between bg-white py-4 px-8 sm:px-4">
         <h1 className="text-xl font-semibold">Top {type}</h1>
-        <button
-          className="w-35 md:w-25 h-10 flex items-center justify-center gap-2 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white"
-          onClick={() => {
-            openModal();
-            setEditData({
-              id: "",
-              name: "",
-              category: "",
-              price: "",
-              image: "",
-            });
-            setModalAction("POST");
-          }}
-        >
-          <FontAwesomeIcon icon={faPlus} /> Add{" "}
-          <p className="md:hidden">
-            {type !== "Categories"
-              ? type.substring(0, type.length - 1)
-              : "Category"}
-          </p>
-        </button>
+        {type !== "Clients" && (
+          <button
+            className="w-35 md:w-25 h-10 flex items-center justify-center gap-2 rounded-md font-medium bg-blue-600 hover:bg-blue-500 duration-150 ease-linear text-white"
+            onClick={() => {
+              openModal();
+              setEditData({
+                id: "",
+                name: "",
+                category: "",
+                price: "",
+                image: "",
+              });
+              setModalAction("POST");
+            }}
+          >
+            <FontAwesomeIcon icon={faPlus} /> Add{" "}
+            <p className="md:hidden">
+              {type !== "Categories"
+                ? type.substring(0, type.length - 1)
+                : "Category"}
+            </p>
+          </button>
+        )}
       </div>
       <span className="w-full h-[1px] bg-slate-200"></span>
       <div className="w-full py-6 px-8 sm:px-4 flex items-center justify-between bg-white gap-4">
@@ -206,7 +250,11 @@ const Tables = ({
           />
         </p>
         {type !== "Categories" && (
-          <div className="w-1/4 relative flex items-center">
+          <div
+            className={`${
+              type === "Products" ? "w-1/4" : "w-1/6"
+            } relative flex items-center`}
+          >
             <select
               className="w-35 relative md:hidden text-slate-500 font-medium select-none hover:text-slate-700 duration-150 ease-linear cursor-pointer focus:outline-1"
               id="category"
@@ -215,7 +263,9 @@ const Tables = ({
               }}
               required
             >
-              <option>All Categories</option>
+              <option>
+                {type === "Products" ? "All Categories" : "All Roles"}
+              </option>
               {categories.map((category) => {
                 return (
                   <option
@@ -243,7 +293,7 @@ const Tables = ({
               setSort(sortType);
             }}
           >
-            Price{" "}
+            {type === "Products" ? "Price " : "Email"}
             <FontAwesomeIcon
               icon={sort == "price-asc" ? faArrowDown19 : faArrowDown91}
               className="relative w-5 h-5 left-5"
@@ -271,12 +321,21 @@ const Tables = ({
             <Element
               type={type}
               key={type !== "Categories" ? product.id : product.categoryName}
-              role={user.role}
+              admin={user.role}
               id={product.id}
               image={product.image}
-              name={type !== "Categories" ? product.name : product.categoryName}
-              category={product.categoryName}
+              name={
+                type !== "Categories"
+                  ? type === "Products"
+                    ? product.name
+                    : product.fullName
+                  : product.categoryName
+              }
+              category={
+                type === "Products" ? product.categoryName : product.role
+              }
               price={product.price}
+              email={product.email}
               openModal={openModal}
               setModalAction={setModalAction}
               setEditData={setEditData}
@@ -287,6 +346,7 @@ const Tables = ({
       )}
       {type !== "Categories" ? (
         <Modal
+          type={type}
           action={modalAction}
           token={token}
           setToken={setToken}
@@ -295,6 +355,8 @@ const Tables = ({
           modalVisible={modalVisible}
           elements={data}
           setElements={setData}
+          elementsFilter={dataFilter}
+          setElementsFilter={setDataFilter}
           postData={postData}
           setPostData={setPostData}
           editData={editData}
@@ -305,11 +367,14 @@ const Tables = ({
         <CategoryModal
           action={modalAction}
           token={token}
+          setToken={setToken}
           user={user}
           closeModal={closeModal}
           modalVisible={modalVisible}
           elements={data}
           setElements={setData}
+          elementsFilter={dataFilter}
+          setElementsFilter={setDataFilter}
           postData={postData}
           setPostData={setPostData}
           editData={editData}

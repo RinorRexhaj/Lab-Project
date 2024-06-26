@@ -13,6 +13,8 @@ const Message = ({
   sent,
   prevSent,
   created,
+  edited,
+  deleted,
   seen,
   last,
   userId,
@@ -53,7 +55,9 @@ const Message = ({
     12: "Dec",
   };
   const [edit, setEdit] = useState(false);
+  const [editedM, setEdited] = useState(edited);
   const [del, setDel] = useState(false);
+  const [deletedM, setDeleted] = useState(deleted);
   const [editedMessage, setEditedMessage] = useState("");
 
   const handleSubmit = (e) => {
@@ -63,7 +67,7 @@ const Message = ({
   };
 
   const editMessage = async () => {
-    const response = await axios
+    await axios
       .patch(
         "https://localhost:7262/Messages",
         {
@@ -81,7 +85,6 @@ const Message = ({
         }
       )
       .then((resp) => {
-        console.log(resp.data);
         setMessages(
           messages.map((m) => {
             if (m.id === id)
@@ -100,18 +103,22 @@ const Message = ({
           )
           .catch((err) => console.err(err));
       });
+    setEdited(true);
     setEdit(false);
   };
 
   const deleteMessage = async () => {
-    const response = await axios
+    await axios
       .delete(`https://localhost:7262/Messages/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((resp) => {
-        setMessages(messages.filter((m) => m.id !== resp.data.id));
+        setDeleted(true);
+        setTimeout(() => {
+          setMessages(messages.filter((m) => m.id !== resp.data.id));
+        }, 300);
         connection
           .invoke(
             "DeleteMessage",
@@ -130,11 +137,17 @@ const Message = ({
         sender === userId
           ? "bg-slate-300 text-slate-800 -right-27 "
           : "bg-blue-500 text-white left-0"
-      }  font-medium rounded-md p-2 ${created === true && "animate-fade"} ${
-        !consequent ? (diff ? "mt-5" : "mt-2") : !diff ? "" : "mt-5"
-      } ${!dateDiff ? "mt-17" : ""} ${margin ? "-top-12" : ""} ${
-        last && userId === sender ? "mb-4" : ""
-      }`}
+      }  font-medium rounded-md p-2 ${created && "animate-fade"} ${
+        sender === userId
+          ? editedM && "animate-shake"
+          : edited && "animate-shake"
+      } ${
+        sender === userId
+          ? deletedM && "animate-fadeOut"
+          : deleted && "animate-fadeOut"
+      } ${!consequent ? (diff ? "mt-5" : "mt-2") : !diff ? "" : "mt-5"} ${
+        !dateDiff && "mt-16"
+      } ${margin && "-top-12"} ${last && userId === sender ? "mb-4" : ""}`}
       onMouseEnter={() => setHover(id)}
       onMouseLeave={() => {
         setHover(0);
@@ -216,6 +229,12 @@ const Message = ({
             : "Seen " + timeAgo.format(new Date(seen), "mini-now")}
         </p>
       )}
+      {/* {sender !== userId && diff && (
+        <img
+          className="absolute -left-7 top-4 w-6 h-6 rounded-full"
+          src={`https://localhost:7262/Clients/image/${sender}`}
+        />
+      )} */}
     </div>
   );
 };

@@ -5,6 +5,7 @@ using Lab_Project.Server.Models;
 using Lab_Project.Server.Services.Token;
 using Lab_Project.Server.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using System.Web;
 using static Lab_Project.Server.Services.Token.TokenService;
 
 namespace Lab_Project.Server.Controllers;
@@ -27,13 +28,9 @@ public class AuthController : ControllerBase
     public async Task<ActionResult<Client>> PostClient(Client client)
     {
         if (client.FullName == null || client.FullName.Length == 0 || client.Email == null || client.Email.Length == 0 || client.Password == null || client.Password.Length < 8)
-        {
             return BadRequest("Wrong Parameters");
-        }
         else if (ClientExists(client.Email))
-        {
             return BadRequest("Client Exists");
-        }
         if (client.Role == null || client.Role.Length == 0) client.Role = "User";
         await context.Clients.AddAsync(client);
         await context.SaveChangesAsync();
@@ -49,36 +46,27 @@ public class AuthController : ControllerBase
     public async Task<ActionResult> LoginClient(ClientDTO client)
     {
         if (client.Email == null || client.Email.Length == 0 || client.Password == null || client.Password.Length < 8)
-        {
             return BadRequest("Wrong Parameters");
-        }
-        else
+        var clientAccount = context.Clients.FirstOrDefault(c => c.Email == client.Email);
+        if (clientAccount == null || clientAccount.Email != client.Email)
+            return NotFound("Account doesn't exist");
+        if (clientAccount.Password != client.Password)
+            return BadRequest("Wrong Password");
+        string token = tokenService.CreateToken(clientAccount);
+        RefreshToken? refresh = await context.RefreshTokens.FirstOrDefaultAsync(r => r.ClientId == clientAccount.Id);
+        if (refresh == null)
         {
-            var clientAccount = context.Clients.FirstOrDefault(c => c.Email == client.Email);
-            if (clientAccount != null && clientAccount.Email == client.Email)
-            {
-                if (clientAccount.Password == client.Password)
-                {
-                    string token = tokenService.CreateToken(clientAccount);
-                    RefreshToken? refresh = await context.RefreshTokens.FirstOrDefaultAsync(r => r.ClientId == clientAccount.Id);
-                    if (refresh == null)
-                    {
-                        refresh = tokenService.CreateRefreshToken(clientAccount);
-                        await context.RefreshTokens.AddAsync(refresh);
-                    }
-                    else if (!ValidToken(refresh.Expires))
-                    {
-                        var newRefresh = tokenService.CreateRefreshToken(clientAccount);
-                        refresh.Token = newRefresh.Token;
-                        refresh.Expires = newRefresh.Expires;
-                    }
-                    await context.SaveChangesAsync();
-                    return Ok(new { clientAccount.Id, clientAccount.FullName, clientAccount.Email, clientAccount.Role, token, refreshToken = refresh.Token.ToString() });
-                }
-                else return BadRequest("Wrong Password");
-            }
-            else return NotFound("Account doesn't exist");
+            refresh = tokenService.CreateRefreshToken(clientAccount);
+            await context.RefreshTokens.AddAsync(refresh);
         }
+        else if (!ValidToken(refresh.Expires))
+        {
+            var newRefresh = tokenService.CreateRefreshToken(clientAccount);
+            refresh.Token = newRefresh.Token;
+            refresh.Expires = newRefresh.Expires;
+        }
+        await context.SaveChangesAsync();
+        return Ok(new { clientAccount.Id, clientAccount.FullName, clientAccount.Email, clientAccount.Role, clientAccount.Phone, clientAccount.Address, token, refreshToken = refresh.Token.ToString() });
     }
 
     //Log Out
@@ -107,7 +95,7 @@ public class AuthController : ControllerBase
         }
         await context.SaveChangesAsync();
         string newToken = tokenService.CreateToken(client);
-        return Ok(new { refresh = refreshToken.Token, newToken, client.Id, client.FullName, client.Email, client.Role });
+        return Ok(new { refresh = refreshToken.Token, newToken, client.Id, client.FullName, client.Email, client.Phone, client.Address, client.Role });
     }
 
     private bool ClientExists(string email)

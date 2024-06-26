@@ -1,19 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleDown,
   faCircleCheck,
   faPenToSquare,
   faPlus,
   faRightFromBracket,
-  faSpinner,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { HubConnectionBuilder } from "@microsoft/signalr";
+import { useNavigate } from "react-router-dom";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 
 const Modal = ({
+  type,
   action,
   token,
   setToken,
@@ -21,6 +20,10 @@ const Modal = ({
   setUser,
   setSession,
   modalVisible,
+  elements,
+  setElements,
+  elementsFilter,
+  setElementsFilter,
   closeModal,
   postData,
   setPostData,
@@ -38,13 +41,20 @@ const Modal = ({
 
   useEffect(() => {
     if (action !== "LOG-OUT") {
-      const response = axios
-        .get("https://localhost:7262/Categories", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((resp) => setCategories(resp.data));
+      if (type === "Products") {
+        const response = axios
+          .get("https://localhost:7262/Categories", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((resp) => setCategories(resp.data));
+      } else
+        setCategories([
+          { categoryName: "Admin" },
+          { categoryName: "User" },
+          { categoryName: "Staff" },
+        ]);
     }
   }, []);
 
@@ -58,16 +68,28 @@ const Modal = ({
       setCategoryError("Invalid Category!");
       return false;
     }
-    let status;
-    const repsonse = await axios
-      .post(`https://localhost:7262/Products`, {
+    let status, post;
+    if (type === "Products") {
+      post = {
         id: postData.id,
         name: postData.name,
         categoryName: postData.category,
         price: postData.price,
+      };
+    }
+    const repsonse = await axios
+      .post(`https://localhost:7262/${type}`, post, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((resp) => {
         if (resp.status === 200) status = true;
+        setTimeout(() => {
+          setElements([...elements, resp.data]);
+          if (elementsFilter.length > 0)
+            setElementsFilter([resp.data, ...elementsFilter]);
+        }, 200);
       })
       .catch((err) => {
         // console.log(err);
@@ -75,32 +97,51 @@ const Modal = ({
         status = false;
       });
     return status;
-    // setElements([...elements, data]);
   };
 
   const editProduct = async () => {
-    const { data } = await axios.patch(
-      `https://localhost:7262/Products`,
-      editData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+    let edit;
+    if (type === "Clients") {
+      edit = {
+        id: editData.id,
+        fullName: editData.name,
+        role: editData.categoryName,
+        email: editData.email,
+      };
+    } else edit = editData;
+    console.log(edit);
+    const { data } = await axios.patch(`https://localhost:7262/${type}`, edit, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setElements(
+      elements.map((el) => {
+        if (el.id === data.id) return data;
+        else return el;
+      })
     );
-    // setElements([...elements.filter(el => el.id !== data.id), {...data, }]);
-    // setElements([...data, editedElement]);
+    if (elementsFilter.length > 0)
+      setElementsFilter(
+        elementsFilter.map((el) => {
+          if (el.id === data.id) return data;
+          else return el;
+        })
+      );
   };
 
   const deleteProduct = async () => {
     const { data } = await axios.delete(
-      `https://localhost:7262/Products/${deleteId}`,
+      `https://localhost:7262/${type}/${deleteId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
+    setElements(elements.filter((el) => el.id !== deleteId));
+    if (elementsFilter.length > 0)
+      setElementsFilter(elementsFilter.filter((el) => el.id !== deleteId));
   };
 
   const signOut = async () => {
@@ -112,7 +153,6 @@ const Modal = ({
     await connection
       .start()
       .then(() => {
-        console.log(user.id);
         connection.invoke("Disconnect", user.id);
       })
       .catch((err) => console.log(err));
@@ -174,17 +214,24 @@ const Modal = ({
     )
       return false;
     else {
-      await axios.post(
-        `https://localhost:7262/Products/image/${
-          action === "POST" ? postData.id : editData.id
-        }`,
-        { image: productImage },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      await axios
+        .post(
+          `https://localhost:7262/${type}/image/${
+            action === "POST" ? postData.id : editData.id
+          }`,
+          { image: productImage },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+      setElements([...elements]);
+      setProductImage();
       return true;
     }
   };
@@ -200,7 +247,6 @@ const Modal = ({
       return;
     else if (action === "POST") {
       const posted = await postProduct();
-      console.log(posted);
       if (posted) {
         if (await handleFileUpload());
         else return;
@@ -213,7 +259,6 @@ const Modal = ({
     setTimeout(() => {
       closeModal();
       setActionDone(false);
-      navigate(0);
     }, 1000);
   };
 
@@ -229,10 +274,12 @@ const Modal = ({
             {!actionDone
               ? action === "LOG-OUT"
                 ? "Log Out"
-                : `${action[0] + action.slice(1).toLowerCase()} Your Product`
+                : `${
+                    action[0] + action.slice(1).toLowerCase()
+                  } Your ${type.substring(0, type.length - 1)}`
               : action === "LOG-OUT"
               ? ""
-              : `Your product was ${
+              : `Your ${type.substring(0, type.length - 1)} was ${
                   action !== "DELETE"
                     ? action[0] + action.slice(1).toLowerCase() + "ed"
                     : action[0] + action.slice(1).toLowerCase() + "d"
@@ -267,33 +314,35 @@ const Modal = ({
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             {action !== "DELETE" && action !== "LOG-OUT" && (
               <>
-                <div className="relative flex items-center justify-between ">
-                  <label
-                    htmlFor="id"
-                    className="text-lg font-bold text-slate-600"
-                  >
-                    ID
-                  </label>
-                  <input
-                    type="text"
-                    className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
-                    id="id"
-                    placeholder="Product ID..."
-                    defaultValue={action === "EDIT" ? editData.id : ""}
-                    readOnly={action === "EDIT" ? true : false}
-                    onChange={(e) => {
-                      handleErrors(e);
-                      if (action === "POST")
-                        setPostData({ ...postData, id: e.target.value });
-                      else if (action === "EDIT")
-                        setEditData({ ...editData, id: e.target.value });
-                    }}
-                    required
-                  />
-                  <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
-                    {idError}
+                {type === "Products" && (
+                  <div className="relative flex items-center justify-between ">
+                    <label
+                      htmlFor="id"
+                      className="text-lg font-bold text-slate-600"
+                    >
+                      ID
+                    </label>
+                    <input
+                      type="text"
+                      className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
+                      id="id"
+                      placeholder="Product ID..."
+                      defaultValue={action === "EDIT" ? editData.id : ""}
+                      readOnly={action === "EDIT" ? true : false}
+                      onChange={(e) => {
+                        handleErrors(e);
+                        if (action === "POST")
+                          setPostData({ ...postData, id: e.target.value });
+                        else if (action === "EDIT")
+                          setEditData({ ...editData, id: e.target.value });
+                      }}
+                      required
+                    />
+                    <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
+                      {idError}
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="name"
@@ -305,7 +354,10 @@ const Modal = ({
                     type="text"
                     className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
                     id="name"
-                    placeholder="Product name..."
+                    placeholder={`${type.substring(
+                      0,
+                      type.length - 1
+                    )} name...`}
                     defaultValue={action === "EDIT" ? editData.name : ""}
                     onChange={(e) => {
                       handleErrors(e);
@@ -322,7 +374,7 @@ const Modal = ({
                     htmlFor="category"
                     className="text-lg font-bold text-slate-600"
                   >
-                    Category
+                    {type === "Products" ? "Category" : "Role"}
                   </label>
                   <select
                     className="w-60 md:w-40 bg-blue-50 border border-slate-200 text-gray-700  rounded focus:ring-blue-500 focus:border-blue-500 py-2 px-3 cursor-pointer"
@@ -346,7 +398,9 @@ const Modal = ({
                     }}
                     required
                   >
-                    <option>Choose a category</option>
+                    <option>
+                      Choose a {type === "Products" ? "category" : "role"}
+                    </option>
                     {categories.map((category) => {
                       return (
                         <option
@@ -362,32 +416,62 @@ const Modal = ({
                     {categoryError}
                   </div>
                 </div>
-                <div className="relative flex items-center justify-between">
-                  <label
-                    htmlFor="price"
-                    className="text-lg font-bold text-slate-600"
-                  >
-                    Price
-                  </label>
-                  <input
-                    type="text"
-                    className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
-                    id="price"
-                    placeholder="Product Price..."
-                    defaultValue={editData.price}
-                    onChange={(e) => {
-                      handleErrors(e);
-                      if (action === "POST")
-                        setPostData({ ...postData, price: e.target.value });
-                      else if (action === "EDIT")
-                        setEditData({ ...editData, price: e.target.value });
-                    }}
-                    required
-                  />
-                  <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
-                    {priceError}
+                {type === "Products" && (
+                  <div className="relative flex items-center justify-between">
+                    <label
+                      htmlFor="price"
+                      className="text-lg font-bold text-slate-600"
+                    >
+                      Price
+                    </label>
+                    <input
+                      type="text"
+                      className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
+                      id="price"
+                      placeholder="Product Price..."
+                      defaultValue={editData.price}
+                      onChange={(e) => {
+                        handleErrors(e);
+                        if (action === "POST")
+                          setPostData({ ...postData, price: e.target.value });
+                        else if (action === "EDIT")
+                          setEditData({ ...editData, price: e.target.value });
+                      }}
+                      required
+                    />
+                    <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
+                      {priceError}
+                    </div>
                   </div>
-                </div>
+                )}
+                {type === "Clients" && (
+                  <div className="relative flex items-center justify-between">
+                    <label
+                      htmlFor="email"
+                      className="text-lg font-bold text-slate-600"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="w-60 md:w-40 appearance-none rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-blue-500 focus:shadow-outline bg-blue-50 border  border-slate-200"
+                      id="email"
+                      placeholder="Client Email..."
+                      defaultValue={editData.email}
+                      onChange={(e) => {
+                        handleErrors(e);
+                        if (action === "POST")
+                          setPostData({ ...postData, email: e.target.value });
+                        else if (action === "EDIT")
+                          setEditData({ ...editData, email: e.target.value });
+                      }}
+                      readOnly
+                    />
+                    <div className="h-1 absolute bottom-0 left-25 text-red-500 font-medium text-md">
+                      {priceError}
+                    </div>
+                  </div>
+                )}
                 <div className="relative flex items-center justify-between">
                   <label className=" text-lg font-bold text-slate-600">
                     Image

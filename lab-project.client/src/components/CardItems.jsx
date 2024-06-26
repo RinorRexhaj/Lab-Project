@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const CardItems = ({ token, total }) => {
+const CardItems = ({ token, role, userId, total, productsCount }) => {
   const [users, setUsers] = useState(0);
   const [products, setProducts] = useState(0);
   const [views, setViews] = useState(0);
@@ -20,33 +20,47 @@ const CardItems = ({ token, total }) => {
   });
 
   useEffect(() => {
-    const viewsResponse = axios
-      .get("https://localhost:7262/Clients/active", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((resp) => {
-        setViews(resp.data);
-      });
-    const productResponse = axios
-      .get("https://localhost:7262/Products/count", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((resp) => {
-        setProducts(resp.data);
-      });
-    const clientResponse = axios
-      .get("https://localhost:7262/Clients/count", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((resp) => {
-        setUsers(resp.data);
-      });
+    if (role === "Admin") {
+      axios
+        .get("https://localhost:7262/Clients/active", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          setViews(resp.data);
+        });
+      axios
+        .get("https://localhost:7262/Products/count", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          setProducts(resp.data);
+        });
+      axios
+        .get("https://localhost:7262/Clients/count", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          setUsers(resp.data);
+        });
+    } else if (role === "User" || role === "Staff") {
+      axios
+        .get(`https://localhost:7262/Messages/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((resp) => {
+          console.log();
+          setViews(resp.data.length);
+          setUsers(resp.data.length);
+        });
+    }
   }, []);
 
   return (
@@ -60,7 +74,9 @@ const CardItems = ({ token, total }) => {
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
             <h4 className="text-lg font-semibold">{views}</h4>
-            <p className="text-slate-500 font-medium">Active Users</p>
+            <p className="text-slate-500 font-medium">
+              {role === "Admin" ? "Active Users" : "Profile Views"}
+            </p>
           </div>
           <p className="text-green-500 text-sm font-medium">
             0.43% <FontAwesomeIcon icon={faArrowUp} />
@@ -75,7 +91,9 @@ const CardItems = ({ token, total }) => {
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
             <h4 className="text-lg font-semibold">{euro.format(total)}</h4>
-            <p className="text-slate-500 font-medium">Total Profit</p>
+            <p className="text-slate-500 font-medium">
+              {role === "Admin" ? "Total Profit" : "Amount Spent"}
+            </p>
           </div>
           <p className="text-green-500 text-sm font-medium">
             4.35% <FontAwesomeIcon icon={faArrowUp} />
@@ -89,8 +107,12 @@ const CardItems = ({ token, total }) => {
         />
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
-            <h4 className="text-lg font-semibold">{products}</h4>
-            <p className="text-slate-500 font-medium">Total Product</p>
+            <h4 className="text-lg font-semibold">
+              {role === "Admin" ? products : productsCount}
+            </h4>
+            <p className="text-slate-500 font-medium">
+              {role === "Admin" ? "Total Products" : "Products Purchased"}
+            </p>
           </div>
           <p className="text-green-500 text-sm font-medium">
             2.59% <FontAwesomeIcon icon={faArrowUp} />
@@ -105,7 +127,9 @@ const CardItems = ({ token, total }) => {
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
             <h4 className="text-lg font-semibold">{users}</h4>
-            <p className="text-slate-500 font-medium">Total Users</p>
+            <p className="text-slate-500 font-medium">
+              {role === "Admin" ? "Total Users" : "Users Messaged"}
+            </p>
           </div>
           <p className="text-blue-500 text-sm font-medium">
             0.95% <FontAwesomeIcon icon={faArrowDown} />

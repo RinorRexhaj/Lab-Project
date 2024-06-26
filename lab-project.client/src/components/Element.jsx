@@ -5,10 +5,11 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 const Element = ({
   type,
   id,
-  role,
+  admin,
   name,
   category,
   price,
+  email,
   openModal,
   setModalAction,
   setEditData,
@@ -21,37 +22,50 @@ const Element = ({
           <ProductImage
             src={`https://localhost:7262/${type}/image/` + id}
             alt={name}
+            type={type}
           />
         )}
         <p className="text-balance">{name}</p>
       </div>
       {type !== "Categories" && (
         <>
-          <div className="w-1/4 md:hidden text-black  text-sm font-medium">
+          <div
+            className={`${
+              type === "Products" ? "w-1/4" : "w-1/6"
+            } md:hidden text-black  text-sm font-medium`}
+          >
             {category}
           </div>
           <div className="w-1/6 text-black text-sm font-medium">
             <p className="font-bold">
-              {type === "Products"
-                ? `Price: $${price}`
-                : `Visits: ${name.length}`}
+              {type === "Products" ? `Price: $${price}` : `${email}`}
             </p>
           </div>
         </>
       )}
-      {role === "Admin" && (
+      {admin === "Admin" && (
         <div className="w-1/4 flex items-center gap-4  md:gap-2">
           <button
             className="h-10 p-2 flex items-center gap-2 rounded-md font-medium sm:text-sm bg-blue-500 hover:bg-blue-600 duration-150 ease-linear text-white"
             onClick={() => {
               openModal();
-              setEditData({
-                id: id,
-                name: name,
-                categoryName: category,
-                price: price,
-                image: `https://localhost:7262/${type}/image/` + id,
-              });
+              setEditData(
+                type === "Products"
+                  ? {
+                      id: id,
+                      name: name,
+                      categoryName: category,
+                      price: price,
+                      image: `https://localhost:7262/${type}/image/` + id,
+                    }
+                  : {
+                      id: id,
+                      name: name,
+                      categoryName: category,
+                      email: email,
+                      image: `https://localhost:7262/${type}/image/` + id,
+                    }
+              );
               setModalAction("EDIT");
             }}
           >
@@ -61,7 +75,7 @@ const Element = ({
             className="h-10 p-2 flex items-center gap-2 rounded-md font-medium  sm:text-sm bg-red-500 hover:bg-red-600 duration-150 ease-linear text-white"
             onClick={() => {
               if (type !== "Categories") setDeleteId(id);
-              else setEditData({ categoryName: category });
+              else setEditData({ categoryName: name });
               openModal();
               setModalAction("DELETE");
             }}

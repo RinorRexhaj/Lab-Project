@@ -31,7 +31,9 @@ const Searchbar = ({
   setDataFilter,
   setEmptyResults,
   category,
+  search,
   setSearch,
+  profileImage,
 }) => {
   const [menu, setMenu] = useState(false);
   const [chat, setChat] = useState(false);
@@ -57,27 +59,43 @@ const Searchbar = ({
   };
 
   const filterBySearch = (e) => {
-    const key = e.nativeEvent.data;
     const search = e.target.value.toLowerCase();
     setSearch(search);
-    let filteredProducts;
-    if (category !== "All Categories") {
-      filteredProducts = data.filter(
-        (product) =>
-          product.name.toLowerCase().includes(search) &&
-          product.categoryName === category
-      );
-    } else {
-      filteredProducts = data.filter((product) =>
-        product.name.toLowerCase().includes(search)
-      );
+    let filteredData = [];
+    let type = window.location.href.substring(23);
+    if (search !== "") {
+      if (type === "Products") {
+        if (category !== "All Categories") {
+          filteredData = data.filter(
+            (product) =>
+              product.name.toLowerCase().includes(search) &&
+              product.categoryName === category
+          );
+        } else {
+          filteredData = data.filter((product) =>
+            product.name.toLowerCase().includes(search)
+          );
+        }
+      } else {
+        if (category !== "All Roles") {
+          filteredData = data.filter(
+            (client) =>
+              client.fullName.toLowerCase().includes(search) &&
+              client.role === category
+          );
+        } else {
+          filteredData = data.filter((client) =>
+            client.fullName.toLowerCase().includes(search)
+          );
+        }
+      }
+      setEmptyResults(filteredData.length === 0);
+      setDataFilter(filteredData);
     }
-    setEmptyResults(filteredProducts.length === 0);
-    setDataFilter(filteredProducts);
   };
 
   useEffect(() => {
-    const response = axios
+    axios
       .get(`https://localhost:7262/Clients/image/${user.id}`)
       .then((resp) => {
         if (resp.status === 200) setProfile(true);
@@ -132,6 +150,7 @@ const Searchbar = ({
           type="text"
           placeholder="Type to search..."
           className={`outline-none p-3 w-7/12 border-b-2 border-slate-200 opacity-100`}
+          value={search}
           onChange={filterBySearch}
         />
       </div>
@@ -161,7 +180,7 @@ const Searchbar = ({
           ) : (
             <img
               src={`https://localhost:7262/Clients/image/${user.id}`}
-              className="w-11 h-11 rounded-full cursor-pointer border-blue-500 border-[2px]"
+              className="w-11 h-11 rounded-full object-cover cursor-pointer border-blue-500 border-[2px]"
             />
           )}
         </div>

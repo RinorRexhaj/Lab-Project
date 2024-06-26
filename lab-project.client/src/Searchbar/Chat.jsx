@@ -3,26 +3,39 @@ import {
   faAngleDown,
   faPaperPlane,
   faXmark,
+  faUser,
+  faPlus,
+  faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Message from "./Message";
+import Notification from "../components/Notification";
 import User from "./User";
-import { HubConnectionBuilder } from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 
-const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
+const Chat = ({
+  token,
+  chat,
+  setChat,
+  userId,
+  messageCount,
+  setMessageCount,
+}) => {
   const [users, setUsers] = useState([]);
   const [messages, setMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [unSeenMessages, setUnSeenMessages] = useState([]);
   const [openChat, setOpenChat] = useState({});
+  const [group, setGroup] = useState(undefined);
   const [hover, setHover] = useState(0);
   const [typing, setTyping] = useState([]);
   const [searching, setSearching] = useState(false);
   const [clients, setClients] = useState([]);
+  const [searchClients, setSearchClients] = useState([]);
   const [message, setMessage] = useState({
     senderId: userId,
     receiverId: openChat.id,
@@ -65,7 +78,6 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
           }
         });
         setUsers(data);
-
         setMessageCount(count);
       });
   };
@@ -93,9 +105,10 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
         if (client !== undefined) return { ...client };
         return c;
       });
-      setUsers(newClients);
+      setSearchClients(newClients);
     } else {
       setSearching(false);
+      setSearchClients([]);
       getUsers();
     }
   };
@@ -139,27 +152,15 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
           ...filteredMessages,
         ]);
         connection.invoke("SameChat", message.senderId, message.receiverId);
-        const newLast = users.map((user) => {
-          if (user.lastMessage.id == resp.data.id) return;
-          if (
-            (resp.data.senderId == user.lastMessage.senderId &&
-              resp.data.receiverId == user.lastMessage.receiverId) ||
-            (resp.data.receiverId == user.lastMessage.senderId &&
-              resp.data.senderId == user.lastMessage.receiverId)
-          ) {
-            return {
-              ...resp.data,
-              created: true,
-            };
-          } else return user.lastMessage;
-        });
-        setUsers(newLast);
+        setSearching(false);
+        setSearchClients([]);
       });
   };
 
   const startConnection = async () => {
     const connection = new HubConnectionBuilder()
       .withUrl("https://localhost:7262/chat", { withCredentials: false })
+      .configureLogging(LogLevel.None)
       .build();
     await connection
       .start()
@@ -186,20 +187,52 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
             ...filteredMessages,
           ]);
         }
+        const userName = clients.find((u) => u.id === msg.senderId).fullName;
+        if (userId === receiverId) {
+          document.title = `(${messageCount}) ${userName} sent you a message.`;
+          setTimeout(() => {
+            document.title = "Lab Project";
+          }, 5000);
+        }
         if (!chat) {
-          const userName = clients.find((u) => u.id === msg.senderId).fullName;
-          const notify = () =>
-            toast(
-              <p className="cursor-pointer text-black">
-                <b>{userName}:</b> {msg.messageText}
-              </p>,
-              {
-                progressStyle: { background: "#3b82f6" },
-                type: "info",
-                icon: false,
-              }
-            );
-          notify();
+          axios
+            .get(`https://localhost:7262/Clients/image/${senderId}`)
+            .then((resp) => {
+              const notify = () => {
+                toast(
+                  <Notification
+                    senderId={senderId}
+                    userName={userName}
+                    msg={msg.messageText}
+                    profile={true}
+                  />,
+                  {
+                    progressStyle: { background: "#3b82f6" },
+                    type: "info",
+                    icon: false,
+                  }
+                );
+              };
+              notify();
+            })
+            .catch((err) => {
+              const notify = () => {
+                toast(
+                  <Notification
+                    senderId={senderId}
+                    userName={userName}
+                    msg={msg.messageText}
+                    profile={false}
+                  />,
+                  {
+                    progressStyle: { background: "#3b82f6" },
+                    type: "info",
+                    icon: false,
+                  }
+                );
+              };
+              notify();
+            });
         }
       }
     );
@@ -209,7 +242,7 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
           setFilteredMessages(
             filteredMessages.map((msg) => {
               if (msg.id === id) {
-                return { ...msg, messageText: message };
+                return { ...msg, messageText: message, edited: true };
               } else return msg;
             })
           );
@@ -217,33 +250,24 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
           getUsers();
           getMessages();
         }
-        // setUsers(
-        //   users.map((user) => {
-        //     if (user.id === senderId && user.lastMessage.id === id) {
-        //       return {
-        //         ...user,
-        //         lastMessage: {
-        //           id: id,
-        //           senderId: senderId,
-        //           receiverId: receiverId,
-        //           sent: user.lastMessage.sent,
-        //           messageText: message,
-        //           seen: user.lastMessage.seen,
-        //         },
-        //       };
-        //     } else return user;
-        //   })
-        // );
       }
     });
     connection.on("DeletedMessage", (id, senderId, receiverId) => {
       if (userId === receiverId) {
         if (userId === receiverId) {
-          if (openChat.id === senderId)
+          if (openChat.id === senderId) {
             setFilteredMessages(
-              filteredMessages.filter((msg) => msg.id !== id)
+              filteredMessages.map((m) => {
+                if (m.id === id) return { ...m, deleted: true };
+                return m;
+              })
             );
-          else {
+            setTimeout(() => {
+              setFilteredMessages(
+                filteredMessages.filter((msg) => msg.id !== id)
+              );
+            }, 300);
+          } else {
             getUsers();
             getMessages();
           }
@@ -340,19 +364,54 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
 
   return (
     <div
-      className={`min-w-90 h-100 md:w-50 flex flex-col items-start bg-white absolute bottom-0 right-10 shadow-4 p-4 gap-3 duration-200 ease-linear ${
+      className={`min-w-90 h-100 md:w-50 flex flex-col items-start bg-white absolute bottom-0 right-10 shadow-xl p-4 gap-3 duration-200 ease-linear ${
         chat ? "opacity-100 z-9" : "opacity-0 -z-9"
       }`}
     >
       <div className="w-full flex gap-2 justify-between items-center">
-        <h1 className="font-bold">
-          {openChat.id === undefined ? "Chats" : openChat.fullName}
+        <h1 className={`relative font-bold flex gap-2 items-center`}>
+          {openChat.id === undefined ? (
+            group === undefined ? (
+              "Chats"
+            ) : (
+              <form
+                action=""
+                className="relative w-22 rounded-md flex items-center bg-white z-10"
+              >
+                <input
+                  type="text"
+                  className="w-full rounded-md font-bold"
+                  defaultValue={group.name}
+                  onChange={(e) => {
+                    setGroup({ ...group, name: e.target.value });
+                  }}
+                  autoFocus={group !== undefined}
+                />
+              </form>
+            )
+          ) : openChat.profile ? (
+            <img
+              className="w-6 h-6 rounded-full"
+              src={`https://localhost:7262/Clients/image/${openChat.id}`}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faUser}
+              className="w-2 h-2 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-2 rounded-full cursor-pointer"
+            />
+          )}
+          {openChat.active && (
+            <div className="absolute bottom-0 left-4.5 h-2.5 w-2.5 rounded-full bg-green-400"></div>
+          )}
+          {openChat.fullName}
         </h1>
         <div className="flex gap-3">
           {openChat.id === undefined && (
             <form
               action=""
-              className="relative -left-8 w-50 rounded-md flex items-center bg-white z-10"
+              className={`relative ${
+                group === undefined ? "-left-18" : "-left-6"
+              } w-50 rounded-md flex items-center bg-white z-10"`}
             >
               <input
                 type="text"
@@ -364,52 +423,96 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
               />
             </form>
           )}
-          {openChat.id !== undefined && (
+          {openChat.id !== undefined ? (
             <FontAwesomeIcon
               icon={faAngleDown}
-              className="cursor-pointer"
+              className="cursor-pointer absolute right-10"
               onClick={() => {
                 connection.invoke("RemoveTyping", userId, openChat.id);
                 setOpenChat({});
               }}
             />
+          ) : (
+            <FontAwesomeIcon
+              icon={group !== undefined ? faMinus : faPlus}
+              className="cursor-pointer z-10 absolute right-9"
+              onClick={() => {
+                setOpenChat({});
+                setGroup(
+                  group !== undefined ? undefined : { name: "New Group" }
+                );
+              }}
+            />
           )}
           <FontAwesomeIcon
             icon={faXmark}
-            className="cursor-pointer"
+            className="cursor-pointer z-10 absolute right-4"
             onClick={() => {
               setOpenChat({});
+              setGroup(undefined);
               setChat(false);
             }}
           />
         </div>
       </div>
-      <span className="w-full h-[1px] bg-slate-200"></span>
-      <div className="w-full flex flex-col">
+      <span className="relative z-10 w-full h-[1px] bg-slate-200"></span>
+      <div className="w-full h-full flex flex-col overflow-y-auto overflow-x-hidden">
         {openChat.id === undefined ? (
           messages.length > 0 || searching ? (
-            users.map((user) => {
-              return (
-                <User
-                  key={user.id}
-                  token={token}
-                  user={user}
-                  userId={userId}
-                  active={user.active}
-                  searching={searching}
-                  setOpenChat={setOpenChat}
-                  message={message}
-                  setMessage={setMessage}
-                  filterMessages={filterMessages}
-                  setFilteredMessages={setFilteredMessages}
-                  unSeenMessages={unSeenMessages}
-                  setUnSeenMessages={setUnSeenMessages}
-                  typing={typing}
-                  timeAgo={timeAgo}
-                  connection={connection}
-                />
-              );
-            })
+            searching ? (
+              searchClients.length > 0 ? (
+                searchClients.map((user) => {
+                  return (
+                    <User
+                      key={user.id}
+                      token={token}
+                      user={user}
+                      userId={userId}
+                      active={user.active}
+                      searching={searching}
+                      setOpenChat={setOpenChat}
+                      message={message}
+                      setMessage={setMessage}
+                      filterMessages={filterMessages}
+                      setFilteredMessages={setFilteredMessages}
+                      unSeenMessages={unSeenMessages}
+                      setUnSeenMessages={setUnSeenMessages}
+                      typing={typing}
+                      timeAgo={timeAgo}
+                      connection={connection}
+                    />
+                  );
+                })
+              ) : (
+                <h1 className="relative m-auto -top-16 font-bold text-xl">
+                  No results...
+                </h1>
+              )
+            ) : (
+              !searching &&
+              users.map((user) => {
+                return (
+                  <User
+                    key={user.id}
+                    token={token}
+                    user={user}
+                    userId={userId}
+                    active={user.active}
+                    searching={searching}
+                    setOpenChat={setOpenChat}
+                    message={message}
+                    setMessage={setMessage}
+                    filterMessages={filterMessages}
+                    setFilteredMessages={setFilteredMessages}
+                    unSeenMessages={unSeenMessages}
+                    setUnSeenMessages={setUnSeenMessages}
+                    typing={typing}
+                    timeAgo={timeAgo}
+                    connection={connection}
+                  />
+                );
+              })
+            )
           ) : (
             <h1 className="relative m-auto top-20 font-bold text-xl">
               Start a conversation...
@@ -436,6 +539,8 @@ const Chat = ({ token, chat, setChat, userId, setMessageCount }) => {
                         : false
                     }
                     created={msg.created}
+                    edited={msg.edited}
+                    deleted={msg.deleted}
                     seen={msg.seen}
                     last={index === 0}
                     userId={userId}

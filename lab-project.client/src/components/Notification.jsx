@@ -1,48 +1,25 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const Notification = ({
-  id,
-  created,
-  sender,
-  message,
-  setChat,
-  notifications,
-  setNotifications,
-}) => {
-  useEffect(() => {
-    setTimeout(() => {
-      let newNotifs = notifications;
-      newNotifs = newNotifs.filter((n) => n.id !== id);
-      setNotifications(newNotifs);
-    }, 4950);
-  }, []);
-
+const Notification = ({ senderId, userName, msg, profile }) => {
   return (
-    <div
-      className={`relative w-80 h-15 z-99 bg-white flex items-center justify-between px-4 border border-slate-200 shadow-2 ${
-        created ? "animate-fade" : "hidden"
-      }`}
-    >
-      <p
-        className="w-full text-md cursor-pointer"
-        onClick={() => setChat(true)}
-      >
-        <b>{sender}:</b>{" "}
-        {message.length <= 20 ? message : message.substring(0, 20) + "..."}
+    <div className="flex gap-2 items-center">
+      {profile ? (
+        <img
+          className={`w-8 h-8 rounded-full  bg-slate-200 flex items-center justify-center`}
+          src={`https://localhost:7262/Clients/image/${senderId}`}
+          alt={`${userName}`}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faUser}
+          className="w-3 h-3 text-slate-600 bg-slate-300 hover:bg-slate-400 ease-in duration-150 p-2.5 rounded-full cursor-pointer"
+        />
+      )}
+      <p className="cursor-pointer text-black">
+        <b>{userName}:</b> {msg}
       </p>
-      <div
-        className="z-10 w-5 h-5 bg-slate-400 rounded-full flex items-center justify-center p-1 cursor-pointer"
-        onClick={() => {
-          setNotifications(notifications.filter((n) => n.id !== id));
-        }}
-      >
-        <FontAwesomeIcon icon={faXmark} />
-      </div>
-      <div
-        className={`absolute bottom-0 right-0 w-80 bg-blue-400 h-1.5 rounded-lg animate-sliding`}
-      ></div>
     </div>
   );
 };

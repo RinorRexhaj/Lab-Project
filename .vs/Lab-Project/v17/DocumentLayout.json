@@ -7,56 +7,28 @@
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\clientchangedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\clientchangedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\toprevenueproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\toprevenueproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\refreshcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\refreshcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\topproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\topproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\categorytotaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\categorytotaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\modelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\modelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\clientmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\clientmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\updatecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\updatecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,44 +39,116 @@
       "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\clientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\notificationadmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\notificationadmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240528160849_NotificationsAdmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240528160849_NotificationsAdmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240528160304_NotificationsAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab-Project.Server\\Migrations\\20240528160304_NotificationsAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C19945B8-A72D-418C-9C50-279DEBB18CF6}|lab-project.client\\lab-project.client.esproj|solutionrelative:lab-project.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\services\\fileupload\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\services\\fileupload\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\services\\token\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\services\\token\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\modelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\modelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\categorytotaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\categorytotaldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\refreshcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\refreshcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\clientmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\clientmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\dtos\\updatecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\dtos\\updatecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\models\\notificationadmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\models\\notificationadmins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|solutionrelative:lab-project.server\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D4EFDF-439A-4724-AFCA-65B53A1D4B7D}|Lab-Project.Server\\Lab-Project.Server.csproj|c:\\users\\pc\\desktop\\detyra\\lab1\\lab-project\\lab-project.server\\migrations\\datacontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,59 +170,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ModelsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ModelsController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ModelsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ModelsController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ModelsController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:24:49.434Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrdersController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\OrdersController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\OrdersController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\OrdersController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\OrdersController.cs",
-              "ViewState": "AQIAAIkAAAAAAAAAAAAYwC0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T17:19:35.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RolesController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RolesController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\RolesController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RolesController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\RolesController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwBcAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:11:23.972Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SessionsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\SessionsController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\SessionsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\SessionsController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\SessionsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T12:01:04.105Z"
             },
             {
               "$type": "Document",
@@ -188,158 +184,182 @@
               "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ClientsController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ClientsController.cs",
               "RelativeToolTip": "Lab-Project.Server\\Controllers\\ClientsController.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAgwEMAAAAjAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAIwIQAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-26T17:27:58.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAowE8AAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\OrdersController.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAYwFgAAADnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T21:44:12.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderDTO.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\OrderDTO.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\OrderDTO.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\OrderDTO.cs",
-              "RelativeToolTip": "Lab-Project.Server\\DTOs\\OrderDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:25:14.529Z"
+              "WhenOpened": "2024-05-31T17:19:35.465Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "CategoryTotalDTO.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
-              "RelativeToolTip": "Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:25:38.75Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RefreshController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RefreshController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\RefreshController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RefreshController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\RefreshController.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:25:59.258Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ClientMessage.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientMessage.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\ClientMessage.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientMessage.cs",
-              "RelativeToolTip": "Lab-Project.Server\\DTOs\\ClientMessage.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:24:19.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\CategoriesController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "Lab-Project.Server\\Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAgAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAzwE4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-26T21:41:29.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UpdateCategoryDTO.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
-              "RelativeToolTip": "Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "DocumentIndex": 9,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Client.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Client.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Client.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Models\\Client.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAUwBUAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:23:14.614Z"
+              "WhenOpened": "2024-05-26T17:12:30.853Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CarsController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CarsController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\CarsController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CarsController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\CarsController.cs",
-              "ViewState": "AQIAAHwAAAAAAAAAAADwvwAAAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAIwGEAAACHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:22:51.746Z"
+              "WhenOpened": "2024-05-26T12:01:52.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAkwGUAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T21:44:12.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientChangeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientChangeDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\ClientChangeDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientChangeDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\ClientChangeDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T09:50:20.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TopRevenueProductDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\TopRevenueProductDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\TopRevenueProductDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\TopRevenueProductDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\TopRevenueProductDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T09:46:16.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TopProductDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\TopProductDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\TopProductDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\TopProductDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\TopProductDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T09:45:50.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrderDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\OrderDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\OrderDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\OrderDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\OrderDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:25:14.529Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Hubs\\ChatHub.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAiwBMAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T15:50:58.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ClientDTO.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientDTO.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\ClientDTO.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientDTO.cs",
               "RelativeToolTip": "Lab-Project.Server\\DTOs\\ClientDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T09:22:23.849Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\appsettings.json",
+              "RelativeToolTip": "Lab-Project.Server\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-04T19:08:05.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "MessagesController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\MessagesController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\MessagesController.cs",
               "RelativeToolTip": "Lab-Project.Server\\Controllers\\MessagesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAeAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAowE8AAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-25T15:52:00.753Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\OrderDetail.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\OrderDetail.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Models\\OrderDetail.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T17:21:45.215Z"
+              "Title": "vite.config.js",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\vite.config.js",
+              "RelativeDocumentMoniker": "lab-project.client\\vite.config.js",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\vite.config.js",
+              "RelativeToolTip": "lab-project.client\\vite.config.js",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-10T18:04:56.578Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Hubs\\ChatHub.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA4wA4AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T15:50:58.707Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 17,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Message.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Message.cs",
@@ -352,6 +372,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 18,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Lab-Project.Server\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-10T18:04:27.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Program.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAF0AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T15:51:03.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FileUploadService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\FileUpload\\FileUploadService.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Services\\FileUpload\\FileUploadService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\FileUpload\\FileUploadService.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Services\\FileUpload\\FileUploadService.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T09:56:17.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\Token\\ITokenService.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Services\\Token\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\Token\\ITokenService.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Services\\Token\\ITokenService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T10:03:34.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\Token\\TokenService.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Services\\Token\\TokenService.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Services\\Token\\TokenService.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Services\\Token\\TokenService.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T19:07:49.646Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Order.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Order.cs",
@@ -363,19 +443,139 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAeAAAA",
+              "DocumentIndex": 24,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Product.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T12:01:52.679Z"
+              "WhenOpened": "2024-06-04T19:16:57.284Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Car.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Car.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Models\\Car.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-04T19:17:20.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\OrderDetail.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Models\\OrderDetail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T17:21:45.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "SessionsController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\SessionsController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\SessionsController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\SessionsController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\SessionsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T12:01:04.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\RolesController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAYwBcAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T17:11:23.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ModelsController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ModelsController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\ModelsController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\ModelsController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\ModelsController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAIBJwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:24:49.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CategoryTotalDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\CategoryTotalDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:25:38.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "RefreshController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RefreshController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\RefreshController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\RefreshController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\RefreshController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAIBJwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:25:59.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ClientMessage.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientMessage.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\ClientMessage.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\ClientMessage.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\ClientMessage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:24:19.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UpdateCategoryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
+              "RelativeToolTip": "Lab-Project.Server\\DTOs\\UpdateCategoryDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:23:14.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CarsController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CarsController.cs",
+              "RelativeDocumentMoniker": "Lab-Project.Server\\Controllers\\CarsController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Controllers\\CarsController.cs",
+              "RelativeToolTip": "Lab-Project.Server\\Controllers\\CarsController.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T09:22:51.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "NotificationAdmins.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\NotificationAdmins.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\NotificationAdmins.cs",
@@ -387,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 13,
               "Title": "20240528160304_NotificationsAdded.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240528160304_NotificationsAdded.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240528160304_NotificationsAdded.cs",
@@ -398,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 36,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Data\\DataContext.cs",
@@ -410,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 12,
               "Title": "20240528160849_NotificationsAdmins.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\20240528160849_NotificationsAdmins.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\20240528160849_NotificationsAdmins.cs",
@@ -421,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 37,
               "Title": "DataContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Migrations\\DataContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Migrations\\DataContextModelSnapshot.cs",
@@ -433,31 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Program.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Program.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Program.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAF0AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T15:51:03.607Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Client.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Client.cs",
-              "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Client.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Client.cs",
-              "RelativeToolTip": "Lab-Project.Server\\Models\\Client.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAUwBYAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:12:30.853Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 38,
               "Title": "Notification.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Notification.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Notification.cs",
@@ -469,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 39,
               "Title": "Model.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\Lab-Project.Server\\Models\\Model.cs",
               "RelativeDocumentMoniker": "Lab-Project.Server\\Models\\Model.cs",
