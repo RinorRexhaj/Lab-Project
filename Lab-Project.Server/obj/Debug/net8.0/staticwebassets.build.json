@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "7lKAFCZbwN234drHno/em5DdBWbJdiEP97IBOY0iFTU=",
+  "Hash": "BFXuYCPYvvd7clZyJjodmkmdfuhhAZuFR0l8sssG9QU=",
   "Source": "Lab-Project.Server",
   "BasePath": "_content/Lab-Project.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\PC\\Desktop\\Detyra\\Lab1\\Lab-Project\\lab-project.client\\lab-project.client.esproj",
+      "Identity": "C:\\Users\\agajr\\Desktop\\Lenda Laboratorike 4\\Projekti\\Lab-Project\\lab-project.client\\lab-project.client.esproj",
       "Version": 2,
       "Source": "lab-project.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

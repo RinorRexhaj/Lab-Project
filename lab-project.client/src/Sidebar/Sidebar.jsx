@@ -1,6 +1,6 @@
 import SidebarLink from "./SidebarLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faLeftLong, faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ open, toggleSidebar, role }) => {
   return (
@@ -30,9 +30,13 @@ const Sidebar = ({ open, toggleSidebar, role }) => {
         <SidebarLink destination={"Orders"} />
         <SidebarLink destination={"Cars"} />
         <SidebarLink destination={"Rents"} />
+        <SidebarLink destination={"Shipping Method"} />
+        <SidebarLink destination={"Restaurant"} icon={faUtensils} />
+        <SidebarLink destination={"Manage Restaurants"} />
       </div>
     </div>
   );
+  
 };
 
 export default Sidebar;

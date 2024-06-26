@@ -9,6 +9,9 @@ import {
   faAngleDown,
   faAngleUp,
   faCarSide,
+  faTruckFast,
+  faUtensils,
+  faHamburger,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -42,6 +45,18 @@ const SidebarLink = ({ destination }) => {
       break;
     case "Rents":
       icon = faCarSide;
+      break;
+    case "Shipping Method":
+      icon = faTruckFast;
+      break;
+    case "Restaurant":
+      icon = faUtensils;
+      break;
+    case "Manage Restaurants":
+      icon = faHamburger;
+      break;
+      default:
+      icon = faBars; // Ikona Default
       break;
   }
 

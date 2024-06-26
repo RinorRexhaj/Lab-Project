@@ -17,5 +17,7 @@ public class DataContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<Message> Messages { get; set; } = null!;
-    public DbSet<Model> Models {  get; set; } = null!;
+    public DbSet<Model> Models { get; set; } = null!;
+    public DbSet<ShippingMethod> ShippingMethods { get; set; }
+    public DbSet<Restaurant> Restaurants { get; set; }
 }

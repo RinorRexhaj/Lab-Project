@@ -10,6 +10,9 @@ import Login from "./Login/Login";
 import Cars from "./CarRental/Cars";
 import CarRentalList from "./CarRentalFront/CarRentalList";
 import AccountSettings from "./Settings/AccountSettings";
+import ShippingMethod from "./ShippingMethod/ShippingMethod";
+import Restaurant from "./Restaurant/Restaurant";
+import ManageRestaurants from "./ManageRestaurants/ManageRestaurants";
 import axios from "axios";
 
 const App = () => {
@@ -89,7 +92,7 @@ const App = () => {
         ...item,
         quantity: 1,
       };
-      newCart.push(itemInCart);
+      newCart.push(itemInCart); 
     }
     setCart(newCart);
   };
@@ -177,6 +180,7 @@ const App = () => {
                   />
                   <Route path="/clients" element={<Clients />} />
                   <Route path="/orders" element={<Orders />} />
+                  <Route path="/shipping method" element={<ShippingMethod />} />
                   <Route
                     path="/settings"
                     element={
@@ -202,6 +206,8 @@ const App = () => {
                     path="/Rents"
                     element={<CarRentalList cars={data} setCars={setData} />}
                   />
+                  <Route path="/restaurant" element={<Restaurant />} />
+                  <Route path="/Manage Restaurants" element={<ManageRestaurants />} />
                 </Routes>
               </div>
             </div>
